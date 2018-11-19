@@ -1,0 +1,22 @@
+
+
+{% extends 'layout/layout.html.twig' %}
+
+{% block content %}
+
+   {% for book in chapitre %}
+
+       <h1>Billet simple pour l'Alaska</h1>
+           <br/>
+       <div>
+
+               <h2>{{ book.title }}</h2>
+               <a> {{ book.date}}</a>
+               <p>{{ book.text| nl2br }}</p>
+
+
+       </div>
+   {% endfor %}
+{% endblock %}
+
+

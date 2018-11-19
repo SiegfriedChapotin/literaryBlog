@@ -1,0 +1,48 @@
+html{
+
+}
+
+body{
+    font-family: 'Roboto Slab', serif;
+    color:#2f2a0a;
+    background-color: #b8874c;
+}
+#dashboard{
+    margin:70px 0px;
+}
+#connect{
+    margin: 25%;
+}
+
+#connection{
+   color: #8a6d3b;
+   text-align: left;
+    }
+#connection:hover{
+    color:#7e7e41;
+}
+.jumbotron{
+    background: url('../img/mckinley.png') no-repeat scroll ;
+    background-size: cover;
+    margin:20px 0px;
+}
+
+.heading{
+     padding:2%;
+ }
+.show{
+    padding:10% 0%;
+}
+.jumbotron .container{
+    background-color: rgba(243,223,198,0.7);
+    padding:10px;
+    font-weight: bold;
+}
+.navbar{
+    border-top:10px #b8874c dashed  ;
+
+}
+h1, h2{
+    color:#7e7e41;
+    font-weight: bolder;
+}

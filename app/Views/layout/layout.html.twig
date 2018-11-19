@@ -1,0 +1,20 @@
+{% include  "layout/GenericLayout/header.html.twig" %}
+
+<main role="main">
+
+    <div class="container">
+        <div class="row show">
+            <div class="col-8">
+            {% block content %}{% endblock%}
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+</main>
+
+{% include  "layout/GenericLayout/footer.html.twig" %}
+
+

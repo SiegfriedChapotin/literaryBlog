@@ -1,0 +1,46 @@
+
+{% extends 'layout/layouthome.html.twig' %}
+
+
+{%  block introText  %}
+    {% for texthome in textHome %}
+        <div>
+            <h1>{{texthome.title }}</h1>
+            <p>{{ texthome.text | nl2br}}</p>
+
+        </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block heading %}
+    {% for headings in headings %}
+        <br/>
+            <div class="col-md-4">
+                <h2>{{headings.title }}</h2>
+                <p>{{ headings.text | truncate(200)| nl2br}}</p>
+                <p><a class="btn btn-secondary" href="http://localhost/literaryBlog/public/index.php?p=heading_show&id={{headings.id }}" role="button">suite &raquo;</a></p>
+            </div>
+
+     {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Billet simple pour l'Alaska</h1>
+
+    <h2>Les derniers chapitres</h2>
+
+   {% for book in chapitres %}
+       <div>
+
+               <h3>{{ book.title }}</h3>
+               <a> {{ book.date}}</a>
+               <p>{{ book.text | truncate(200)}}</p>
+                <a class="btn btn-success"href="http://localhost/literaryBlog/public/index.php?p=post_show&id={{ book.id }}" role="button">suite...</a>
+       </div>
+       <wbr/>
+   {% endfor %}
+
+{% endblock %}

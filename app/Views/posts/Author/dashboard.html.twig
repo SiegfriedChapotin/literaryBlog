@@ -1,0 +1,53 @@
+{% extends  "layout/Author/layoutdashboard.html.twig" %}
+
+{%  block introText  %}
+    {% for texthome in textHome %}
+        <li class="nav-item">
+            <p><a href="http://localhost/literaryBlog/public/index.php?p=home_texthome&id={{texthome.id }}"><span data-feather="file-text"></span> {{texthome.title }}</a></p>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block heading %}
+    {% for headings in headings %}
+        <br/>
+        <li class="nav-item">
+            <p><a href="http://localhost/literaryBlog/public/index.php?p=heading_show&id={{headings.id }}"><span data-feather="file-text"></span> {{headings.title }}</a></p>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block textarea %}
+<form method= "post">
+    <div class= "form-group" >
+
+        <label for= "TitleDashboard" > Titre </label>
+        <input class="form-control" type="text" placeholder="Titre" name="TitleDashboard">
+
+        <label for= "TextDashboard" > Texte </label>
+        <textarea class= "form-control" id= "textarea" rows= "20" name="TextDashboard"></textarea>
+    </div>
+    <div>
+        <button class="btn btn-sm btn-success">Envoyer</button>
+        <button class="btn btn-sm btn-success">Brouillon</button>
+    </div>
+</form>
+    <wbr/>
+
+{% endblock %}
+
+
+{% block Billets %}
+
+    {% for book in chapitresall %}
+
+<tr>
+    <td>{{ book.title }}</td>
+    <td>{{ book.date}}</td>
+    <td><button class="btn btn-sm btn-outline-secondary">{{ book.id}}</button></td>
+</tr>
+
+    {% endfor %}
+{% endblock %}
+
+

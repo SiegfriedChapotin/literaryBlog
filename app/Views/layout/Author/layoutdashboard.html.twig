@@ -1,0 +1,70 @@
+{% include  "layout/GenericLayout/header.html.twig" %}
+
+<div id="dashboard" class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Bureau <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="feather"></span>
+                            Texte
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="users"></span>
+                            Commentaires
+                        </a>
+                    </li>
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Page accueil</span>
+                </h6>
+                <br/>
+                <ul class="nav flex-column mb-2">
+                    {%  block introText  %}{% endblock %}
+
+                    {% block heading %}{% endblock %}
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1>Bureau</h1>
+            </div>
+
+            <div>
+                {% block textarea %}{% endblock %}
+            </div>
+
+            <h2>Publications</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Date</th>
+                        <th>Modifier</th>
+                        <th>Brouillon</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% block Billets %}{% endblock %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+{% include  "layout/GenericLayout/footer.html.twig" %}
