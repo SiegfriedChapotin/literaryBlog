@@ -45,11 +45,11 @@ const urls = [
   { key: 'searchreplace', name: 'Search and Replace' },
   { key: 'spellchecker', name: 'Spell Checker' },
   { key: 'tabfocus', name: 'Tab Focus' },
-  { key: 'table', name: 'Table' },
+  { key: 'table', name: 'AbstractTable' },
   { key: 'template', name: 'Template' },
   { key: 'textcolor', name: 'Text Color' },
   { key: 'textpattern', name: 'Text Pattern' },
-  { key: 'toc', name: 'Table of Contents' },
+  { key: 'toc', name: 'AbstractTable of Contents' },
   { key: 'visualblocks', name: 'Visual Blocks' },
   { key: 'visualchars', name: 'Visual Characters' },
   { key: 'wordcount', name: 'Word Count' }

@@ -1,14 +1,14 @@
         <footer class="container-fluid">
                 <div class="row">
                         <div  class="col-2">
-                                <a id="connection"  href="http://localhost/literaryBlog/public/admin.php">
+                                <a id="connection"  href="http://localhost/literaryBlog/public/index.php?p=admin">
                                         <span data-feather="feather"></span>
                                 </a>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-2">
                                 &copy; Jean Forteroche 2018
                         </div>
                 </div>
@@ -31,8 +31,13 @@
         <script src="../public/tinymce/js/tinymce/tinymce.js"></script>
         <script type="text/javascript">
             tinyMCE.init({
-                mode : "textareas",
+                mode : "exact",
+                elements : "textarea",
+                theme : "modern",
                 language:"fr_FR",
+
+                // liste des plugins
+                plugins : "image, imagetools,media,"
 
             });
         </script>

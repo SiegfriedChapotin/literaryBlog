@@ -58,7 +58,7 @@ export default function () {
 
       {
         // Should not appear when not in a table.
-        title: 'Table', items: [
+        title: 'AbstractTable', items: [
           { title: 'Rows', items: [
             { title: 'Cell', selector: 'tr', styles: { background: 'red' } }
           ] }

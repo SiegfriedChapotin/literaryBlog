@@ -29,7 +29,7 @@ const isToc = function (editor) {
 
 const register = function (editor) {
   editor.addButton('toc', {
-    tooltip: 'Table of Contents',
+    tooltip: 'AbstractTable of Contents',
     cmd: 'mceInsertToc',
     icon: 'toc',
     onPostRender: toggleState(editor)
@@ -42,7 +42,7 @@ const register = function (editor) {
   });
 
   editor.addMenuItem('toc', {
-    text: 'Table of Contents',
+    text: 'AbstractTable of Contents',
     context: 'insert',
     cmd: 'mceInsertToc',
     onPostRender: toggleState(editor)

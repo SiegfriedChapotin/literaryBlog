@@ -16,8 +16,8 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableDefaultStylesTest', (succ
     Pipeline.async({}, [
       Logger.t('no styles without setting', GeneralSteps.sequence([
         tinyApis.sFocus,
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
-        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
+        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("AbstractTable")'),
         tinyUi.sClickOnUi('click table grid', 'td[role="gridcell"]:first a'),
         TableTestUtils.sAssertTableStructure(editor, ApproxStructure.build((s, str, arr) => {
           return s.element('table', {
@@ -54,8 +54,8 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableDefaultStylesTest', (succ
       Logger.t('test default style border attribute', GeneralSteps.sequence([
         tinyApis.sFocus,
         tinyApis.sSetSetting('table_default_styles', { border: '3px solid blue' }),
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
-        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
+        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("AbstractTable")'),
         tinyUi.sClickOnUi('click table grid', 'td[role="gridcell"]:first a'),
         TableTestUtils.sAssertTableStructure(editor, ApproxStructure.build((s, str, arr) => {
           return s.element('table', {

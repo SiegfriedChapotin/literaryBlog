@@ -29,7 +29,7 @@ class Database
     /** @var string $name Nom du serveur où se trouve la DB */
     private $host;
 
-    /** @var string $name Nom de la Table */
+    /** @var string $name Nom de la AbstractTable */
     private $db = null;
 
     /**
@@ -65,6 +65,7 @@ class Database
         }
 
         return $this->db;
+
     }
 
     /**

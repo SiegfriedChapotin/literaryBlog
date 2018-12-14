@@ -36,7 +36,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableRowDialogTest', function 
     return html.replace(/<p>(&nbsp;|<br[^>]+>)<\/p>$/, '');
   };
 
-  suite.test('Table row properties dialog (get data from plain cell)', function (editor) {
+  suite.test('AbstractTable row properties dialog (get data from plain cell)', function (editor) {
     editor.focus();
     editor.setContent('<table><tr><td>X</td></tr></table>');
     LegacyUnit.setSelection(editor, 'td', 0);
@@ -55,7 +55,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableRowDialogTest', function 
     closeTopMostWindow(editor);
   });
 
-  suite.test('Table row properties dialog (get data from complex row)', function (editor) {
+  suite.test('AbstractTable row properties dialog (get data from complex row)', function (editor) {
     editor.setContent(
       '<table><thead>' +
         '<tr style="height: 10px; text-align: right; border-color: red; background-color: blue"><td>X</td></tr>' +
@@ -77,7 +77,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableRowDialogTest', function 
     closeTopMostWindow(editor);
   });
 
-  suite.test('Table row properties dialog (update all)', function (editor) {
+  suite.test('AbstractTable row properties dialog (update all)', function (editor) {
     editor.setContent('<table><tr><td>X</td></tr></table>');
     LegacyUnit.setSelection(editor, 'td', 0);
     editor.execCommand('mceTableRowProps');
@@ -113,7 +113,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableRowDialogTest', function 
     closeTopMostWindow(editor);
   });
 
-  suite.test('Table row properties dialog update multiple rows', function (editor) {
+  suite.test('AbstractTable row properties dialog update multiple rows', function (editor) {
     editor.getBody().innerHTML = (
       '<table>' +
       '<tbody>' +

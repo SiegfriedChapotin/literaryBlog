@@ -36,7 +36,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellDialogTest', function
     return html.replace(/<p>(&nbsp;|<br[^>]+>)<\/p>$/, '');
   };
   /*
-      suite.test("Table cell properties dialog (get data from plain cell)", function (editor) {
+      suite.test("AbstractTable cell properties dialog (get data from plain cell)", function (editor) {
         editor.focus();
         editor.setContent('<table><tr><td>X</td></tr></table>');
         LegacyUnit.setSelection(editor, 'td', 0);
@@ -58,7 +58,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellDialogTest', function
         closeTopMostWindow(editor);
       });
 
-      suite.test("Table cell properties dialog (get/set data from/to plain cell, no adv tab)", function (editor) {
+      suite.test("AbstractTable cell properties dialog (get/set data from/to plain cell, no adv tab)", function (editor) {
         editor.settings.table_cell_advtab = false;
 
         editor.setContent('<table><tr><td>X</td></tr></table>');
@@ -88,7 +88,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellDialogTest', function
         closeTopMostWindow(editor);
       });
 
-      suite.test("Table cell properties dialog (get data from complex cell)", function (editor) {
+      suite.test("AbstractTable cell properties dialog (get data from complex cell)", function (editor) {
         editor.setContent(
           '<table><tr><th style="text-align: right; vertical-align: top; width: 10px; height: 11px; ' +
           'border-color: red; background-color: blue; border-style: dashed;" scope="row">X</th></tr></table>'
@@ -112,7 +112,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellDialogTest', function
         closeTopMostWindow(editor);
       });
 
-      suite.test("Table cell properties dialog (update all)", function (editor) {
+      suite.test("AbstractTable cell properties dialog (update all)", function (editor) {
         editor.setContent('<table><tr><td>X</td></tr></table>');
         LegacyUnit.setSelection(editor, 'td', 0);
         editor.execCommand('mceTableCellProps');
@@ -133,7 +133,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellDialogTest', function
         closeTopMostWindow(editor);
       });
   */
-  suite.test('Table cell properties dialog update multiple cells', function (editor) {
+  suite.test('AbstractTable cell properties dialog update multiple cells', function (editor) {
     editor.getBody().innerHTML = (
       '<table>' +
       '<tbody>' +

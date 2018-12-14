@@ -19,10 +19,10 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableGridFalse', function () {
     Pipeline.async({}, [
       Logger.t('test table grid disabled', GeneralSteps.sequence([
         tinyApis.sFocus,
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
-        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
+        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("AbstractTable")'),
         Chain.asStep({}, [
-          tinyUi.cWaitForPopup('wait for popup', 'div[aria-label="Table properties"][role="dialog"]'),
+          tinyUi.cWaitForPopup('wait for popup', 'div[aria-label="AbstractTable properties"][role="dialog"]'),
           Chain.op(function (x) {
             Assertions.assertPresence(
               'assert presence of col and row input',

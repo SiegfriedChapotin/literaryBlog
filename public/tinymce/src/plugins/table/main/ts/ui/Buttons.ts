@@ -27,7 +27,7 @@ const addButtons = function (editor: Editor) {
 
   editor.addButton('table', {
     type: 'menubutton',
-    title: 'Table',
+    title: 'AbstractTable',
     menu: menuItems
   });
 
@@ -38,7 +38,7 @@ const addButtons = function (editor: Editor) {
   }
 
   editor.addButton('tableprops', {
-    title: 'Table properties',
+    title: 'AbstractTable properties',
     onclick: cmd('mceTableProps'),
     icon: 'table'
   });

@@ -52,7 +52,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.GridSelectionTest', function (
     LegacyUnit.deepEqual(selection, cellContents);
   };
 
-  suite.test('Table grid selection', function (editor) {
+  suite.test('AbstractTable grid selection', function (editor) {
     assertTableSelection(editor, '<table><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table>', ['1', '2'], ['1', '2']);
     assertTableSelection(editor, '<table><tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr></table>', ['1', '3'], ['1', '3']);
     assertTableSelection(editor,

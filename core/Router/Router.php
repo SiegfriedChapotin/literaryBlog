@@ -8,6 +8,7 @@
 
 namespace LiteraryCore\Router;
 
+use LiteraryCore\Exception\HttpException\NotFoundHttpException;
 use LiteraryCore\Util\ArrayUtil;
 
 class Router
@@ -24,9 +25,14 @@ class Router
         $routeInfos = ArrayUtil::get($this->routes->getRoutes(), $p);
 
         if ($routeInfos === null) {
-            throw new \Exception('La route n\'existe pas'); //remplacer par une exception personnalisé 404
+            throw new NotFoundHttpException();
         }
-
+        if (ArrayUtil::get($routeInfos, 'secure')) {
+            if (empty($_SESSION['user'])) {
+                header('Location: index.php?p=login');
+                die();
+            }
+        }
         $controller = new $routeInfos['controller']();
         $controller->{$routeInfos['action']}();
     }

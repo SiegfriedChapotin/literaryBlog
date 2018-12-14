@@ -10,16 +10,20 @@ namespace Literary\Controller;
 
 
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\Tablehome;
-use Literary\Model\TablePosts;
-use Literary\Model\TableHeading;
+use Literary\Model\HeadingTable;
+use LiteraryCore\Request\Query;
+
+
 
 class Heading extends AbstractController {
 
 
     public function show() {
-        $this->render ('posts/showheading.html.twig',['heading'=>TableHeading::heading()]);
+        $this->render ('posts/showheading.html.twig',['heading'=>(new HeadingTable())->find($id=Query::get('id'))]);
+
     }
 
+
 }
+
 

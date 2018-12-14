@@ -249,7 +249,7 @@ const open = function (editor, isProps?) {
 
   if (hasAdvancedTableTab(editor)) {
     editor.windowManager.open({
-      title: 'Table properties',
+      title: 'AbstractTable properties',
       data,
       bodyType: 'tabpanel',
       body: [
@@ -264,7 +264,7 @@ const open = function (editor, isProps?) {
     });
   } else {
     editor.windowManager.open({
-      title: 'Table properties',
+      title: 'AbstractTable properties',
       data,
       body: generalTableForm,
       onsubmit: Fun.curry(onSubmitTableForm, editor, tableElm)

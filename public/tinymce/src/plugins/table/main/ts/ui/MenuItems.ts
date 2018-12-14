@@ -158,12 +158,12 @@ const addMenuItems = function (editor: Editor, selections: Selections) {
   };
 
   const insertTable = hasTableGrid(editor) === false ? {
-    text: 'Table',
+    text: 'AbstractTable',
     icon: 'table',
     context: 'table',
     onclick: cmd('mceInsertTable')
   } : {
-    text: 'Table',
+    text: 'AbstractTable',
     icon: 'table',
     context: 'table',
     ariaHideMenu: true,
@@ -238,7 +238,7 @@ const addMenuItems = function (editor: Editor, selections: Selections) {
   }
 
   const tableProperties = {
-    text: 'Table properties',
+    text: 'AbstractTable properties',
     context: 'table',
     onPostRender: pushTable,
     onclick: cmd('mceTableProps')

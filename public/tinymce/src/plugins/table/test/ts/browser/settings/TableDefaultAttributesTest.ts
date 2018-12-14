@@ -16,8 +16,8 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableDefaultAttributesTest', (
     Pipeline.async({}, [
       Logger.t('no attributes without setting', GeneralSteps.sequence([
         tinyApis.sFocus,
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
-        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
+        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("AbstractTable")'),
         tinyUi.sClickOnUi('click table grid', 'a#mcegrid11'),
         TableTestUtils.sAssertTableStructure(editor, ApproxStructure.build((s, str, arr) => {
           return s.element('table', {
@@ -54,8 +54,8 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableDefaultAttributesTest', (
       Logger.t('test default title attribute', GeneralSteps.sequence([
         tinyApis.sFocus,
         tinyApis.sSetSetting('table_default_attributes', { title: 'x' }),
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
-        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
+        tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("AbstractTable")'),
         tinyUi.sClickOnUi('click table grid', 'a#mcegrid11'),
         TableTestUtils.sAssertTableStructure(editor, ApproxStructure.build((s, str, arr) => {
           return s.element('table', {

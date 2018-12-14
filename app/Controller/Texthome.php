@@ -10,16 +10,25 @@ namespace Literary\Controller;
 
 
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\Tablehome;
-use Literary\Model\TablePosts;
-use Literary\Model\TableHeading;
-use LiteraryCore\Table\Table;
+use Literary\Model\TextHomeTable;
+use Literary\Model\PostsTable;
+use Literary\Model\HeadingTable;
+use Literary\Model\CommentsTable;
+Use Literary\Model\ShowingTable;
+
 
 class Texthome extends AbstractController {
 
 
+
     public function homepage() {
-        $this->render('posts/home.html.twig',['chapitres'=>TablePosts::chapitres(),'textHome'=>Tablehome::all(),'headings'=>TableHeading::headings()]);
+        $this->render('posts/home.html.twig',[
+            'chapitres'=>(new PostsTable())->listPost(),
+            'comments'=>(new CommentsTable())->listComment(),
+            'texthome'=>(new TextHomeTable())->all(),
+            'headings'=>(new HeadingTable())->all(),
+            'showings' => (new ShowingTable())->all()
+        ]);
     }
 
 

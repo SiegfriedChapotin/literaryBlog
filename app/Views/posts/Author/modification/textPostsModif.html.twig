@@ -1,0 +1,21 @@
+{% extends  "layout/Author/layoutdashboard.html.twig" %}
+
+{% block textarea %}
+
+    {% for book in posts_admin %}
+        <form method= "post">
+            <div class= "form-group" >
+
+                <label for= "TitleDashboard" >Titre</label>
+                <textarea class="form-control" type="text" name="TitleDashboard">{{ book.title }}</textarea>
+
+                <label for= "TextDashboard" > Texte </label>
+                <textarea class= "form-control textarea" id= "textarea" rows= "20" name="TextDashboard">{{book.text}}</textarea>
+            </div>
+            <div>
+                <input class="btn btn-info" type="submit" value="Modifier" />
+            </div>
+        </form>
+        <wbr/>
+    {% endfor %}
+{% endblock %}

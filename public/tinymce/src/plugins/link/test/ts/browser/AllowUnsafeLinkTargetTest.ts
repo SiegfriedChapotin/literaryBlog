@@ -85,7 +85,7 @@ UnitTest.asynctest('browser.tinymce.plugins.link.AllowUnsafeLinkTargetTest', fun
         api.sSetSetting('rel_list', [
           { title: 'Lightbox', value: 'lightbox' },
           { title: 'Test rel', value: 'alternate nofollow' },
-          { title: 'Table of contents', value: 'toc' }
+          { title: 'AbstractTable of contents', value: 'toc' }
         ]),
         api.sSetContent('<a href="http://www.google.com" target="_blank" rel="nofollow alternate">Google</a>'),
         api.sSelect('p', [0]),

@@ -19,7 +19,7 @@ const defaultMenus = {
   insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap hr | pagebreak nonbreaking anchor toc | insertdatetime' },
   format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | blockformats align | removeformat' },
   tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | a11ycheck code' },
-  table: { title: 'Table' },
+  table: { title: 'AbstractTable' },
   help: { title: 'Help' }
 };
 

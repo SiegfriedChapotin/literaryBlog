@@ -58,7 +58,7 @@ UnitTest.asynctest('browser.tinymce.plugins.toc.TocPluginTest', function () {
 
     LegacyUnit.equal(trimBr(HtmlUtils.normalizeHtml($toc[0].outerHTML)),
       '<div class="tst-toc" contenteditable="false">' +
-      '<h3 contenteditable="true">Table of Contents</h3>' +
+      '<h3 contenteditable="true">AbstractTable of Contents</h3>' +
       '<ul>' +
       '<li>' +
       '<a href="#h1">H1</a>' +
@@ -95,7 +95,7 @@ UnitTest.asynctest('browser.tinymce.plugins.toc.TocPluginTest', function () {
     stripAttribs($toc, ['data-mce-href', 'data-mce-selected']);
 
     LegacyUnit.equal(trimBr(HtmlUtils.normalizeHtml($toc[0].innerHTML)),
-      '<h3 contenteditable="true">Table of Contents</h3>' +
+      '<h3 contenteditable="true">AbstractTable of Contents</h3>' +
       '<ul>' +
       '<li>' +
       '<a href="#h1">H1</a>' +
@@ -167,7 +167,7 @@ UnitTest.asynctest('browser.tinymce.plugins.toc.TocPluginTest', function () {
     stripAttribs($toc, ['data-mce-href', 'data-mce-selected']);
 
     LegacyUnit.equal(trimBr(HtmlUtils.normalizeHtml($toc[0].innerHTML)),
-      '<h3 contenteditable="true">Table of Contents</h3>' +
+      '<h3 contenteditable="true">AbstractTable of Contents</h3>' +
       '<ul>' +
       '<li>' +
       '<a href="#h1">H2</a>' +

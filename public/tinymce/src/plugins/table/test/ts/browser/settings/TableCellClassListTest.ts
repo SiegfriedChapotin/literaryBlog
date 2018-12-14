@@ -23,7 +23,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellClassListTest', funct
         tinyApis.sFocus,
         tinyApis.sSetContent(tableHtml),
         tinyApis.sSetSelection([0, 0, 0, 0, 0], 0, [0, 0, 0, 0, 0], 1),
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
         tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Cell")'),
         tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Cell properties")'),
         Chain.asStep({}, [
@@ -45,7 +45,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableCellClassListTest', funct
         tinyApis.sSetSetting('table_cell_class_list', [{ title: 'test', value: 'test' }]),
         tinyApis.sSetContent(tableHtml),
         tinyApis.sSetSelection([0, 0, 0, 0, 0], 0, [0, 0, 0, 0, 0], 1),
-        tinyUi.sClickOnMenu('click table menu', 'span:contains("Table")'),
+        tinyUi.sClickOnMenu('click table menu', 'span:contains("AbstractTable")'),
         tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Cell")'),
         tinyUi.sClickOnUi('click table menu', 'div[role="menu"] span:contains("Cell properties")'),
         tinyUi.sWaitForPopup('wait for popup', 'div[aria-label="Cell properties"][role="dialog"]'),

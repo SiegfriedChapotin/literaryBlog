@@ -109,7 +109,7 @@ UnitTest.asynctest('browser.tinymce.core.keyboard.ArrowKeysTableTest', (success,
           ]))] : []
         )),
 
-        Logger.t('Table cell navigation', GeneralSteps.sequence([
+        Logger.t('AbstractTable cell navigation', GeneralSteps.sequence([
           Logger.t('Should move to the cell above the current cell on key up', Chain.asStep(editor, [
             ApiChains.cFocus,
             ApiChains.cSetContent(`

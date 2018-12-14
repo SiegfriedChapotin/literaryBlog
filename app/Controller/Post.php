@@ -8,22 +8,32 @@
 namespace Literary\Controller;
 
 
+use Literary\Model\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\TablePosts;
+use Literary\Model\PostsTable;
+use LiteraryCore\Request\Query;
+use LiteraryCore\Request\Request;
 
 
 
 
 class Post extends AbstractController{
+
+
+
+
     public function list() {
-        $this->render ('posts/show.html.twig',['chapitreall'=>TablePosts::chapitreall()]);
+        $this->render ('posts/book.html.twig',['chapitreall'=>(new PostsTable())->all()]);
     }
 
     public function show() {
-        $this->render ('posts/show.html.twig',['chapitre'=>TablePosts::chapitre()]);
+
+        $this->render ('posts/show.html.twig',
+            ['chapitre'=> (new PostsTable())->find($id=Query::get('id')),
+             'comments'=>(new CommentsTable())->findCommentChapter(),
+             'commentwrite'=>(new CommentsTable())->commentWrite()
+                ]);
+
     }
 
-    public function add() {
-        echo "add";
-    }
 }

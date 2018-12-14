@@ -3,24 +3,24 @@
 
 
 {%  block introText  %}
-    {% for texthome in textHome %}
-        <div>
+    {% for texthome in texthome %}
+        <div id="introText">
             <h1>{{texthome.title }}</h1>
-            <p>{{ texthome.text | nl2br}}</p>
-
-        </div>
+            <p class="paddingtext">{{ texthome.text | nl2br}}</p>
         </div>
     {% endfor %}
-
 {% endblock %}
 
 {% block heading %}
     {% for headings in headings %}
-        <br/>
+
             <div class="col-md-4">
+                <div class="shadow-lg p-3 mb-5 bg-gradient-warning rounded headingheight">
                 <h2>{{headings.title }}</h2>
-                <p>{{ headings.text | truncate(200)| nl2br}}</p>
-                <p><a class="btn btn-secondary" href="http://localhost/literaryBlog/public/index.php?p=heading_show&id={{headings.id }}" role="button">suite &raquo;</a></p>
+                <p class="paddingtext">{{ headings.text | truncate(200)| nl2br}}
+                <a class="greenLink" href="http://localhost/literaryBlog/public/index.php?p=heading_show&id={{headings.id }}">suite &raquo;</a>
+                </p>
+            </div>
             </div>
 
      {% endfor %}
@@ -28,19 +28,48 @@
 
 {% block content %}
 
-    <h1>Billet simple pour l'Alaska</h1>
-
     <h2>Les derniers chapitres</h2>
 
    {% for book in chapitres %}
-       <div>
 
+         <div class="paper padding">
                <h3>{{ book.title }}</h3>
                <a> {{ book.date}}</a>
-               <p>{{ book.text | truncate(200)}}</p>
-                <a class="btn btn-success"href="http://localhost/literaryBlog/public/index.php?p=post_show&id={{ book.id }}" role="button">suite...</a>
-       </div>
-       <wbr/>
+               <p class="paddingtext">{{ book.text | truncate(500)}}
+               <a class= "greenLink" href="http://localhost/literaryBlog/public/index.php?p=post_show&id={{ book.id }}">La suite...</a>
+             </p>
+             <wbr/>
+          </div>
    {% endfor %}
+
+{% endblock %}
+
+{% block comment %}
+    <h2>Toujours en vente</h2>
+    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
+        <div class="kiosque">
+             <p><a><img src="img/EditionLibreAuteur.jpg" /></a></p>
+            <br/>
+            <a class="greenLink" href="#">Commander Le livre</a>
+        </div>
+    </div>
+    <h2>Info sur le climat</h2>
+    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
+        <div class="paddingtext">
+            <p><a href="https://www.sauvonsleclimat.org/fr/"><img src="img/logoGiec.png" /></a></p>
+        </div>
+    </div>
+    <h2>Lire, voir, réagir, ...</h2>
+    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
+        <div class="paddingtext">
+            <p><a><img src="img/faceBook.png" /></a>
+                <a><img src="img/Twitter.png" /></a>
+                <a><img src="img/youtube.png" /></a>
+                <a><img src="img/In.png" /></a>
+            </p>
+        </div>
+    </div>
+
+
 
 {% endblock %}

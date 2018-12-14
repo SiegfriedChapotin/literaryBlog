@@ -2,23 +2,20 @@
 
 namespace LiteraryCore\Auth\DBAuth;
 
-use LiteraryCore\Database;
 
+use Literary\App;
+use LiteraryCore\Controller\AbstractController;
 /**
 * Gère l'authentification par extraction des Users de la DB
 **/
-class DBAuth
+class DBAuth extends AbstractController
 {
-	/** @var Object \PDO $db Connection à la DB **/
-	protected $db;
+    private  function getDb(){
 
-	/**
-	 * Initialise la connexion à la DB (injection de dépendance)
-	 * @param Object \Core\Databse
-	 **/
-	public function __construct(Database $db) {
-		$this->db = $db;
-	}
+        return App::getInstance()->getDb();
+    }
+
+
 
 	/**
 	 * Permet au User de se connecter
@@ -26,17 +23,22 @@ class DBAuth
 	 * @param string $password
 	 * @return bool Selon si le User peut se connecter ou non
 	 **/
+
 	public function login(string $login, string $password) {
-		$user = $this->db->prepare('SELECT * FROM author WHERE username= ?', array($login), null, true);
+		$user = $this->getDb()->prepare('SELECT * FROM author WHERE username= ?', array($login), null, true);
 
 		if ($user) {
 			if ($user->password === sha1($password)) {
-				$_SESSION['auth'] = $user->id;
-				return true;
-			}
-		}
+				$_SESSION['auth'] = $user;
+                $this->redirect('admin');
+			}else {
+                $errors[] = 'Couple login/mot de passe invalide';
+            }
+        } else {
+            $errors[] = 'login non trouvé';
+        }
 
-		return false;
+        $this->render('login.html.twig', ['errors' => $errors]);
 
 	}
 
@@ -66,8 +68,7 @@ class DBAuth
 	 **/
 	public function disconnect()
 	{
-		if ($this->logged()) {
-			unset($_SESSION['auth']);
-		}
+		unset($_SESSION['auth']);
+        $this->redirect('home');
 	}
 }

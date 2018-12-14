@@ -244,7 +244,7 @@ tinymce.addI18n('fr_FR',{
 "Custom...": "Personnalis\u00e9...",
 "Custom color": "Couleur personnalis\u00e9e",
 "No color": "Aucune couleur",
-"Table of Contents": "Table des mati\u00e8res",
+"Table of Contents": "AbstractTable des mati\u00e8res",
 "Show blocks": "Afficher les blocs",
 "Show invisible characters": "Afficher les caract\u00e8res invisibles",
 "Words: {0}": "Mots : {0}",

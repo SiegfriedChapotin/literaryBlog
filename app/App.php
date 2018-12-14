@@ -35,7 +35,7 @@ class App
      */
     private static $_instance;
 
-    private $twig;
+
 
 
     protected function __construct()

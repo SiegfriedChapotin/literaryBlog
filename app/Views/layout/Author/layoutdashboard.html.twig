@@ -3,16 +3,20 @@
 <div id="dashboard" class="container-fluid">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+
             <div class="sidebar-sticky">
+                <wbr/>
+                <h3>Publications</h3>
+                <br/>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="http://localhost/literaryBlog/public/index.php?p=admin">
                             <span data-feather="home"></span>
                             Bureau <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="http://localhost/literaryBlog/public/index.php?p=admin">
                             <span data-feather="feather"></span>
                             Texte
                         </a>
@@ -25,14 +29,35 @@
                     </li>
                 </ul>
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Page accueil</span>
-                </h6>
+                <wbr/>
+                <h3>Page d'accueil</h3>
                 <br/>
                 <ul class="nav flex-column mb-2">
-                    {%  block introText  %}{% endblock %}
 
-                    {% block heading %}{% endblock %}
+                    {% for texthome in texthome %}
+                            <li class="nav-item">
+                                <p><a href="http://localhost/literaryBlog/public/index.php?p=texthome&id={{texthome.id }}"><span data-feather="file-text"></span> {{texthome.title }}</a></p>
+                            </li>
+                    {% endfor %}
+
+                    {% for headings in headings %}
+                            <br/>
+                            <li class="nav-item">
+                                <p><a href="http://localhost/literaryBlog/public/index.php?p=heading_admin&id={{headings.id }}"><span data-feather="file-text"></span> {{headings.title }}</a></p>
+                            </li>
+                     {% endfor %}
+                </ul>
+
+                <wbr/>
+                <h3>Votre profil</h3>
+                <br/>
+                    <ul class="nav flex-column mb-2">
+                    {% for showings in showings %}
+                        <br/>
+                        <li class="nav-item">
+                            <p><a href="http://localhost/literaryBlog/public/index.php?p=showing_admin&id={{showings.id }}"><span data-feather="star"></span> {{showings.title }}</a></p>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </nav>
@@ -59,7 +84,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% block Billets %}{% endblock %}
+                      {% for book in chapitresall %}
+
+                            <tr>
+                                <td>{{ book.title }}</td>
+                                <td>{{ book.date}}</td>
+                                <td><a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{book.id }}">
+                                        <input class="btn btn-info" type="submit" value="Modifier" />
+                                    </a></td>
+                            </tr>
+
+                        {% endfor %}
+
                     </tbody>
                 </table>
             </div>

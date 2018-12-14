@@ -89,7 +89,7 @@ const generateTocContentHtml = function (editor) {
     return '';
   }
 
-  html += generateTitle(Settings.getTocHeader(editor), I18n.translate('Table of Contents'));
+  html += generateTitle(Settings.getTocHeader(editor), I18n.translate('AbstractTable of Contents'));
 
   for (i = 0; i < headers.length; i++) {
     h = headers[i];

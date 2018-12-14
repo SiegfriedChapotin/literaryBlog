@@ -26,10 +26,10 @@ UnitTest.asynctest('browser.tinymce.plugins.table.TableAppearanceTest', function
         tinyApis.sSetContent(tableHtml),
         TableTestUtils.sOpenToolbarOn(editor, 'table td', [0]),
         tinyUi.sWaitForUi('no context found', 'div[aria-label="Inline toolbar"]'),
-        tinyUi.sClickOnToolbar('click table button', 'div[aria-label="Table"] > button'),
-        tinyUi.sClickOnUi('click properties menu item', 'span:contains("Table properties")'),
+        tinyUi.sClickOnToolbar('click table button', 'div[aria-label="AbstractTable"] > button'),
+        tinyUi.sClickOnUi('click properties menu item', 'span:contains("AbstractTable properties")'),
         Chain.asStep({}, [
-          tinyUi.cWaitForPopup('wait for popup', 'div[aria-label="Table properties"][role="dialog"]'),
+          tinyUi.cWaitForPopup('wait for popup', 'div[aria-label="AbstractTable properties"][role="dialog"]'),
           Chain.op(function (x) {
             Assertions.assertPresence(
               'assert presence of spacing, padding, border and caption inputs',

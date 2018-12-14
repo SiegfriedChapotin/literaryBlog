@@ -13,7 +13,7 @@ UnitTest.asynctest('browser.tinymce.plugins.table.NewCellRowEventsTest', functio
   Plugin();
   Theme();
 
-  suite.test('Table newcell/newrow events', function (editor) {
+  suite.test('AbstractTable newcell/newrow events', function (editor) {
     const cells = [];
     const rows = [];
     let counter = 0;

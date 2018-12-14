@@ -2,16 +2,26 @@
 
 <main role="main">
 
-    <div class="container">
-        <div class="row show">
-            <div class="col-8">
-            {% block content %}{% endblock%}
-            </div>
-            <div class="col-4">
+    <div class="container paddingPage">
+        <div class="row">
 
+            <div class="col-8">
+                {% block content %}{% endblock%}
+            </div>
+
+            <div class="col-4">
+             {% block comment %}{% endblock%}
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                {% block writecomment %}{% endblock%}
             </div>
         </div>
-    </div> <!-- /container -->
+    </div>
 
 </main>
 

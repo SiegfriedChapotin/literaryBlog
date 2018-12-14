@@ -30,7 +30,7 @@ export default function () {
       insert: { title: 'Insert', items: 'link media | template hr' },
       view: { title: 'View', items: 'visualaid' },
       format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript | formats | removeformat' },
-      table: { title: 'Table', items: 'inserttable tableprops deletetable | cell row column' },
+      table: { title: 'AbstractTable', items: 'inserttable tableprops deletetable | cell row column' },
       tools: { title: 'Tools', items: 'spellchecker code' }
     },
     removed_menuitems: 'undo',
