@@ -32,7 +32,7 @@
 
    {% for book in chapitres %}
 
-         <div class="paper padding">
+         <div class="paper padding paperPadding">
                <h3>{{ book.title }}</h3>
                <a> {{ book.date}}</a>
                <p class="paddingtext">{{ book.text | truncate(500)}}
@@ -56,14 +56,14 @@
     <h2>Info sur le climat</h2>
     <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
         <div class="paddingtext">
-            <p><a href="https://www.sauvonsleclimat.org/fr/"><img src="img/logoGiec.png" /></a></p>
+            <p><a href="https://www.sauvonsleclimat.org/fr/"><img src="img/LogoGiec.png" /></a></p>
         </div>
     </div>
     <h2>Lire, voir, réagir, ...</h2>
     <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
         <div class="paddingtext">
             <p><a><img src="img/faceBook.png" /></a>
-                <a><img src="img/Twitter.png" /></a>
+                <a><img src="img/twitter.png" /></a>
                 <a><img src="img/youtube.png" /></a>
                 <a><img src="img/In.png" /></a>
             </p>

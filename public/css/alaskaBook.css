@@ -51,17 +51,18 @@ hr{
 #connection:hover{
     color:#7e7e41;
 }
-.jumbotron{
-     background: url('../img/mckinley.png') no-repeat scroll ;
-     background-size: cover;
-     margin:20px 0px;
- }
+.jumbotron {
+    background: url('../img/mckinley.png') no-repeat scroll;
+    background-size: cover;
+    margin: 20px 0px;
+}
 
 .kiosque img{
     max-width: 50%;
     min-width: 100%;
 }
-.jumbotron .container{
+
+.jumbotron .container, .card-header{
      background-color: rgba(243,223,198,0.7);
      padding:10px;
      font-weight: bolder;
@@ -69,9 +70,13 @@ hr{
 .paper{
     background: url('../img/paper.png') no-repeat scroll ;
     background-size: cover;
-    margin:20px 0px;
+    margin:00px 0px;
     opacity:0.8;
 }
+
+.paperPadding{
+    margin:20px 0px;
+   }
 
 .headingheight{
     min-height: 90%;

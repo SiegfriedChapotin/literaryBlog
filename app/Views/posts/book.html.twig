@@ -6,28 +6,25 @@
 
 {% block writecomment %}
 
+<div id="accordion">
     {% for book in chapitreall %}
 
-     <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="{{ book.id }}">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link greenLink collapsed" data-toggle="collapse" data-target="#collapse{{ book.id }}" aria-expanded="true" aria-controls="collapse{{ book.id }}">
+                            <h5>{{ book.title }}</h5>
+                        </button>
+                    </h5>
+                </div>
 
-        <div class="card">
-            <div class="card-header" id="comment">
-                <h5 class="mb-0 ">
-                    <button class="btn btn-link greenLink  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        {{ book.title }}
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="comment" data-parent="#accordionExample">
-                <div class="card-body ">
-
-                    <p>{{ book.text| nl2br }}</p>
-
+                <div id="collapse{{ book.id }}" class="collapse paper" aria-labelledby="{{ book.id }}" data-parent="#accordion">
+                    <div class="card-body">
+                       {{ book.text|nl2br }} {{ book.id }}
+                    </div>
                 </div>
             </div>
-        </div>
-
-    </div>
     {% endfor %}
-
+    </div>
 {% endblock %}
+
