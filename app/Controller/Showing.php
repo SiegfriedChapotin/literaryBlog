@@ -15,11 +15,15 @@ use LiteraryCore\Request\Query;
 
 
 
+
 class Showing extends AbstractController {
 
 
     public function show() {
-        $this->render ('posts/showheading.html.twig',['showing'=>(new ShowingTable())->find($id=Query::get('id'))]);
+        $this->render ('posts/showheading.html.twig',[
+            'showing'=>(new ShowingTable())->find($id=Query::get('id')),
+            'showings' => (new ShowingTable())->all()
+        ]);
 
     }
 

@@ -3,24 +3,14 @@
 <main role="main">
 
     <div class="container paddingPage">
-        <div class="row">
 
-            <div class="col-8">
-                {% block content %}{% endblock%}
-            </div>
 
-            <div class="col-4">
+             {% block content %}{% endblock%}
+
              {% block comment %}{% endblock%}
-            </div>
 
-        </div>
+             {% block writecomment %}{% endblock%}
 
-
-        <div class="row">
-            <div class="col-12">
-                {% block writecomment %}{% endblock%}
-            </div>
-        </div>
     </div>
 
 </main>

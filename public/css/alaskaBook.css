@@ -12,13 +12,17 @@ body{
  }
 
 .paddingPage{
-    padding:90px 0px;
+    padding:90px 0;
 }
 .paddingtext{
     padding:20px;
 }
+
+.paddingRL{
+    padding:0 10px;
+}
 #dashboard{
-    margin:70px 0px;
+    margin:70px 0;
 }
 
 h1, h2, h3, .greenLink{
@@ -26,11 +30,11 @@ h1, h2, h3, .greenLink{
     font-weight: bolder;
     font-family: 'Permanent Marker', serif;
  }
+
 hr{
     border-radius:inherit;
     border-width: 3px;
     border-color: #2b5672;
-
 }
 
 .greenLink:hover{
@@ -54,7 +58,7 @@ hr{
 .jumbotron {
     background: url('../img/mckinley.png') no-repeat scroll;
     background-size: cover;
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 
 .kiosque img{
@@ -70,12 +74,11 @@ hr{
 .paper{
     background: url('../img/paper.png') no-repeat scroll ;
     background-size: cover;
-    margin:00px 0px;
     opacity:0.8;
 }
 
 .paperPadding{
-    margin:20px 0px;
+    margin:20px 0;
    }
 
 .headingheight{

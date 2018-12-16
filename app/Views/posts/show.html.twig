@@ -12,7 +12,7 @@
 
            <h2>{{ book.title }}</h2>
            <p class="text-right">{{ book.date}}</p>
-           <p>{{ book.text| nl2br }}</p>
+           <p class="paddingtext" >{{ book.text| nl2br }}</p>
 
 
        </div>
@@ -21,20 +21,19 @@
 {% endblock %}
 
 {% block comment %}
+    <br/>
+         <hr/>
+    <br/>
 
-    <h2>Dites moi tout !</h2>
-
+    <h2>Dites moi tout sur ce chapitre !</h2>
     <p><a href="#comment" class="greenLink">En 500 caractéres maximum</a></p>
 
-
     {% for comment in comments %}
-        <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
-            <div class="text-white">
-                <h5 class="font-weight-bold">{{ comment.pseudo }}</h5>
-                <a>{{ comment.comment }} </a> <br/>
-                <a class="greenLink " href="http://localhost/literaryBlog/public/index.php?p=post_show&id={{ comment.id_chapter}}">Voir le chapitre</a>
-                <p class="text-right text-danger">Signaler<p/>
-            </div>
+
+        <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded text-white" >
+            <h5 class="font-weight-bold">{{ comment.pseudo }}</h5>
+            <a>{{ comment.comment }} </a> <br/>
+            <p class="text-right text-danger">Signaler<p/>
         </div>
 
     {% endfor %}

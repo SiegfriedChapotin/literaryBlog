@@ -12,6 +12,7 @@ use Literary\Model\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\PostsTable;
 use LiteraryCore\Request\Query;
+use Literary\Model\ShowingTable;
 use LiteraryCore\Request\Request;
 
 
@@ -31,7 +32,8 @@ class Post extends AbstractController{
         $this->render ('posts/show.html.twig',
             ['chapitre'=> (new PostsTable())->find($id=Query::get('id')),
              'comments'=>(new CommentsTable())->findCommentChapter(),
-             'commentwrite'=>(new CommentsTable())->commentWrite()
+             'commentwrite'=>(new CommentsTable())->commentWrite(),
+             'showings' => (new ShowingTable())->all()
                 ]);
 
     }
