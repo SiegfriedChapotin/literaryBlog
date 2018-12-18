@@ -11,43 +11,19 @@ namespace LiteraryCore;
 
 use \PDO;
 
+require_once ROOT.'/config/Config.php';
+
 /**
  * Se connecte à la base de donnée grâce au système PDO
  * @package app
  */
 class Database
 {
-    /** @var string $name Nom de la DB */
-    private $name;
-
-    /** @var string $name Nom d'utilisateur pour se connecter à DB */
-    private $user;
-
-    /** @var string $name Password pour se connecter à la DB */
-    private $pass;
-
-    /** @var string $name Nom du serveur où se trouve la DB */
-    private $host;
-
-    /** @var string $name Nom de la AbstractTable */
-    private $db = null;
 
     /**
-     * Initialise les attributs avec les paramètres de connexion à la base de données
-     *
-     * @param string $name nom de la DB
-     * @param string $user (optional) nom d'utilisateur pour se connecter
-     * @param string $pass (optional) mot de passe pour se connecter
-     * @param string $host (optional) nom du serveur
-     * @return non
+     * @var object PDO
      */
-    public function __construct(string $name, string $user = 'root', string $pass = '', string $host = 'localhost')
-    {
-        $this->name = $name;
-        $this->user = $user;
-        $this->pass = $pass;
-        $this->host = $host;
-    }
+    private $db;
 
     /**
      * Initialisation d'une instance de PDO qui sera stockée dans l'attribut prévu s'il n'existe pas encore et le retourne
@@ -56,10 +32,10 @@ class Database
      * @param none
      * @return object PDO
      */
-    private function getPDO()
+    private function getPDO($db_name='alaskabook', $db_user = 'root', $db_pass = '', $db_host = 'localhost')
     {
         if ($this->db === null) {
-            $db = new PDO('mysql:dbname=alaskabook;host=localhost;charset=utf8', 'root', '');
+            $db = new PDO('mysql:dbname='.$db_name.';host='.$db_host.';charset=utf8', $db_user, $db_pass);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db = $db;
         }
