@@ -8,11 +8,11 @@
 
 namespace Literary\Controller;
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\CommentsTable;
+use Literary\Model\table\CommentsTable;
 use LiteraryCore\Request\Query;
 
 
-class Comment extends AbstractController{
+class CommentController extends AbstractController{
 
     public function list() {
         $this->render ('posts/show.html.twig',['commentall'=>CommentsTable::commentall()]);

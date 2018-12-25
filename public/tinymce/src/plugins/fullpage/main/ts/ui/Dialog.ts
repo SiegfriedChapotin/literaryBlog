@@ -23,7 +23,7 @@ const open = function (editor, headState) {
       { name: 'keywords', label: 'Keywords' },
       { name: 'description', label: 'Description' },
       { name: 'robots', label: 'Robots' },
-      { name: 'author', label: 'Author' },
+      { name: 'author', label: 'AuthorController' },
       { name: 'docencoding', label: 'Encoding' }
     ],
     onSubmit (e) {

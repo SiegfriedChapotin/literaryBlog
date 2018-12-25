@@ -8,7 +8,9 @@
 
 namespace LiteraryCore\Router;
 
+use LiteraryCore\Exception\HttpException\ForbiddenHttpException;
 use LiteraryCore\Exception\HttpException\NotFoundHttpException;
+use LiteraryCore\Exception\HttpException\InternalServerErrorHttpException;
 use LiteraryCore\Util\ArrayUtil;
 
 class Router
@@ -27,6 +29,11 @@ class Router
         if ($routeInfos === null) {
             throw new NotFoundHttpException();
         }
+
+        if (!$routeInfos) {
+            throw new InternalServerErrorHttpException();
+        }
+
         if (ArrayUtil::get($routeInfos, 'secure')) {
             if (empty($_SESSION['user'])) {
                 header('Location: index.php?p=login');
@@ -35,5 +42,6 @@ class Router
         }
         $controller = new $routeInfos['controller']();
         $controller->{$routeInfos['action']}();
+
     }
 }

@@ -7564,7 +7564,7 @@ var modern = (function () {
     };
     var Formats = { register: register$3 };
 
-    var defaultBlocks = 'Paragraph=p;' + 'Heading 1=h1;' + 'Heading 2=h2;' + 'Heading 3=h3;' + 'Heading 4=h4;' + 'Heading 5=h5;' + 'Heading 6=h6;' + 'Preformatted=pre';
+    var defaultBlocks = 'Paragraph=p;' + 'HeadingController 1=h1;' + 'HeadingController 2=h2;' + 'HeadingController 3=h3;' + 'HeadingController 4=h4;' + 'HeadingController 5=h5;' + 'HeadingController 6=h6;' + 'Preformatted=pre';
     var createFormats$1 = function (formats) {
       formats = formats.replace(/;$/, '').split(';');
       var i = formats.length;

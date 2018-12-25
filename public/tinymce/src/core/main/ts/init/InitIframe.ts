@@ -84,7 +84,7 @@ const getIframeHtml = function (editor) {
   bodyClass = Settings.getBodyClass(editor);
 
   if (Settings.getContentSecurityPolicy(editor)) {
-    iframeHTML += '<meta http-equiv="Content-Security-Policy" content="' + Settings.getContentSecurityPolicy(editor) + '" />';
+    iframeHTML += '<meta http-equiv="Content-SecurityController-Policy" content="' + Settings.getContentSecurityPolicy(editor) + '" />';
   }
 
   iframeHTML += '</head><body id="' + bodyId +

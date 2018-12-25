@@ -35,12 +35,12 @@ export default function () {
     style_formats: [
       {
         title: 'Headings', items: [
-          { title: 'Heading 1', format: 'h1' },
-          { title: 'Heading 2', format: 'h2' },
-          { title: 'Heading 3', format: 'h3' },
-          { title: 'Heading 4', format: 'h4' },
-          { title: 'Heading 5', format: 'h5' },
-          { title: 'Heading 6', format: 'h6' }
+          { title: 'HeadingController 1', format: 'h1' },
+          { title: 'HeadingController 2', format: 'h2' },
+          { title: 'HeadingController 3', format: 'h3' },
+          { title: 'HeadingController 4', format: 'h4' },
+          { title: 'HeadingController 5', format: 'h5' },
+          { title: 'HeadingController 6', format: 'h6' }
         ]
       },
 

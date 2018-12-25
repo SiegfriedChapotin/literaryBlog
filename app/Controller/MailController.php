@@ -8,25 +8,23 @@
 namespace Literary\Controller;
 
 
-use Literary\Model\CommentsTable;
+use Literary\Model\table\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\PostsTable;
+use Literary\Model\table\MailTable;
 use LiteraryCore\Request\Query;
-use Literary\Model\ShowingTable;
+use Literary\Model\table\ShowingTable;
 use LiteraryCore\Request\Request;
 
 
 
 
-class Post extends AbstractController{
+class MailController extends AbstractController{
 
 
-
-
-    public function list() {
-        $this->render ('posts/book.html.twig',['chapitreall'=>(new PostsTable())->all()]);
+    public function writeMail() {
+        $this->render ('posts/contact.html.twig',['contact'=>(new MailTable())->writeMail()]);
     }
-
+    /*
     public function show() {
 
         $this->render ('posts/show.html.twig',
@@ -37,5 +35,8 @@ class Post extends AbstractController{
                 ]);
 
     }
-
+    public function list() {
+        $this->render ('posts/book.html.twig',['chapitreall'=>(new PostsTable())->all()]);
+    }
+    */
 }

@@ -6,15 +6,14 @@
  * Time: 14:46
  */
 
-namespace Literary\Model;
+namespace Literary\Model\table;
 
 
 
 
-use Literary\Controller\Texthome;
+
 use LiteraryCore\Table\AbstractTable;
-use LiteraryCore\Request\Query;
-Use LiteraryCore\Request\Request;
+use Literary\Model\entity\Introduction;
 
  class TextHomeTable extends AbstractTable
 {
@@ -27,8 +26,9 @@ Use LiteraryCore\Request\Request;
 
     protected  function getClassName()
     {
-        return Texthome::class;
+        return TextHome::class;
     }
+
 
 
 }

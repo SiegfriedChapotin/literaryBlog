@@ -9,11 +9,8 @@
 namespace Literary;
 
 
-
-use LiteraryCore\Database;
+use LiteraryCore\Database\MysqlDatabase;
 use LiteraryCore\Config;
-
-
 
 
 /**
@@ -22,10 +19,7 @@ use LiteraryCore\Config;
  */
 class App
 {
-    /**
-     * @var string
-     */
-    public $title = 'Jean Forteroche';
+
     /**
      * @var object
      */
@@ -36,21 +30,13 @@ class App
     private static $_instance;
 
 
-
-
-    protected function __construct()
-    {
-        $this->load();
-
-    }
-
     /**
      * Récupére l'instance
      * @return object
      */
 
 
-    public static function getInstance() :App
+    public static function getInstance(): App
     {
         if (is_null(self::$_instance)) {
             self::$_instance = new App();
@@ -62,9 +48,10 @@ class App
      * Débute la session, require et charge l'autoloader
      * @return [type] [description]
      */
-    protected function load()
+    public static function load()
     {
         session_start();
+
     }
 
 
@@ -74,25 +61,15 @@ class App
      */
     public function getDb()
     {
-        $config = Config::getInstance(ROOT . '/config/Config.php');
+        $config = Config:: getInstance(ROOT . '/config/Config.php');
         if (is_null($this->db_instance)) {
-            $this->db_instance = new Database($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
+            $this->db_instance = new MysqlDatabase($config->get('db_name'), $config->get('db_user'), $config->get('db_pass'), $config->get('db_host'));
         }
         return $this->db_instance;
     }
 
 
-    public function forbidden(){
-        header('HTTP/1.0 403 Forbidden');
-        die ('Accés interdit');
 
-
-}
-    public function notfound(){
-        header('HTTP/1.0 404 Not Found');
-        die ('page introuvable');
-
-    }
 }
 
 

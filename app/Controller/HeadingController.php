@@ -10,12 +10,12 @@ namespace Literary\Controller;
 
 
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\HeadingTable;
+use Literary\Model\table\HeadingTable;
 use LiteraryCore\Request\Query;
 
 
 
-class Heading extends AbstractController {
+class HeadingController extends AbstractController {
 
 
     public function show() {

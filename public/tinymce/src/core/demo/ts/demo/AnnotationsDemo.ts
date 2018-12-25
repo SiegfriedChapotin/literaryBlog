@@ -35,7 +35,7 @@ export default function () {
       ed.addButton('annotate-alpha', {
         text: 'Annotate',
         onclick: () => {
-          const comment = prompt('Comment with?');
+          const comment = prompt('CommentController with?');
           ed.annotator.annotate('alpha', {
             comment
           });

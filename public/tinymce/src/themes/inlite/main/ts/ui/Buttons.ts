@@ -26,7 +26,7 @@ const addHeaderButtons = function (editor: Editor) {
 
     editor.addButton(name, {
       text: name.toUpperCase(),
-      tooltip: 'Heading ' + i,
+      tooltip: 'HeadingController ' + i,
       stateSelector: name,
       onclick: formatBlock(name),
       onPostRender () {

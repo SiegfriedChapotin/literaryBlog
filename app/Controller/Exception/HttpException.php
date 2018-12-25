@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: siegf_000
- * Date: 21/11/2018
- * Time: 09:12
+ * Date: 23/12/2018
+ * Time: 20:24
  */
 
 namespace Literary\Controller\Exception;
@@ -15,6 +15,16 @@ class HttpException extends AbstractController
 {
     public function notFound()
     {
-        echo "not found";
+        $this->render ('posts/Errors/404.html.twig',[]);
+    }
+
+    public function Forbidden()
+    {
+        $this->render ('posts/Errors/403.html.twig',[]);
+    }
+
+    public function internalServeurE()
+    {
+        $this->render ('posts/Errors/500.html.twig',[]);
     }
 }

@@ -6,12 +6,12 @@
  * Time: 14:46
  */
 
-namespace Literary\Model\Author;
+namespace Literary\Model\table\Author;
 
 
 
 use LiteraryCore\Table\AbstractTable;
-use Literary\Controller\Author\Admin;
+
 
 
 
@@ -24,7 +24,7 @@ class AuthorTable extends AbstractTable
 
     protected  function getClassName()
     {
-        return Admin::class;
+        return Author::class;
     }
     /**
      * Permet au User de se connecter

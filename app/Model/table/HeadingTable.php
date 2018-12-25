@@ -6,11 +6,11 @@
  * Time: 14:46
  */
 
-namespace Literary\Model;
+namespace Literary\Model\table;
 
 
 use LiteraryCore\Table\AbstractTable;
-use Literary\Controller\Heading;
+
 
 class HeadingTable extends AbstractTable
 

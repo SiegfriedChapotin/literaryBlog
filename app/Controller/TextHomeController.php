@@ -10,14 +10,14 @@ namespace Literary\Controller;
 
 
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\TextHomeTable;
-use Literary\Model\PostsTable;
-use Literary\Model\HeadingTable;
-use Literary\Model\CommentsTable;
-Use Literary\Model\ShowingTable;
+use Literary\Model\table\TextHomeTable;
+use Literary\Model\table\PostsTable;
+use Literary\Model\table\HeadingTable;
+use Literary\Model\table\CommentsTable;
+Use Literary\Model\table\ShowingTable;
 
 
-class Texthome extends AbstractController {
+class TextHomeController extends AbstractController {
 
 
 

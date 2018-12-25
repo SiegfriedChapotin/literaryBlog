@@ -3,37 +3,45 @@ namespace Literary\Config;
 
 
 use LiteraryCore\Router\RoutesInterface;
-use Literary\Controller\Post;
-use Literary\Controller\Texthome;
-use Literary\Controller\Heading;
-use Literary\Controller\Author\Admin;
-use Literary\Controller\Security;
 use Literary\Controller\Exception\HttpException;
+use Literary\Controller\PostController;
+use Literary\Controller\MailController;
+use Literary\Controller\TextHomeController;
+use Literary\Controller\HeadingController;
+use Literary\Controller\Author\AuthorController;
+use Literary\Controller\Security\SecurityController;
+
 
 
 class Routes implements RoutesInterface {
     public function getRoutes() : array {
         return [
-            'home' => ['controller' => Texthome::class, 'action' => 'homepage'],
+            'home' => ['controller' => TextHomeController::class, 'action' => 'homepage'],
 
-            'texthome'=>['controller'=>Admin::class, 'action'=>'showTextHome'],
+            'post_list' => ['controller' => PostController::class, 'action' => 'list'],
+            'post_show' => ['controller' => PostController::class, 'action' => 'show'],
+            'post_add' => ['controller' => PostController::class, 'action' => 'add'],
 
-            'heading_show' => ['controller' =>Heading::class, 'action' => 'show'],
+            'heading_show' => ['controller' =>HeadingController::class, 'action' => 'show'],
 
-            'heading_admin' => ['controller' =>Admin::class, 'action' => 'showHeadingHome'],
-            'showing_admin' => ['controller' =>Admin::class, 'action' => 'showShowingHome'],
-            'posts_admin' => ['controller' =>Admin::class, 'action' => 'showPostsHome'],
-            'admin' => ['controller' =>Admin::class,'action'=>'admin'],
-            //'secure'=>true
+            'contact'=>['controller'=>MailController::class, 'action'=>'writeMail'],
+
+            'texthome'=>['controller'=>AuthorController::class, 'action'=>'showTextHome'],
+            'heading_admin' => ['controller' =>AuthorController::class, 'action' => 'showHeadingHome'],
+            'showing_admin' => ['controller' =>AuthorController::class, 'action' => 'showShowingHome'],
+            'posts_admin' => ['controller' =>AuthorController::class, 'action' => 'showPostsHome'],
+            'writeText_admin' => ['controller' =>AuthorController::class, 'action' => 'writeText'],
+            'admin' => ['controller' =>AuthorController::class,'action'=>'admin','secure'=>true],
+            //
 
 
-            'login' => ['controller' =>Security::class,'action'=>'login'],
+            'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound'],
+            'ForbiddenHttpException'=> ['controller' => HttpException::class, 'action' => 'Forbidden'],
+            'InternalServerErrorHttpException'=> ['controller' => HttpException::class, 'action' => 'internalServeurE'],
 
-            'post_list' => ['controller' => Post::class, 'action' => 'list'],
-            'post_show' => ['controller' => Post::class, 'action' => 'show'],
-            'post_add' => ['controller' => Post::class, 'action' => 'add'],
 
-            'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound']
+            'login' => ['controller' =>SecurityController::class,'action'=>'login'],
+
 
         ];
     }

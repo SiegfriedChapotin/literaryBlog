@@ -133,7 +133,7 @@ export default function (settings?) {
     },
 
     /**
-     * Writes a comment node such as <!-- Comment -->.
+     * Writes a comment node such as <!-- CommentController -->.
      *
      * @method cdata
      * @param {String} text String to write out inside the comment.

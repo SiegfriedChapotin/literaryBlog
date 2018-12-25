@@ -10,13 +10,13 @@ namespace Literary\Controller;
 
 
 use LiteraryCore\Controller\AbstractController;
-use Literary\Model\ShowingTable;
+use Literary\Model\table\ShowingTable;
 use LiteraryCore\Request\Query;
 
 
 
 
-class Showing extends AbstractController {
+class ShowingController extends AbstractController {
 
 
     public function show() {

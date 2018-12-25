@@ -60,7 +60,7 @@ UnitTest.asynctest('browser.themes.inlite.ThemeTest', (success, failure) => {
     return GeneralSteps.sequence([
       tinyApis.sSetContent('<p>a</p>'),
       tinyApis.sSetSelection([0, 0], 0, [0, 0], 1),
-      Toolbar.sClickButton('Heading 2'),
+      Toolbar.sClickButton('HeadingController 2'),
       tinyApis.sAssertContent('<h2>a</h2>')
     ]);
   };

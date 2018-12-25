@@ -24,7 +24,7 @@ declare const unescape: any;
  *     validate: true,
  *
  *     comment: function(text) {
- *         console.log('Comment:', text);
+ *         console.log('CommentController:', text);
  *     },
  *
  *     cdata: function(text) {
@@ -259,7 +259,7 @@ export function SaxParser(settings, schema = Schema()) {
 
     // Precompile RegExps and map objects
     tokenRegExp = new RegExp('<(?:' +
-      '(?:!--([\\w\\W]*?)-->)|' + // Comment
+      '(?:!--([\\w\\W]*?)-->)|' + // CommentController
       '(?:!\\[CDATA\\[([\\w\\W]*?)\\]\\]>)|' + // CDATA
       '(?:!DOCTYPE([\\w\\W]*?)>)|' + // DOCTYPE
       '(?:\\?([^\\s\\/<>]+) ?([\\w\\W]*?)[?/]>)|' + // PI
@@ -463,7 +463,7 @@ export function SaxParser(settings, schema = Schema()) {
             end(value);
           }
         }
-      } else if ((value = matches[1])) { // Comment
+      } else if ((value = matches[1])) { // CommentController
         // Padd comment value to avoid browsers from parsing invalid comments as HTML
         if (value.charAt(0) === '>') {
           value = ' ' + value;

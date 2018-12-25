@@ -23676,7 +23676,7 @@
       bodyId = Settings.getBodyId(editor);
       bodyClass = Settings.getBodyClass(editor);
       if (Settings.getContentSecurityPolicy(editor)) {
-        iframeHTML += '<meta http-equiv="Content-Security-Policy" content="' + Settings.getContentSecurityPolicy(editor) + '" />';
+        iframeHTML += '<meta http-equiv="Content-SecurityController-Policy" content="' + Settings.getContentSecurityPolicy(editor) + '" />';
       }
       iframeHTML += '</head><body id="' + bodyId + '" class="mce-content-body ' + bodyClass + '" data-id="' + editor.id + '"><br></body></html>';
       return iframeHTML;

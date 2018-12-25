@@ -4,23 +4,183 @@
 
 {% block textarea %}
 
+<br/>
+<div class="col-12 shadow-lg p-4 mb-5  ">
+    <h1>Bureau</h1>
+</div>
 
-    <form method= "post">
-        <div class= "form-group" >
+<div class="row">
+    <div class="col-6 ">
+        <div class="row padding">
+            <div class="col-12 shadow-lg p-2 mb-3 ">
+                <h3 >Les derniers commentaires</h3>
+            </div>
 
-            <label for= "TitleDashboard" >Titre</label>
-            <textarea class="form-control" type="text" id="TitleDashboard" name="TitleDashboard"></textarea>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr class="text-white bg-warning ">
+                        <th>Pseudo</th>
+                        <th>Commentaires</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for comment in comment %}
 
-            <label for= "TextDashboard" > Texte </label>
-            <textarea class= "form-control textarea" id= "textarea" rows= "20" id="TextDashboard" name="TextDashboard"></textarea>
+                        <tr>
+                            <td>{{ comment.pseudo }}</td>
+                            <td>{{ comment.comment}}</td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </div>
-        <div>
-            <input class="btn btn-success" type="submit" value="Envoyer" />
+    </div>
+    <div class="col-6">
+        <div class="row padding">
+            <div class="col-12 shadow-lg p-2 mb-3 ">
+                <h3 >Commentaires signalés</h3>
+            </div>
 
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr class="text-white bg-danger">
+                        <th>Pseudo</th>
+                        <th>Commentaires</th>
+                        <th>Garder</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for comment in commentreport %}
+
+                        <tr>
+                            <td>{{ comment.pseudo }}</td>
+                            <td>{{ comment.comment}}</td>
+                            <td><a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{book.id }}">
+                                    <input class="btn btn-success" type="submit" value="Garder" />
+                                </a></td>
+                            <td><a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{book.id }}">
+                                    <input class="btn btn-danger" type="submit" value="supprimer" />
+                                </a></td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </form>
-    <wbr/>
+    </div>
+    <br/>
+
+    </div>
+    <div class="row">
+        <div class="col-6 ">
+            <div class="row padding">
+                <div class="col-12 shadow-lg p-2 mb-3 ">
+                    <h3 >Les derniers commentaires</h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr class="text-white bg-warning ">
+                            <th>Pseudo</th>
+                            <th>Commentaires</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for comment in comment %}
+
+                            <tr>
+                                <td>{{ comment.pseudo }}</td>
+                                <td>{{ comment.comment}}</td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row padding">
+                <div class="col-12 shadow-lg p-2 mb-3 ">
+                    <h3 >Commentaires signalés</h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr class="text-white bg-danger">
+                            <th>Pseudo</th>
+                            <th>Commentaires</th>
+                            <th>Garder</th>
+                            <th>Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for comment in commentreport %}
+
+                            <tr>
+                                <td>{{ comment.pseudo }}</td>
+                                <td>{{ comment.comment}}</td>
+                                <td><a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{book.id }}">
+                                        <input class="btn btn-success" type="submit" value="Garder" />
+                                    </a></td>
+                                <td><a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{book.id }}">
+                                        <input class="btn btn-danger" type="submit" value="supprimer" />
+                                    </a></td>
+                            </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-12 shadow-lg p-2 mb-3 ">
+            <h2 >Vos Publications</h2>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr class="text-white bg-info">
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in chapitresall %}
+
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.date}}</td>
+                        <td><a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{book.id |nl2br }}">
+                                <input class="btn btn-info" type="submit" value="Modifier" />
+                            </a></td>
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
 
 {% endblock %}
 
