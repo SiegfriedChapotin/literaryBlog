@@ -37,7 +37,7 @@ class MysqlDatabase extends Database
      * @param $db_host
      * @param $db_pass
      */
-    public function __construct($db_name='alaskabook', $db_user = 'root', $db_pass = '', $db_host = 'localhost')
+    public function __construct($db_name, $db_user, $db_pass, $db_host)
     {
         $this->db_name = $db_name;
         $this->db_user = $db_user;
@@ -55,7 +55,7 @@ class MysqlDatabase extends Database
     private function getPDO()
     {
         if ($this->db === null) {
-            $db = new PDO("mysql:dbname=". $this->db_name .";host=". $this->db_host.';charset=utf8' , $this->db_user, $this->db_pass);
+            $db = new PDO("mysql:dbname=" . $this->db_name . ";host=" . $this->db_host . ';charset=utf8', $this->db_user, $this->db_pass);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db = $db;
         }
@@ -73,10 +73,12 @@ class MysqlDatabase extends Database
      * @param bool $oneResult (optional) indique si on souhaite récupérer un élément et on fait un fetch ou plusieurs et on fait un fetchAll
      * @return object $className objet retourné selon celui passé en paramètre
      */
-    public function query(string $statement, string $className = null, bool $oneResult = false)
+    public function query(string $statement, string $className = null, bool $oneResult = false, bool $noFetch = false)
     {
         $results = $this->getPDO()->query($statement);
-
+        if ($noFetch) {
+            return null;
+        }
         if ($className === null) {
             $results->setFetchMode(PDO::FETCH_OBJ);
         } else {

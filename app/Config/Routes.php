@@ -2,6 +2,7 @@
 namespace Literary\Config;
 
 
+use Literary\Controller\ShowingController;
 use LiteraryCore\Router\RoutesInterface;
 use Literary\Controller\Exception\HttpException;
 use Literary\Controller\PostController;
@@ -23,16 +24,24 @@ class Routes implements RoutesInterface {
             'post_add' => ['controller' => PostController::class, 'action' => 'add'],
 
             'heading_show' => ['controller' =>HeadingController::class, 'action' => 'show'],
+            'showing_show' => ['controller' =>ShowingController::class, 'action' => 'show'],
 
             'contact'=>['controller'=>MailController::class, 'action'=>'writeMail'],
 
-            'texthome'=>['controller'=>AuthorController::class, 'action'=>'showTextHome'],
+/*
+ *  Partie administration
+*/
+            'admin' => ['controller' =>AuthorController::class,'action'=>'admin','secure'=>true],
+
+            'mail_Office'=>['controller'=>MailController::class,'action'=>'mailOffice'],
+
+            'texthome_admin'=>['controller'=>AuthorController::class, 'action'=>'showTextHome'],
             'heading_admin' => ['controller' =>AuthorController::class, 'action' => 'showHeadingHome'],
             'showing_admin' => ['controller' =>AuthorController::class, 'action' => 'showShowingHome'],
             'posts_admin' => ['controller' =>AuthorController::class, 'action' => 'showPostsHome'],
             'writeText_admin' => ['controller' =>AuthorController::class, 'action' => 'writeText'],
-            'admin' => ['controller' =>AuthorController::class,'action'=>'admin','secure'=>true],
-            //
+
+
 
 
             'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound'],
@@ -40,7 +49,7 @@ class Routes implements RoutesInterface {
             'InternalServerErrorHttpException'=> ['controller' => HttpException::class, 'action' => 'internalServeurE'],
 
 
-            'login' => ['controller' =>SecurityController::class,'action'=>'login'],
+            'login' => ['controller' =>SecurityController::class,'action'=>'sessionAuthor'],
 
 
         ];

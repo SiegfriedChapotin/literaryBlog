@@ -16,22 +16,40 @@ class mail
     private $email;
     private $text;
     private $date;
+    private $titre;
+    protected $classify;
+
+    /**
+     * @return mixed
+     */
+    public function getClassify()
+    {
+        return $this->classify;
+    }
+
+    /**
+     * @param mixed $classify
+     */
+    public function setClassify($classify): void
+    {
+        $this->classify = $classify;
+    }
 
 
     /**
-     * Mail constructor.
-     *
+     * @return mixed
      */
-    public function __construct(array $array = [])
+    public function getTitre()
     {
-        if (!empty($array)) {
+        return $this->titre;
+    }
 
-            $this->id = $array["id"];
-            $this->name = $array ["name"];
-            $this->emailt = $array ["email"];
-            $this->text = $array["text"];
-            $this->date = $array ["date"];
-        };
+    /**
+     * @param mixed $titre
+     */
+    public function setTitre($titre): void
+    {
+        $this->titre = $titre;
     }
 
     /**

@@ -1,28 +1,27 @@
-
-
 {% extends 'layout/layout.html.twig' %}
 
 {% block content %}
 
-   {% for book in chapitre %}
+    {% for book in chapitre %}
+        <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
+            <h1>Billet simple pour l'Alaska</h1>
+        <br/>
+        </div>
+        <div class="paper padding">
 
-       <h1>Billet simple pour l'Alaska</h1>
-           <br/>
-       <div class="paper padding">
-
-           <h2>{{ book.title }}</h2>
-           <p class="text-right">{{ book.date}}</p>
-           <p class="paddingtext" >{{ book.text| nl2br }}</p>
+            <h2>{{ book.title }}</h2>
+            <p class="text-right">{{ book.date| date_modify ( "+1 day" )| date ( "m/d/Y" ) }}</p>
+            <p class="paddingtext">{{ book.text| striptags|nl2br }}</p>
 
 
-       </div>
-   {% endfor %}
+        </div>
+    {% endfor %}
 
 {% endblock %}
 
 {% block comment %}
     <br/>
-         <hr/>
+    <hr/>
     <br/>
 
     <h2>Dites moi tout sur ce chapitre !</h2>
@@ -30,11 +29,21 @@
 
     {% for comment in comments %}
 
+  <form method="post">
+
         <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded text-white" >
+            <div class="row">
+                <div class="col-10">
             <h5 class="font-weight-bold">{{ comment.pseudo }}</h5>
             <a>{{ comment.comment }} </a> <br/>
-            <p class="text-right text-danger">Signaler<p/>
-        </div>
+            </div>
+                <div class="col-2">
+            <input type="submit" class="btn btn-outline-danger" value="Signaler" >
+            <input type="hidden" value="{{ comment.id }}" name="commentid">
+                </div>
+            </div>
+      </div>
+        </form>
 
     {% endfor %}
 
@@ -42,12 +51,13 @@
 
 {% block writecomment %}
 
-     <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordionExample">
 
         <div class="card">
             <div class="card-header" id="comment">
                 <h5 class="mb-0 ">
-                    <button class="btn btn-link greenLink  collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn btn-link greenLink  collapsed after" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Je vous en prie, dites moi ce que vous en pensez.
                     </button>
                 </h5>
@@ -57,13 +67,13 @@
 
                     <form method="post" action="" id="comment">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" class="form-control"name="pseudo" id="pseudo" placeholder="Pseudo">
+                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
 
                         <label for="comment">Votre commentaire </label>
                         <textarea class="form-control" type="text" name="comment" id="comment" rows="10"></textarea>
                         <br/>
-                        <input class="btn btn-info" type="submit" value="Valider" />
-                        <input class="btn btn-secondary" type="reset" value="Effacer" />
+                        <input class="btn btn-info" type="submit" value="Valider"/>
+                        <input class="btn btn-secondary" type="reset" value="Effacer"/>
                     </form>
 
                 </div>

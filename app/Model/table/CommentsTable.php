@@ -13,6 +13,8 @@ use LiteraryCore\Table\AbstractTable;
 use LiteraryCore\Request\Query;
 use LiteraryCore\Request\Request;
 
+use Literary\Model\entity\Comment;
+
 class CommentsTable extends AbstractTable
 {
 
@@ -30,12 +32,13 @@ class CommentsTable extends AbstractTable
     function findCommentChapter()
     {
         return $this->query('SELECT * FROM comment WHERE id_chapter = ? ORDER BY comment.date DESC ', [Query::get('id')]);
+
     }
 
-    function listComment()
+    function listComment($int)
     {
 
-        return $this->query('SELECT * FROM comment ORDER BY comment.date DESC LIMIT 6');
+        return $this->query('SELECT * FROM comment ORDER BY comment.date DESC LIMIT ' .$int);
     }
 
 
@@ -49,8 +52,21 @@ class CommentsTable extends AbstractTable
         }
     }
 
-        function report()
-        {
-            return $this->query('SELECT * FROM comment WHERE is_reported = 1 ORDER BY comment.date DESC ');
+    function listReport($int)
+    {
+        return $this->query('SELECT * FROM comment WHERE is_reported = 1 ORDER BY comment.date DESC LIMIT '.$int);
+    }
+
+    function report()
+    {
+        if (Request::exist('commentid')) {
+
+            $key= intval(Request::get('commentid'));
+            $this->update($key, ['is_reported' => true]);
+
+            return header('Location: index.php?p=post_show&id='. Query::get('id'));
         }
     }
+}
+
+

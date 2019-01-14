@@ -10,11 +10,17 @@ namespace Literary\Model\table;
 
 
 use LiteraryCore\Table\AbstractTable;
+use Literary\Model\entity\Introduction;
+
+use LiteraryCore\Request\Query;
 
 
 class HeadingTable extends AbstractTable
 
 {
+
+
+
     protected  function getTableName()
     {
         return 'heading';
@@ -22,7 +28,14 @@ class HeadingTable extends AbstractTable
 
     protected  function getClassName()
     {
-        return Heading::class;
+        return Introduction::class;
     }
+
+
+
+    public function findShowing(){
+
+              return $this->find(Query::get('id'));
+        }
 
 }

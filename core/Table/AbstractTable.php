@@ -10,6 +10,8 @@ namespace LiteraryCore\Table;
 
 
 use Literary\App;
+Use LiteraryCore\Exception\HttpException\ForbiddenHttpException;
+use LiteraryCore\Exception\HttpException\NotFoundHttpException;
 
 /**
  * Classe mère de tous les appels à la bd
@@ -42,8 +44,12 @@ abstract class AbstractTable
      */
     public function find($id)
     {
+        if (!is_numeric($id)||empty($id)){
+            throw new NotFoundHttpException();
+        }else{
+            return $this->query('SELECT * FROM ' . $this->getTableName() . ' WHERE id= :id', ['id' => $id]);
+        }
 
-        return $this->query('SELECT * FROM ' . $this->getTableName() . ' WHERE id= :id', ['id' => $id]);
     }
 
     /**
@@ -53,15 +59,16 @@ abstract class AbstractTable
      * @return object PDOStatement
      */
 
-    public function query(string $statement, array $attributes = [])
+    public function query(string $statement, array $attributes = [],bool $oneResult=false)
     {
         if (empty($attributes)) {
-            return $this->getDb()->query($statement, $this->getTableName());
+            return $this->getDb()->query($statement, $this->getClassName(), $oneResult);
         } else {
-            return $this->getDb()->prepare($statement, $attributes, $this->getTableName());
+            return $this->getDb()->prepare($statement, $attributes, $this->getClassName(),$oneResult);
         }
 
     }
+
 
     function create($fields)
     {
@@ -72,7 +79,7 @@ abstract class AbstractTable
             $attributes[] = $value;
         }
         $sql_part = implode(', ', $sql_parts);
-        $this->getDb()->prepare("INSERT INTO {$this->getTableName()} SET " . $sql_part, $attributes, null, false, true);
+        $this->getDb()->prepare("INSERT INTO {$this->getTableName()} SET " .$sql_part, $attributes, null, false, true);
 
     }
 
@@ -93,16 +100,16 @@ abstract class AbstractTable
         }
         $attributes[] = $id;
         $sql_part = implode(', ', $sql_parts);
-        $this->getDb()->prepare("UPDATE {$this->getTableName()} SET " . $sql_part . "WHERE id = ?", $attributes, true);
+        $this->getDb()->prepare("UPDATE {$this->getTableName()} SET ".$sql_part."WHERE id = ?", $attributes, null, false, true);
     }
-    /**
-     * Supprimer un élément de la BD
+
+     /** Supprimer un élément de la BD
      *
      * @param string $id ID de l'élément à supprimer
-     *
-     * public function delete(string $id)
-     * {
-     * return $this->db->prepare('DELETE FROM `' . $this->table . 'WHERE id=?', [$id], $this->table, true, true);
-     * }
      **/
+     public function delete(string $id)
+     {
+         return $this->getDb()->prepare("DELETE FROM {$this->getTableName()} WHERE id = ?", [$id], null, false, true);
+     }
+
 }

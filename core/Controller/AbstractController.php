@@ -7,7 +7,25 @@ use \Twig_Environment;
 
 abstract class AbstractController
 {
-    public function redirect(string $route) {
+    protected $twig;
+
+    /**
+     * AbstractController constructor.
+     */
+    public function __construct()
+    {
+        $loader = new Twig_Loader_Filesystem('../app/Views');
+        $this->twig = new Twig_Environment($loader, array('cache' => ROOT . '/tmp', 'debug' => true));
+        $this->twig->addExtension(new \Twig_Extensions_Extension_Text());
+        $this->__postConstruct();
+    }
+
+    protected function __postConstruct(){
+
+    }
+
+    public function redirect(string $route)
+    {
         header('Location: index.php?p=' . $route);
         die();
     }
@@ -20,10 +38,7 @@ abstract class AbstractController
      **/
     protected function render(String $nameView, array $variables = [])
     {
-        $loader = new Twig_Loader_Filesystem('../app/Views');
-        $twig = new Twig_Environment($loader, array('cache' => ROOT.'/tmp','debug' => true ));
-        $twig->addExtension(new \Twig_Extensions_Extension_Text());
-        echo $twig->render($nameView, $variables);
+        echo $this->twig->render($nameView, $variables);
     }
 
 

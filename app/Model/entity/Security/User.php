@@ -11,18 +11,24 @@ namespace Literary\Model\entity\Security;
 
 class User
 {
-    private $username;
-    private $password;
+     private $id;
+     private $username;
+     private $password;
 
     /**
-     * User constructor.
-     * @param $username
-     * @param $password
+     * @return mixed
      */
-    public function __construct(array $array=[])
+    public function getId()
     {
-        $this->username = $array["username"];
-        $this->password = $array["password"];
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -36,7 +42,7 @@ class User
     /**
      * @param mixed $username
      */
-    public function setUsername($username): string
+    public function setUsername($username): void
     {
         $this->username = $username;
     }
@@ -52,11 +58,10 @@ class User
     /**
      * @param mixed $password
      */
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = $password;
     }
-
 
 
 

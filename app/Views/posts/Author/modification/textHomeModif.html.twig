@@ -17,7 +17,7 @@
                 <textarea class="form-control" type="text" name="TitleDashboard">{{ texthome.title }}</textarea>
 
                 <label for= "TextDashboard" > Texte </label>
-                <textarea class= "form-control textarea" id= "textarea" rows= "20" name="TextDashboard">{{texthome.text |nl2br }}</textarea>
+                <textarea class= "form-control textarea" id= "textarea" rows= "20" name="TextDashboard">{{texthome.text|striptags |nl2br }}</textarea>
             </div>
             <div>
                 <input class="btn btn-info" type="submit" value="Modifier" />

@@ -26,7 +26,7 @@ use Literary\Model\entity\Introduction;
 
     protected  function getClassName()
     {
-        return TextHome::class;
+        return Introduction::class;
     }
 
 

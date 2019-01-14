@@ -16,24 +16,8 @@ class Introduction
     private $title;
     private $text;
 
-
     /**
-     * Showing or TextHome or Heading constructor.
-     *
-     */
-    public function __construct(array $array = [])
-    {
-        if (!empty($array)) {
-
-            $this->id = $array["id"];
-            $this->title = $array ["title"];
-            $this->text = $array["text"];
-
-        };
-    }
-
-    /**
-     * @return integer
+     * @return mixed
      */
     public function getId()
     {
@@ -41,15 +25,15 @@ class Introduction
     }
 
     /**
-     * @param integer $id
+     * @param mixed $id
      */
-    public function setId($id): int
+    public function setId($id): void
     {
         $this->id = $id;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getTitle()
     {
@@ -57,15 +41,15 @@ class Introduction
     }
 
     /**
-     * @param string $title
+     * @param mixed $title
      */
-    public function setTitle($title): string
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getText()
     {
@@ -73,11 +57,14 @@ class Introduction
     }
 
     /**
-     * @param string $text
+     * @param mixed $text
      */
-    public function setText($text): string
+    public function setText($text): void
     {
         $this->text = $text;
     }
+
+
+
 
 }

@@ -10,7 +10,7 @@
                 <textarea class="form-control" type="text" id="TitleDashboard" name="TitleDashboard">{{ heading.title }}</textarea>
 
                 <label for= "TextDashboard" > Texte </label>
-                <textarea class= "form-control textarea" id= "textarea" rows= "20" id="TextDashboard" name="TextDashboard">{{heading.text | nl2br}}</textarea>
+                <textarea class= "form-control textarea" id= "textarea" rows= "20" id="TextDashboard" name="TextDashboard">{{heading.text|striptags | nl2br}}</textarea>
             </div>
             <div>
                 <input class="btn btn-info" type="submit" value="Modifier" />

@@ -14,7 +14,8 @@ use \Literary\App;
 
 
 App::load();
-App::getInstance()->getDb();
+
+
 
 $router = new Router(new Routes());
 
@@ -35,13 +36,17 @@ catch (InternalServerErrorHttpException $e) {
     $router->execController('http_exception_not_found');
 }
 catch (HttpException $e) {
-    echo "catch http";
+    header('HTTP/2.1 ' . $e->getStatus());
+    $router->execController('http_exception_not_found');
 }
 catch (\Exception $e) {
+    //header('HTTP/2.1 ' . $e->getStatus());
+    //$router->execController('http_exception_not_found');
+
     echo "catch exception";
     var_dump($e);
-}
 
+   }
 
 
 

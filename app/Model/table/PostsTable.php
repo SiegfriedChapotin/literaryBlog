@@ -10,7 +10,7 @@ namespace Literary\Model\table;
 
 use LiteraryCore\Table\AbstractTable;
 use Literary\Model\entity\Posts;
-use Literary\Controller\PostController;
+
 use LiteraryCore\Request\Query;
 use LiteraryCore\Request\Request;
 
@@ -32,17 +32,33 @@ class PostsTable extends AbstractTable
 
     protected  function getClassName()
     {
-        return PostController::class;
+        return Posts::class;
+    }
+    function listPostAll( )
+    {
+        return $this->query('SELECT * FROM book WHERE is_status=1 ORDER BY book.date DESC');
     }
 
-    function listPost(){
-        return $this->query('SELECT * FROM book WHERE is_status=1 ORDER BY book.date DESC LIMIT 5');
+    function listPostWrite(string $int)
+    {
+        return $this->query('SELECT * FROM book WHERE is_status=0 ORDER BY book.date DESC LIMIT ' . $int);
     }
+
+    function listPost(string $int)
+    {
+        return $this->query('SELECT * FROM book WHERE is_status=1 ORDER BY book.date DESC LIMIT ' . $int);
+    }
+    function findPost()
+    {
+        return $this->find(Query::get('id'));
+    }
+
     function NewPostWrite()
     {
         if (Request::exist('TitleDashboard') && Request::exist('TextDashboard')) {
 
-            return $this->create(['title'=>Request::get('TitleDashboard'), 'text'=>Request::get('TextDashboard'),'is_status'=>Request::get('is_status')]);
+            $this->create(['title'=>Request::get('TitleDashboard'),'text'=>Request::get('TextDashboard'),'is_status'=>Request::get('is_status')]);
+
         }
 
     }
@@ -51,7 +67,7 @@ class PostsTable extends AbstractTable
         if (Request::exist('TitleDashboard') && Request::exist('TextDashboard')&& Request::exist('is_status')) {
 
             $this->update(Query::exist('id'),['title'=>Request::get('TitleDashboard'), 'text'=>Request::get('TextDashboard'),'is_status'=>Request::get('is_status')]);
-            return header('Location: index.php?p=posts_admin&id='. Query::get('id'));
+
         }
 
     }

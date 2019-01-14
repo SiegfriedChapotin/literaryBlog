@@ -20,7 +20,7 @@ class CommentController extends AbstractController{
 
     public function show() {
 
-        $this->render ('posts/show.html.twig',['comment'=> (new CommentsTable())->find($id=Query::get('id'))]);
+        $this->render ('posts/show.html.twig',['comment'=> (new CommentsTable())->find(Query::get('id'))]);
 
     }
 

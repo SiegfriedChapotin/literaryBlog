@@ -6,6 +6,12 @@
 
 {% block writecomment %}
 
+
+
+    <div class="shadow-lg p-3 mb-5 bg-gradient-warning rounded headingheight">
+         <a><img class="img-fluid" alt="Responsive image" src="../public//img/billetsimplealaskaRS.png"></a>
+    </div>
+
 <div id="accordion">
     {% for book in chapitreall %}
 
@@ -20,10 +26,16 @@
 
                 <div id="collapse{{ book.id }}" class="collapse paper" aria-labelledby="{{ book.id }}" data-parent="#accordion">
                     <div class="card-body">
-                       {{ book.text|nl2br }}
+                       {{ book.text|striptags |nl2br| raw }}
                     </div>
+
+                <div class="padding">
+                    <a href="index.php?p=post_show&id={{ book.id }}">
+                        <button type="button" class="btn btn-light btn-lg btn-block greenLink "> Je vous en prie, dites moi ce que vous en pensez.</button>
+                    </a>
                 </div>
             </div>
+        </div>
     {% endfor %}
     </div>
 {% endblock %}

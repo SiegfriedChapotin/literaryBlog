@@ -18,21 +18,6 @@ class Posts
     private $isStatus;
 
 
-    /**
-     * Posts constructor.
-     *
-     */
-    public function __construct(array $array = [])
-    {
-        if (!empty($array)) {
-
-            $this->id = $array["id"];
-            $this->title = $array ["title"];
-            $this->text = $array ["text"];
-            $this->datet = $array["date"];
-            $this->isStatus = $array ["is_status"];
-        };
-    }
 
     /**
      * @return integer

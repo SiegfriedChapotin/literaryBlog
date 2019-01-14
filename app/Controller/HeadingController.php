@@ -11,7 +11,8 @@ namespace Literary\Controller;
 
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\HeadingTable;
-use LiteraryCore\Request\Query;
+use Literary\Model\table\ShowingTable;
+
 
 
 
@@ -19,7 +20,11 @@ class HeadingController extends AbstractController {
 
 
     public function show() {
-        $this->render ('posts/showheading.html.twig',['heading'=>(new HeadingTable())->find($id=Query::get('id'))]);
+
+        $this->render ('posts/showheading.html.twig',
+            ['heading'=>(new HeadingTable())->findShowing(),
+            'showings' => (new ShowingTable())->all()
+            ]);
 
     }
 

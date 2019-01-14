@@ -13,38 +13,48 @@ use LiteraryCore\Request\Request;
 use Literary\Model\table\Security\UserTable;
 
 
-
 class SecurityController extends AbstractController
+
 {
-    public function login() {
+
+    public function sessionAuthor()
+    {
         if (!empty($_SESSION['user'])) {
             $this->redirect('home');
         }
 
-        $email = Request::get('login');
+        $username = Request::get('username');
         $password = Request::get('password');
         $errors = [];
 
-        if ($email && $password) {
-            $user = (new UserTable())->findByEmail();
 
-            if ($user) {
-                if ($user->getPassword() === $password) {
-                    $_SESSION['user'] = $user;
 
-                    $this->redirect('home');
-                } else {
-                    $errors[] = 'Couple email/mot de passe invalide';
-                }
+    if ($username && $password) {
+        $user = (new UserTable())->login($username);
+
+
+        if ($user) {
+            if ($user->getPassword() === sha1($password)) {
+                $_SESSION['user'] = $user;
+
+                $this->redirect('admin');
             } else {
-                $errors[] = 'Email non trouvé';
+                $errors[] = 'Couple email/mot de passe invalide';
             }
+        } else {
+            $errors[] = 'Nom d\'utilisateur non trouvé';
         }
-
-        $this->render('posts/Author/connection.html.twig', ['errors' => $errors]);
     }
 
-    public function logout() {
+    $this->render('posts/Author/office/officeConnection.html.twig', ['errors' => $errors]);
+}
+
+
+
+
+
+    public function logout()
+    {
         unset($_SESSION['user']);
         $this->redirect('home');
     }

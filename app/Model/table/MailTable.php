@@ -12,6 +12,7 @@ use LiteraryCore\Table\AbstractTable;
 
 use LiteraryCore\Request\Query;
 use LiteraryCore\Request\Request;
+use Literary\Model\entity\Mail;
 
 class MailTable extends AbstractTable
 {
@@ -27,21 +28,55 @@ class MailTable extends AbstractTable
         return Mail::class;
     }
 
-    function findCommentChapter(){
-        return $this->query('SELECT * FROM comment WHERE id_chapter = ? ORDER BY comment.date DESC ',[Query::get('id')] );
+
+    function listMail($int)
+    {
+
+
+        return $this->query('SELECT * FROM mail WHERE classify = 0 ORDER BY mail.date DESC LIMIT '.$int);
+
+
     }
+    function listMailClass($int)
+    {
 
 
+        return $this->query('SELECT * FROM mail WHERE classify = 1 ORDER BY mail.date DESC LIMIT '.$int);
+
+
+    }
 
     function writeMail()
     {
-        if (Request::exist('NameMail') && Request::exist('EmailMail')&& Request::exist('TextMail')) {
+        if (Request::exist('NameMail') && Request::exist('TitreMail') && Request::exist('EmailMail') && Request::exist('TextMail')) {
 
-            return $this->create(['name'=>Request::get('NameMail'), 'email'=>Request::get('EmailMail'),'text'=>Request::get('TextMail')]);
+            return $this->create(['name' => Request::get('NameMail'), 'title' => Request::get('TitreMail'), 'email' => Request::get('EmailMail'), 'text' => Request::get('TextMail')]);
         }
 
     }
-    function report(){
-        return $this->query('SELECT * FROM comment WHERE is_reported = 1 ORDER BY comment.date DESC ');
+
+
+    function classify()
+    {
+        if (Request::exist('mailid')) {
+
+           $key = intval(Request::get('mailid'));
+           $this->update($key, ['classify' => true]);
+
+            return header('Location:index.php?p=mail_Office');
+        }
     }
+
+
+    function deleteMail(int $id)
+    {
+
+
+        return $this->delete($id);
+
+    }
+
+
+
 }
+

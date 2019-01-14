@@ -11,7 +11,7 @@ namespace Literary\Controller;
 
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\ShowingTable;
-use LiteraryCore\Request\Query;
+
 
 
 
@@ -20,8 +20,8 @@ class ShowingController extends AbstractController {
 
 
     public function show() {
-        $this->render ('posts/showheading.html.twig',[
-            'showing'=>(new ShowingTable())->find($id=Query::get('id')),
+        $this->render ('posts/showShowing.html.twig',[
+            'showing'=>(new ShowingTable())->findShowing(),
             'showings' => (new ShowingTable())->all()
         ]);
 

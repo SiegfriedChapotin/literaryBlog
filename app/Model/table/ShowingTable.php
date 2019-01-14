@@ -9,8 +9,9 @@
 namespace Literary\Model\table;
 
 
+use Literary\Model\entity\Introduction;
 use LiteraryCore\Table\AbstractTable;
-use Literary\Controller\Showing;
+use LiteraryCore\Request\Query;
 
 class ShowingTable extends AbstractTable
 
@@ -22,7 +23,11 @@ class ShowingTable extends AbstractTable
 
     protected  function getClassName()
     {
-        return Showing::class;
+        return Introduction::class;
     }
 
+    public function findShowing(){
+
+        return $this->find(Query::get('id'));
+    }
 }

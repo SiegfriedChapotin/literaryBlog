@@ -12,9 +12,8 @@ namespace Literary\Controller;
 use Literary\Model\table\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\PostsTable;
-use LiteraryCore\Request\Query;
 use Literary\Model\table\ShowingTable;
-use LiteraryCore\Request\Request;
+
 
 
 class PostController extends AbstractController
@@ -23,17 +22,22 @@ class PostController extends AbstractController
 
     public function list()
     {
-        $this->render('posts/book.html.twig', ['chapitreall' => (new PostsTable())->all()]);
+        $this->render('posts/book.html.twig',
+            [   'chapitreall' => (new PostsTable())->listPostAll(),
+                'showings' => (new ShowingTable())->all()]);
     }
 
     public function show()
     {
 
         $this->render('posts/show.html.twig',
-            ['chapitre' => (new PostsTable())->find($id = Query::get('id')),
+            [   'chapitre' => (new PostsTable())->findPost(),
                 'comments' => (new CommentsTable())->findCommentChapter(),
                 'commentwrite' => (new CommentsTable())->commentWrite(),
-                'showings' => (new ShowingTable())->all()
+                'showings' => (new ShowingTable())->all(),
+                'commentreport'=>(new CommentsTable())->report()
+
+
             ]);
 
     }

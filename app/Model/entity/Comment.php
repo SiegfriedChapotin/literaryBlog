@@ -18,26 +18,8 @@ class Comment
     private $isReported;
     private $date;
 
-
     /**
-     * Comment constructor.
-     *
-     */
-    public function __construct(array $array = [])
-    {
-        if (!empty($array)) {
-
-            $this->id = $array["id"];
-            $this->idChapter = $array ["id_chapter"];
-            $this->pseudo = $array ["pseudo"];
-            $this->comment = $array["comment"];
-            $this->isReported = $array ["is_reported"];
-            $this->date = $array ["date"];
-        };
-    }
-
-    /**
-     * @return integer
+     * @return mixed
      */
     public function getId()
     {
@@ -45,15 +27,15 @@ class Comment
     }
 
     /**
-     * @param integer $id
+     * @param mixed $id
      */
-    public function setId($id): int
+    public function setId($id): void
     {
         $this->id = $id;
     }
 
     /**
-     * @return integer
+     * @return mixed
      */
     public function getIdChapter()
     {
@@ -61,15 +43,15 @@ class Comment
     }
 
     /**
-     * @param integer $idChapter
+     * @param mixed $idChapter
      */
-    public function setIdChapter($idChapter): int
+    public function setIdChapter($idChapter): void
     {
         $this->idChapter = $idChapter;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getPseudo()
     {
@@ -77,15 +59,15 @@ class Comment
     }
 
     /**
-     * @param string $pseudo
+     * @param mixed $pseudo
      */
-    public function setPseudo($pseudo): string
+    public function setPseudo($pseudo): void
     {
         $this->pseudo = $pseudo;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getComment()
     {
@@ -93,15 +75,15 @@ class Comment
     }
 
     /**
-     * @param string $comment
+     * @param mixed $comment
      */
-    public function setComment($comment): string
+    public function setComment($comment): void
     {
         $this->comment = $comment;
     }
 
     /**
-     * @return integer
+     * @return mixed
      */
     public function getisReported()
     {
@@ -109,15 +91,15 @@ class Comment
     }
 
     /**
-     * @param integer $isReported
+     * @param mixed $isReported
      */
-    public function setIsReported($isReported): int
+    public function setIsReported($isReported): void
     {
         $this->isReported = $isReported;
     }
 
     /**
-     * @return
+     * @return mixed
      */
     public function getDate()
     {
@@ -125,12 +107,13 @@ class Comment
     }
 
     /**
-     * @param $date
+     * @param mixed $date
      */
-    public function setDate($date)
+    public function setDate($date): void
     {
         $this->date = $date;
     }
+
 
 
 }

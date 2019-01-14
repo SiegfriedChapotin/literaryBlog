@@ -16,6 +16,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" href="http://localhost/literaryBlog/public/index.php?p=mail_Office">
+                            <span data-feather="mail"></span>
+                            Courriers
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="http://localhost/literaryBlog/public/index.php?p=writeText_admin">
                             <span data-feather="feather"></span>
                             Texte
@@ -36,7 +42,7 @@
 
                     {% for texthome in texthome %}
                             <li class="nav-item">
-                                <p><a href="http://localhost/literaryBlog/public/index.php?p=texthome&id={{texthome.id }}"><span data-feather="file-text"></span> {{texthome.title }}</a></p>
+                                <p><a href="http://localhost/literaryBlog/public/index.php?p=texthome_admin&id={{texthome.id }}"><span data-feather="file-text"></span> {{texthome.title }}</a></p>
                             </li>
                     {% endfor %}
 
@@ -67,7 +73,6 @@
             <div>
                 {% block textarea %}{% endblock %}
             </div>
-
 
         </main>
     </div>

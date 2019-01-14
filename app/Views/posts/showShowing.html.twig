@@ -2,21 +2,21 @@
 
 {% block content %}
 
-    {% for heading in heading %}
+
+    {% for showing in showing %}
+
         <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
+
             <h1>Billet simple pour l'Alaska</h1>
             <br/>
         </div>
-
         <div class="paddingtext">
-
-            <h2>{{ heading.title }}</h2>
+            <img class="icoImg" src="../public/img/ico.png" />
+            <h2>{{ showing.title }}</h2>
         </div>
         <div class="paddingtext">
-            <p>{{ heading.text|striptags |  nl2br }}</p>
-
+            <p>{{ showing.text| striptags |  nl2br }}</p>
         </div>
 
     {% endfor %}
-
 {% endblock %}

@@ -29,7 +29,7 @@
 
             <label for="TextDashboard" class="paddingtext font-weight-bold"> Texte </label>
             <textarea class="form-control textarea" id="textarea" rows="20"
-                      name="TextDashboard">{{ book.text }}</textarea>
+                      name="TextDashboard">{{ book.text|striptags }}</textarea>
         </div>
         <div>
             <input class="btn btn-success" type="submit" value="Envoyer"/>

@@ -1,12 +1,11 @@
-
 {% extends 'layout/layouthome.html.twig' %}
 
 
-{%  block introText  %}
+{% block introText %}
     {% for texthome in texthome %}
         <div id="introText">
-            <h1>{{texthome.title }}</h1>
-            <p class="paddingtext">{{ texthome.text | nl2br}}</p>
+            <h1>{{ texthome.title }}</h1>
+            <p class="paddingtext">{{ texthome.text | nl2br }}</p>
         </div>
     {% endfor %}
 {% endblock %}
@@ -14,58 +13,62 @@
 {% block heading %}
     {% for headings in headings %}
 
-            <div class="col-md-4">
-                <div class="shadow-lg p-3 mb-5 bg-gradient-warning rounded headingheight">
-                <h2>{{headings.title }}</h2>
-                <p class="paddingtext">{{ headings.text | truncate(200)| nl2br}}
-                <a class="greenLink" href="http://localhost/literaryBlog/public/index.php?p=heading_show&id={{headings.id }}">suite &raquo;</a>
+        <div class="col-md-4">
+            <div class="shadow-lg p-3 mb-5 bg-gradient-warning rounded headingheight">
+                <h2>{{ headings.title }}</h2>
+                <p class="paddingtext">{{ headings.text | truncate(150)| nl2br }}
+                    <br/>
+                    <a class="greenLink after"
+                       href="http://localhost/literaryBlog/public/index.php?p=heading_show&id={{ headings.id }}"> En savoir plus...</a>
                 </p>
             </div>
-            </div>
+        </div>
 
-     {% endfor %}
+    {% endfor %}
 {% endblock %}
 
 {% block content %}
 
     <h2>Les derniers chapitres</h2>
 
-   {% for book in chapitres %}
+    {% for book in chapitres %}
 
-         <div class="paper padding paperPadding">
-               <h3>{{ book.title }}</h3>
-               <a> {{ book.date}}</a>
-               <p class="paddingtext">{{ book.text | truncate(500)}}
-               <a class= "greenLink" href="http://localhost/literaryBlog/public/index.php?p=post_show&id={{ book.id }}">La suite...</a>
-             </p>
-             <wbr/>
-          </div>
-   {% endfor %}
+        <div class="paper padding paperPadding">
+            <h3>{{ book.title }}</h3>
+            <p class="text-right" > {{ book.date| date_modify ( "+1 day" )| date ( "m/d/Y" )}}</p>
+            <p class="paddingtext">{{ book.text|striptags | truncate(300) }}
+
+                <a class="greenLink after" href="http://localhost/literaryBlog/public/index.php?p=post_show&id={{ book.id }}">La
+                    suite...</a>
+            </p>
+            <wbr/>
+        </div>
+    {% endfor %}
 
 {% endblock %}
 
 {% block comment %}
     <h2>Toujours en vente</h2>
-    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
+    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded">
         <div class="kiosque">
-             <p><a><img src="img/EditionLibreAuteur.jpg" /></a></p>
+            <p><a><img src="img/EditionLibreAuteur.jpg"/></a></p>
             <br/>
             <a class="greenLink" href="#">Commander Le livre</a>
         </div>
     </div>
     <h2>Info sur le climat</h2>
-    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
+    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded">
         <div class="paddingtext">
-            <p><a href="https://www.sauvonsleclimat.org/fr/"><img src="img/LogoGiec.png" /></a></p>
+            <p><a href="https://www.sauvonsleclimat.org/fr/"><img src="img/LogoGiec.png"/></a></p>
         </div>
     </div>
     <h2>Lire, voir, réagir, ...</h2>
-    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded" >
+    <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded">
         <div class="paddingtext">
-            <p><a><img src="img/faceBook.png" /></a>
-                <a><img src="img/twitter.png" /></a>
-                <a><img src="img/youtube.png" /></a>
-                <a><img src="img/In.png" /></a>
+            <p><a><img src="img/faceBook.png"/></a>
+                <a><img src="img/twitter.png"/></a>
+                <a><img src="img/youtube.png"/></a>
+                <a><img src="img/In.png"/></a>
             </p>
         </div>
     </div>
