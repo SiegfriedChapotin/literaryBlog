@@ -1,0 +1,140 @@
+{% extends  "layout/Author/layoutdashboard.html.twig" %}
+
+{% block textarea %}
+
+    <br/>
+    <div class="col-12 shadow-lg p-4 mb-5  ">
+        <h1>Commentaires</h1>
+    </div>
+
+    <div class="col-12 shadow-lg p-5 mb-5  ">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-comments-tab" data-toggle="tab" href="#nav-comments"
+                   role="tab"
+                   aria-controls="nav-news" aria-selected="true"><h3>Les commentaires</h3></a>
+                <a class="nav-item nav-link" id="nav-archives-tab" data-toggle="tab" href="#nav-archives" role="tab"
+                   aria-controls="nav-archives" aria-selected="false"><h3>Commentaires signalés</h3></a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+                <div id="accordion">
+                    {% for commentoffice in commentoffice %}
+                        <div>
+                            <div class="card-header" id="{{ commentoffice.id }}">
+                                <div class="mb-0 row justify-content-between">
+                                    <div class="col-5">
+                                        <a class="paddingRL"> {{ commentoffice.pseudo }}</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a class="paddingRL"> {{ commentoffice.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
+                                    </div>
+                                    <div class="col-2">
+                                    <a href="index.php?p=post_show&id={{ commentoffice.id_chapter}}" target="_blank" >
+                                        <button type="button" class="btn btn-light greenLink "> Voir le chapitre</button>
+                                    </a>
+                                    </div>
+
+                                    <div class="col-1">
+                                        <button class="btn btn-card btn-warning font-weight-bold collapsed"
+                                                data-toggle="collapse"
+                                                data-target="#collapse{{ commentoffice.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ commentoffice.id }}">
+                                            Lire
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse{{ commentoffice.id }}" class="collapse"
+                                 aria-labelledby="{{ commentoffice.id }}"
+                                 data-parent="#accordion">
+                                <div class="container-fluide">
+                                    <div class="card-body row">
+                                        <div class="col-10">
+                                            <p>{{ commentoffice.comment|nl2br }}</p>
+                                        </div>
+                                        <div class="col-2 ">
+                                            <form method="post" action="index.php?p=comment_Office">
+                                                <button type="submit"
+                                                        class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                                        name="commentdel"
+                                                        value="{{ commentoffice.id }}">
+                                                    <a class=" paddingRL"> Supprimer</a>
+                                                    <i data-feather="delete"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane fade active" id="nav-archives" role="tabpanel" aria-labelledby="nav-archives-tab">
+                <div id="accordion">
+                    {% for commentreport in commentreport %}
+                        <div>
+                            <div class="card-header" id="{{ commentreport.id }}">
+                                <div class="mb-0 row justify-content-between">
+                                    <div class="col-5">
+                                        <a class="paddingRL"> {{ commentreport.pseudo }}</a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a class="paddingRL"> {{ commentreport.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="index.php?p=post_show&id={{ commentreport.id_chapter}}" target="_blank" >
+                                            <button type="button" class="btn btn-light greenLink "> Voir le chapitre</button>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-1">
+                                        <button class="btn btn-card btn-danger font-weight-bold collapsed"
+                                                data-toggle="collapse"
+                                                data-target="#collapse{{ commentreport.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ commentreport.id }}">
+                                            Lire
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div id="collapse{{ commentreport.id }}" class="collapse"
+                                 aria-labelledby="{{ commentreport.id }}"
+                                 data-parent="#accordion">
+                                <div class="container-fluide">
+                                    <div class="row paddingtext">
+                                        <div class="col-9">
+                                            <p>{{ commentreport.comment }}</p>
+                                        </div>
+                                        <div class="col-3 ">
+                                            <form method="post">
+                                                <button type="submit"
+                                                        class="btn btn-card btn-bg btn-success font-weight-bold "
+                                                        name="commentreport"
+                                                        value="{{ commentreport.id }}">
+
+                                                    <a class=" paddingRL">Garder</a>
+                                                    <i data-feather="check"></i>
+                                                </button>
+                                                <button type="submit"
+                                                        class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                                        name="commentdel"
+                                                        value="{{ commentreport.id }}">
+                                                    <a class=" paddingRL"> Supprimer</a>
+                                                    <i data-feather="delete"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -17,6 +17,7 @@ use Literary\Model\table\PostsTable;
 use Literary\Model\table\HeadingTable;
 use Literary\Model\table\Author\AuthorTable;
 use LiteraryCore\Request\Query;
+use LiteraryCore\Request\Request;
 use Literary\Model\table\CommentsTable;
 
 
@@ -33,6 +34,18 @@ class AuthorController extends AbstractController
 
     public function admin()
     {
+        if (Request::exist('commentdel')) {
+
+            (new CommentsTable())->deleteComment(Request::get('commentdel'));
+            $this->redirect('admin');
+            return;
+        }
+
+        if (Request::exist('commentreport')) {
+            (new CommentsTable())->restaureComment(Request::get('commentreport'));
+            $this->redirect('admin');
+            return;
+        }
 
         $this->render('posts/Author/dashboard.html.twig',
             [

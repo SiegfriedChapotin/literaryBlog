@@ -37,6 +37,13 @@ class MailController extends AbstractController{
             return;
         }
 
+        if (Request::exist('mailid')){
+            (new MailTable())->classify(Request::get('mailid'));
+
+            $this->redirect('mail_Office');
+            return;
+        }
+
 
         $this->render('posts/Author/office/officeMail.html.twig',
             [
@@ -45,10 +52,9 @@ class MailController extends AbstractController{
                 'texthome'=>(new TextHomeTable())->all(),
                 'headings'=>(new HeadingTable())->all(),
                 'showings'=>(new ShowingTable())->all(),
+                'mailoffice'=>(new MailTable())->listMail(6),
+                'mailclass'=>(new MailTable())->listMailClass(6)
 
-                'mail'=>(new MailTable())->listMail(6),
-                'mailclass'=>(new MailTable())->listMailClass(6),
-                'classify'=>(new MailTable())->classify(),
 
 
 

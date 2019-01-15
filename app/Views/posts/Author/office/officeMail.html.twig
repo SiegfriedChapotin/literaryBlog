@@ -19,38 +19,38 @@
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
                 <div id="accordion">
-                    {% for mail in mail %}
+                    {% for mailoffice in mailoffice %}
                         <div>
-                            <div class="card-header" id="{{ mail.id }}">
+                            <div class="card-header" id="{{ mailoffice.id }}">
                                 <div class="mb-0 row justify-content-between">
                                     <div class="col-2  paddingtext">
-                                        <a class="paddingRL"> {{ mail.name }}</a>
+                                        <a class="paddingRL"> {{ mailoffice.name }}</a>
                                     </div>
                                     <div class="col-9 paddingtext">
-                                        <a class="paddingRL"> {{ mail.title }}</a>
+                                        <a class="paddingRL"> {{ mailoffice.title }}</a>
                                     </div>
                                     <div class="col-1 paddingtext">
                                         <button class="btn btn-card btn-success font-weight-bold collapsed"
                                                 data-toggle="collapse"
-                                                data-target="#collapse{{ mail.id }}" aria-expanded="true"
-                                                aria-controls="collapse{{ mail.id }}">
+                                                data-target="#collapse{{ mailoffice.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ mailoffice.id }}">
                                             Lire
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            <div id="collapse{{ mail.id }}" class="collapse" aria-labelledby="{{ mail.id }}"
+                            <div id="collapse{{ mailoffice.id }}" class="collapse" aria-labelledby="{{ mailoffice.id }}"
                                  data-parent="#accordion">
                                 <div class="container-fluide">
                                     <div class="row">
                                         <div class="col-10 paddingtext">
                                             <div class="card-body">
                                                 <p class="text-right font-weight-bold">
-                                                    <a class="paddingRL"> {{ mail.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
+                                                    <a class="paddingRL"> {{ mailoffice.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
                                                 </p>
-                                                <p class="paddingtext paper">{{ mail.text|nl2br }}</p>
+                                                <p class="paddingtext paper">{{ mailoffice.text|nl2br }}</p>
                                                 <p class="text-right font-weight-bold">
-                                                    <a class="paddingRL">Courriel : {{ mail.email }}</a>
+                                                    <a class="paddingRL">Courriel : {{ mailoffice.email }}</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                                             <form method="post" action="index.php?p=mail_Office">
                                                 <div class="paddingtext row  ">
                                                     <div class="col-12 paddingRL">
-                                                        <a href="mailto:{{ mail.email }}"
+                                                        <a href="mailto:{{ mailoffice.email }}"
                                                            class="btn btn-card btn-bg btn-info  font-weight-bold  "
                                                            role="button" aria-pressed="true">
                                                             Répondre&nbsp;&nbsp;&nbsp;<i data-feather="at-sign"></i>
@@ -68,7 +68,7 @@
                                                         <button type="submit"
                                                                 class="btn btn-card btn-bg btn-primary font-weight-bold "
                                                                 name="mailid"
-                                                                value="{{ mail.id }}">
+                                                                value="{{ mailoffice.id }}">
                                                             <a class=" paddingRL">Classer</a>
                                                             <i data-feather="archive"></i>
                                                         </button>
@@ -78,7 +78,7 @@
                                                         <button type="submit"
                                                                 class="btn btn-card btn-danger font-weight-bold  btn-bg"
                                                                 name="maildel"
-                                                                value="{{ mail.id }}">
+                                                                value="{{ mailoffice.id }}">
                                                             <a class=" paddingRL"> Supprimer</a>
                                                             <i data-feather="delete"></i>
                                                         </button>
@@ -93,7 +93,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="tab-pane fade show active" id="nav-archives" role="tabpanel" aria-labelledby="nav-archives-tab">
+            <div class="tab-pane fade active" id="nav-archives" role="tabpanel" aria-labelledby="nav-archives-tab">
                 <div id="accordion">
                     {% for mailclass in mailclass %}
                         <div>

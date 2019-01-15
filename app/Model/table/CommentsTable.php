@@ -67,6 +67,27 @@ class CommentsTable extends AbstractTable
             return header('Location: index.php?p=post_show&id='. Query::get('id'));
         }
     }
+
+    function restaureComment()
+    {
+
+
+        if (Request::exist('commentreport')) {
+            $key= intval(Request::get('commentreport'));
+            $this->update($key, ['is_reported' => 0]);
+            return header('Location: index.php?p=comment_Office');
+        }
+    }
+
+
+
+
+    function deleteComment(int $id)
+    {
+
+        return $this->delete($id);
+
+    }
 }
 
 

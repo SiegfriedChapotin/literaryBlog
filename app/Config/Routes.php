@@ -2,6 +2,7 @@
 namespace Literary\Config;
 
 
+use Literary\Controller\CommentController;
 use Literary\Controller\ShowingController;
 use LiteraryCore\Router\RoutesInterface;
 use Literary\Controller\Exception\HttpException;
@@ -34,6 +35,7 @@ class Routes implements RoutesInterface {
             'admin' => ['controller' =>AuthorController::class,'action'=>'admin','secure'=>true],
 
             'mail_Office'=>['controller'=>MailController::class,'action'=>'mailOffice'],
+            'comment_Office'=>['controller'=>CommentController::class,'action'=>'commentOffice'],
 
             'texthome_admin'=>['controller'=>AuthorController::class, 'action'=>'showTextHome'],
             'heading_admin' => ['controller' =>AuthorController::class, 'action' => 'showHeadingHome'],

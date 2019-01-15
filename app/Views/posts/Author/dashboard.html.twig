@@ -126,21 +126,32 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for comment in commentreport %}
-
+                        {% for commentreport in commentreport %}
+                        <form method="post">
                             <tr>
-                                <td>{{ comment.pseudo }}</td>
-                                <td>{{ comment.comment }}</td>
+                                <td>{{ commentreport.pseudo }}</td>
+                                <td>{{ commentreport.comment }}</td>
                                 <td>
-                                    <a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{ book.id }}">
-                                        <input class="btn btn-success" type="submit" value="Garder"/>
-                                    </a></td>
-                                <td>
-                                    <a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{ book.id }}">
-                                        <input class="btn btn-danger" type="submit" value="supprimer"/>
-                                    </a></td>
-                            </tr>
+                                    <button type="submit"
+                                            class="btn btn-card btn-bg btn-success font-weight-bold "
+                                            name="commentreport"
+                                            value="{{ commentreport.id }}">
 
+                                        <a class=" paddingRL">Garder</a>
+                                        <i data-feather="check"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="submit"
+                                            class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                            name="commentdel"
+                                            value="{{ commentreport.id }}">
+                                        <a class=" paddingRL"> Supprimer</a>
+                                        <i data-feather="delete"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </form>
                         {% endfor %}
                         </tbody>
                     </table>
