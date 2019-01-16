@@ -67,4 +67,4 @@ Réalisation d'un blog.
 ###### Accès à l'administration:
 
     Authentifiant: Forteroche
-    Mot de passe: fortroche
+    Mot de passe: forteroche
