@@ -9,26 +9,36 @@
 namespace Literary\Model\table;
 
 
-
-
-
 use LiteraryCore\Table\AbstractTable;
 use Literary\Model\entity\Introduction;
 
- class TextHomeTable extends AbstractTable
+use LiteraryCore\Request\Request;
+use LiteraryCore\Request\Query;
+
+class TextHomeTable extends AbstractTable
 {
 
 
-    protected  function getTableName()
+    protected function getTableName()
     {
         return 'texthome';
     }
 
-    protected  function getClassName()
+    protected function getClassName()
     {
         return Introduction::class;
     }
 
+    function TextHomeUpdate()
+    {
+        $post = (new Introduction())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'));
+        $this->flush($post);
 
+    }
 
+    function TextHome()
+    {
+
+       return $this->all();
+}
 }

@@ -29,53 +29,33 @@ class MailTable extends AbstractTable
     }
 
 
+
     function listMail($int)
     {
-
-
-        return $this->query('SELECT * FROM mail WHERE classify = 0 ORDER BY mail.date DESC LIMIT '.$int);
-
-
+        return $this->query('SELECT * FROM '.$this->getTableName().' WHERE classify = 0 ORDER BY mail.date DESC LIMIT ' . $int);
     }
+
     function listMailClass($int)
     {
-
-
-        return $this->query('SELECT * FROM mail WHERE classify = 1 ORDER BY mail.date DESC LIMIT '.$int);
-
-
+        return $this->query('SELECT * FROM  '.$this->getTableName().' WHERE classify = 1 ORDER BY mail.date DESC LIMIT ' . $int);
     }
 
     function writeMail()
     {
         if (Request::exist('NameMail') && Request::exist('TitreMail') && Request::exist('EmailMail') && Request::exist('TextMail')) {
 
-            return $this->create(['name' => Request::get('NameMail'), 'title' => Request::get('TitreMail'), 'email' => Request::get('EmailMail'), 'text' => Request::get('TextMail')]);
+                $post=(new Mail())->setName(Request::get('NameMail'))->setEmail(Request::get('EmailMail'))->setText(Request::get('TextMail'))->setTitle(Request::get('TitreMail'));
+                $this->flush($post);
+
+                return header('Location:index.php?p=contact');
         }
 
     }
-
-
-    function classify()
-    {
-        if (Request::exist('mailid')) {
-
-           $key = intval(Request::get('mailid'));
-           $this->update($key, ['classify' => true]);
-
-            return header('Location:index.php?p=mail_Office');
-        }
-    }
-
 
     function deleteMail(int $id)
     {
-
-
         return $this->delete($id);
-
     }
-
 
 
 }

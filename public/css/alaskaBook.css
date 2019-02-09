@@ -8,6 +8,7 @@ body {
     background-color: rgba(184, 135, 76, 0.8);
 }
 
+
 .padding {
     padding: 10px;
 }
@@ -29,21 +30,13 @@ body {
     margin: 70px 0;
 }
 
-.icoImg {
-    width: 10%;
-    display: flex;
-}
 
-h1, h2, h3, .greenLink {
+h1, h2, h3, h4, .greenLink {
     color: #7e7e41;
     font-weight: bolder;
     font-family: 'Permanent Marker', serif;
 }
 
-.after {
-    padding-left: 10px;
-    font-size: 1.5em;
-}
 
 hr {
     border-radius: inherit;
@@ -63,10 +56,12 @@ hr {
 
 .greenLink:hover {
     color: #c4c468;
+    text-decoration: none;
 }
 
 .greenLink:active {
     color: #565632;
+    text-decoration: none;
 }
 
 
@@ -89,10 +84,6 @@ hr {
     margin: 20px 0;
 }
 
-.kiosque img {
-    max-width: 50%;
-    min-width: 100%;
-}
 
 .jumbotron .container, .card-header {
     background-color: rgba(243, 223, 198, 0.7);
@@ -123,11 +114,108 @@ hr {
     width: 100%;
 }
 
+.hiddenEle {
+    display: none;
+}
 
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) and (max-width: 1200px) {
 
-     h3{
-        font-size: 1.2em;
+/* gestion images*/
+
+.kiosque img {
+    max-width: 50%;
+    min-width: 100%;
+}
+
+.giec img {
+    max-width: 25%;
+    min-width: 50%;
+}
+
+.network img {
+    max-width: 10%;
+    min-width: 15%;
+}
+
+.icoImg {
+    width: 10%;
+    display: flex;
+}
+
+#livrePaysage{
+    display: none;
+}
+
+
+/* Extra small devices (portrait phones, less than 576px)
+ No media query for `xs` since this is the default in Bootstrap
+ Small devices (landscape phones, 576px and up)*/
+
+@media (max-width: 576px) {
+
+    .hiddenEle{
+        display: block;
+    }
+
+    .visibleEle{
+        display: none;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+
+    .card-body{
+        padding: 0px;
+        margin: 0px;
     }
 }
+
+/* Medium devices (tablets, 768px and up) sm*/
+@media (max-width: 768px) {
+
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+    .network img {
+        max-width: 10%;
+        min-width: 20%;
+    }
+
+    .paddingtext  {
+        padding: 10px;
+    }
+
+    .visibleEleSM{
+        display: none;
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) MD*/
+@media (max-width: 992px) {
+
+    .visibleEleMD{
+        display: none;
+    }
+
+    .sidebar-sticky h4, #dashboard .nav-item {
+        font-size: 0.8em;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (max-width: 1200px) {
+
+    #livrePortrait{
+        display: none;
+    }
+    #livrePaysage{
+        display: block;
+    }
+
+    .network img {
+        max-width: 15%;
+        min-width: 20%;
+    }
+}
+

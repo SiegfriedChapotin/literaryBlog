@@ -55,6 +55,7 @@ class MysqlDatabase extends Database
     private function getPDO()
     {
         if ($this->db === null) {
+
             $db = new PDO("mysql:dbname=" . $this->db_name . ";host=" . $this->db_host . ';charset=utf8', $this->db_user, $this->db_pass);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db = $db;

@@ -6,14 +6,15 @@
  * Time: 22:58
  */
 
-namespace Literary\Controller\Security;
+namespace Literary\Controller\security;
 
-use LiteraryCore\Controller\AbstractController;
+
+use Literary\Controller\office\OfficeController;
 use LiteraryCore\Request\Request;
 use Literary\Model\table\Security\UserTable;
 
 
-class SecurityController extends AbstractController
+class SecurityController extends OfficeController
 
 {
 
@@ -46,7 +47,7 @@ class SecurityController extends AbstractController
         }
     }
 
-    $this->render('posts/Author/office/officeConnection.html.twig', ['errors' => $errors]);
+    $this->render('security/officeConnection.html.twig', ['errors' => $errors]);
 }
 
 

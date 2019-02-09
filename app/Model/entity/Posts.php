@@ -8,31 +8,41 @@
 
 namespace Literary\Model\entity;
 
+use LiteraryCore\Entity\AbstractEntity;
 
-class Posts
+class Posts extends AbstractEntity
 {
-    private $id;
     private $title;
     private $text;
-    private $date;
-    private $isStatus;
+    private $classify;
+    private $chapter;
 
 
-
-    /**
-     * @return integer
-     */
-    public function getId()
+    public static function relationWithDb()
     {
-        return $this->id;
+        return [
+            'title' => 'title',
+            'text' => 'text',
+            'classify' => 'classify',
+            'chapter' => 'chapter',
+        ];
     }
 
     /**
-     * @param integer $id
+     * @return
      */
-    public function setId($id): int
+    public function getChapter()
     {
-        $this->id = $id;
+        return $this->chapter;
+    }
+
+    /**
+     * @param $chapter
+     */
+    public function setChapter($chapter)
+    {
+        $this->chapter = $chapter;
+        return $this;
     }
 
     /**
@@ -46,13 +56,14 @@ class Posts
     /**
      * @param string $title
      */
-    public function setTitle($title): string
+    public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
-     * @return stringd
+     * @return string
      */
     public function getText()
     {
@@ -62,41 +73,28 @@ class Posts
     /**
      * @param string $text
      */
-    public function setText($text): string
+    public function setText($text)
     {
         $this->text = $text;
+        return $this;
     }
 
-    /**
-     * @return
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param  $date
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
 
     /**
      * @return integer
      */
-    public function getisStatus()
+    public function getClassify()
     {
-        return $this->isStatus;
+        return $this->classify;
     }
 
     /**
-     * @param integer $isStatus
+     * @param integer $classify
      */
-    public function setIsStatus($isStatus): int
+    public function setClassify($classify)
     {
-        $this->isStatus = $isStatus;
+        $this->classify = $classify;
+        return $this;
     }
 
 }

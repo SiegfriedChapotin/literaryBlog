@@ -10,26 +10,32 @@
     </div>
 
 
-        <form method= "post">
-            <div class= "form-group" >
+    <form method="post">
+        <div class="form-group">
 
-                <label for= "NameMail" class="paddingtext font-weight-bold" >Votre Nom</label>
-                <textarea class="form-control" type="text" ide="NameMail" name="NameMail" required ></textarea>
+            <label for="NameMail" class="paddingtext font-weight-bold">Votre Nom</label>
+            <textarea class="form-control" id="NameMail" name="NameMail" required></textarea>
 
-                <label for= "EmailMail" class="padding font-weight-bold">Votre courriel</label>
-                <input class="form-control" type="email" id="EmailMail" name="EmailMail" required >
+            <label for="EmailMail" class="padding font-weight-bold">Votre courriel</label>
+            <input class="form-control" type="email" id="EmailMail" name="EmailMail" required>
 
-                <label for= "TitreMail" class="padding font-weight-bold">Titre</label>
-                <input class="form-control" type="text" id="TitreMail" name="TitreMail" required >
+            <label for="TitreMail" class="padding font-weight-bold">Titre</label>
+            <input class="form-control" type="text" id="TitreMail" name="TitreMail" required>
 
-                <label for= "Textmail"class="padding font-weight-bold"> Votre message </label>
-                <textarea class= "form-control textarea" type="text" id= "TextMail" rows= "20" name="TextMail"></textarea>
-            </div>
-            <div>
-                <input class="btn btn-success" type="submit" value="Envoyer" />
-                <input class="btn btn-secondary" type="reset" value="Effacer" />
-            </div>
-        </form>
+            <label for="TextMail" class="padding font-weight-bold"> Votre message </label>
+            <textarea class="form-control textarea" id="TextMail" rows="20" name="TextMail"></textarea>
+        </div>
+        <div>
+            <p><input type="checkbox" required name="terms"> J'ai lu et accepte la Politique de confidentialité. Voir
+                les <a href="index.php?p=rgpd_show" target="_blank">
+                    <span class="badge badge-dark "> Mentions légales RGPD</span></a>
+            </p>
+        </div>
+        <div>
+            <input class="btn btn-success" type="submit" name="Envoyer" value="Envoyer"/>
+            <input class="btn btn-secondary" type="reset" value="Effacer"/>
+        </div>
+    </form>
 
 
     <wbr/>

@@ -2,6 +2,8 @@
 
 namespace LiteraryCore\Controller;
 
+use LiteraryCore\Service\flashBag\FlashBag;
+use LiteraryCore\Service\flashBag\FlashBagService;
 use \Twig_Loader_Filesystem;
 use \Twig_Environment;
 
@@ -17,6 +19,10 @@ abstract class AbstractController
         $loader = new Twig_Loader_Filesystem('../app/Views');
         $this->twig = new Twig_Environment($loader, array('cache' => ROOT . '/tmp', 'debug' => true));
         $this->twig->addExtension(new \Twig_Extensions_Extension_Text());
+        $flashBagTwigFunction=new \Twig_SimpleFunction('FlashBag',function(){
+            return FlashBagService::getFlashMessages();
+        });
+        $this->twig->addFunction($flashBagTwigFunction);
         $this->__postConstruct();
     }
 

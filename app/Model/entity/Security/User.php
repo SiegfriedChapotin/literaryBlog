@@ -8,27 +8,21 @@
 
 namespace Literary\Model\entity\Security;
 
+use LiteraryCore\Entity\AbstractEntity;
 
-class User
+class User extends AbstractEntity
 {
-     private $id;
+
      private $username;
      private $password;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public static function relationWithDb()
     {
-        return $this->id;
-    }
+        return [
+            'username' => 'username',
+            'password' => 'password',
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
+        ];
     }
 
     /**
@@ -42,9 +36,10 @@ class User
     /**
      * @param mixed $username
      */
-    public function setUsername($username): void
+    public function setUsername($username)
     {
         $this->username = $username;
+
     }
 
     /**
@@ -58,9 +53,10 @@ class User
     /**
      * @param mixed $password
      */
-    public function setPassword($password): void
+    public function setPassword($password)
     {
         $this->password = $password;
+
     }
 
 

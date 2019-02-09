@@ -1,0 +1,163 @@
+{% extends  "layout/Author/layoutdashboard.html.twig" %}
+
+{% block textarea %}
+
+    <br/>
+    <div class="col-12 shadow-lg p-4 mb-5  ">
+        <h1>Votre publications</h1>
+    </div>
+
+    <div class="col-12 shadow-lg p-2 mb-5 p-lg-5">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-news-tab" data-toggle="tab" href="#nav-news" role="tab"
+                   aria-controls="nav-news" aria-selected="true"><h3>Vos brouillons</h3></a>
+                <a class="nav-item nav-link" id="nav-archives-tab" data-toggle="tab" href="#nav-archives" role="tab"
+                   aria-controls="nav-archives" aria-selected="false"><h3>Archives</h3></a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
+                <div id="accordion">
+                    {% for publicationoffice in publicationoffice %}
+                        <div>
+                            <div class="card-header" id="{{ publicationoffice.id }}">
+                                <div class="mb-0 row justify-content-between">
+                                    <div class="col col-sm-5 col-md-4 col-lg-2 paddingtext">
+                                        <a class="paddingRL">{{ publicationoffice.title|raw }}</a>
+                                    </div>
+                                    <div class="col col-sm-5  col-md-4 col-lg-2 paddingtext">
+                                        <button class="btn btn-card btn-info font-weight-bold collapsed"
+                                                data-toggle="collapse"
+                                                data-target="#collapse{{ publicationoffice.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ publicationoffice.id }}">
+                                            Lire
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse{{ publicationoffice.id }}" class="collapse"
+                                 aria-labelledby="{{ publicationoffice.id }}"
+                                 data-parent="#accordion">
+                                <div class="container-fluide">
+                                    <form method="post">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 paddingtext">
+                                                <div class="card-body">
+                                                    <p class="text-right font-weight-bold">
+                                                        <a class="paddingRL"> {{ publicationoffice.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
+                                                    </p>
+                                                    <p class="paddingtext paper">{{ publicationoffice.text|striptags|nl2br }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                                <div class="paddingtext row  ">
+                                                    <div class="col-12 paddingRL">
+                                                        <a href="index.php?p=posts_admin&id={{ book.id |raw|nl2br }}">
+                                                            <button type="submit"
+                                                                    class="btn btn-card btn-bg btn-primary font-weight-bold "
+                                                                    name="postModify"
+                                                                    value="{{ publicationoffice.id }}">
+                                                                <a class=" paddingRL">Modifier</a>
+                                                                <i data-feather="edit-2"></i>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-12 paddingRL">
+                                                        <button type="submit"
+                                                                class="btn btn-card btn-bg btn-success font-weight-bold "
+                                                                name="classify"
+                                                                value="{{ publicationoffice.id }}">
+                                                            <a class=" paddingRL">Publier</a>
+                                                            <i data-feather="check"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-12 paddingRL">
+                                                        <button type="submit"
+                                                                class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                                                name="delete"
+                                                                value="{{ publicationoffice.id }}">
+                                                            <a class=" paddingRL"> Supprimer</a>
+                                                            <i data-feather="delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane fade active" id="nav-archives" role="tabpanel" aria-labelledby="nav-archives-tab">
+                <div id="accordionC">
+                    {% for publicationclass in publicationclass %}
+                        <div>
+                            <div class="card-header" id="{{ publicationclass.id }}">
+                                <div class="mb-0 row justify-content-between">
+                                    <div class="col-8 col-lg-10 paddingtext">
+                                        <a class="paddingRL"> {{ publicationclass.title|raw }}</a>
+                                    </div>
+                                    <div class="col-4 col-lg-2 paddingtext">
+                                        <button class="btn btn-card btn-info font-weight-bold collapsed"
+                                                data-toggle="collapse"
+                                                data-target="#collapse{{ publicationclass.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ publicationclass.id }}">
+                                            Lire
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse{{ publicationclass.id }}" class="collapse"
+                                 aria-labelledby="{{ publicationclass.id }}"
+                                 data-parent="#accordionC">
+                                <div class="container-fluide">
+                                    <div class=" paddingtext row">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 paddingtext">
+                                            <div class="row">
+                                                <p class="paddingtext">{{ publicationclass.title|raw }}</p>
+                                                <p class="paddingtext">Chapitre : {{ publicationclass.chapter }}</p>
+                                                <p class="paddingtext">{{ publicationclass.text|striptags|nl2br }}</p>
+                                            </div>
+                                            <div class="row">
+                                                <a class="paddingRL"> {{ publicationclass.date| date_modify ( "+1 day" )| date ( "m/d/Y" ) }}</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                                            <form method="post">
+                                                <div class="paddingtext row ">
+                                                    <div class="col-12 paddingRL">
+                                                        <a href="index.php?p=posts_admin&id={{ book.id |nl2br }}">
+                                                            <button type="submit"
+                                                                    class="btn btn-card btn-bg btn-primary font-weight-bold "
+                                                                    name="postModify"
+                                                                    value="{{ publicationclass.id }}">
+                                                                <a class=" paddingRL">Modifier</a>
+                                                                <i data-feather="edit-2"></i>
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-12 paddingRL">
+                                                        <button type="submit"
+                                                                class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                                                name="delete"
+                                                                value="{{ publicationclass.id }}">
+                                                            <a class=" paddingRL"> Supprimer</a>
+                                                            <i data-feather="delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

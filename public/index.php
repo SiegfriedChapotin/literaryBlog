@@ -2,10 +2,10 @@
 define('ROOT', dirname(__DIR__));
 require_once ROOT . '/vendor/autoload.php';
 
-use LiteraryCore\Exception\HttpException\InternalServerErrorHttpException;
-use LiteraryCore\Exception\HttpException\HttpException;
-use LiteraryCore\Exception\HttpException\NotFoundHttpException;
-Use LiteraryCore\Exception\HttpException\ForbiddenHttpException;
+use LiteraryCore\Exception\httpException\InternalServerErrorHttpException;
+use LiteraryCore\Exception\httpException\HttpException;
+use LiteraryCore\Exception\httpException\NotFoundHttpException;
+Use LiteraryCore\Exception\httpException\ForbiddenHttpException;
 
 use \LiteraryCore\Router\Router;
 use \LiteraryCore\Request\Query;

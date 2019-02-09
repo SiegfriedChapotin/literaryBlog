@@ -19,7 +19,7 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr class="text-white bg-success">
-                            <th class="width20" >Nom</th>
+                            <th class="width20">Nom</th>
                             <th>Courriel</th>
                             <th class="width10">Lire</th>
                         </tr>
@@ -27,12 +27,19 @@
                         <tbody>
                         {% for mail in mail %}
                             <tr>
-                                <td>{{ mail.name }}</td>
-                                <td>{{ mail.title|truncate(50)}}</td>
+                                <td>{{ mail.name|raw }}</td>
+                                <td>{{ mail.title|raw|truncate(50) }}</td>
                                 <td>
-                                    <a href="http://localhost/literaryBlog/public/index.php?p=mail_Office">
-                                        <input class="btn btn-info" type="submit" value="Lire"/>
-                                    </a></td>
+                                    <a href="index.php?p=mail_Office">
+                                        <button type="submit"
+                                                class="btn btn-card btn-bg btn-info font-weight-bold "
+                                                name="MailLire"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="Voir">
+                                            <i data-feather="eye"></i>
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -51,21 +58,40 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr class="text-white bg-info">
-                            <th >Titre</th>
-                            <th class="width20">Date</th>
-                            <th class="width10">Modifier</th>
+                            <th>Titre</th>
+                            <th>Date</th>
+                            <th class="width10">Voir</th>
+                            <th class="width10">Modif</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for book in chapitres %}
 
                             <tr>
-                                <td>{{ book.title }}</td>
-                                <td>{{ book.date|date_modify ( "+1 day" )| date ( "m/d/Y"  )}}</td>
+                                <td>{{ book.title|raw }}</td>
+                                <td>{{ book.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</td>
                                 <td>
-                                    <a href="http://localhost/literaryBlog/public/index.php?p=posts_admin&id={{ book.id |nl2br }}">
-                                        <input class="btn btn-info" type="submit" value="Modifier"/>
-                                    </a></td>
+                                    <a href="index.php?p=publication_Office">
+                                        <button type="submit"
+                                                class="btn btn-card btn-bg btn-info font-weight-bold "
+                                                name="postLire"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="Voir">
+                                            <i data-feather="eye"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="index.php?p=posts_admin&id={{ book.id }}">
+                                        <button type="submit"
+                                                class="btn btn-card btn-bg btn-primary font-weight-bold "
+                                                name="postModify"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="Modifier">
+                                            <i data-feather="edit-2"></i>
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
 
                         {% endfor %}
@@ -74,10 +100,8 @@
                 </div>
             </div>
         </div>
-        <br/>
-
     </div>
-
+    <br/>
     <div class="row">
         <div class="col-lg-6 col-md-12 ">
             <div class="row padding">
@@ -89,17 +113,28 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr class="text-white bg-warning ">
-                            <th>Pseudo</th>
+                            <th class="width20">Pseudo</th>
                             <th>Commentaires</th>
+                            <th class="width10">Lire</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for comment in comment %}
 
                             <tr>
-                                <td>{{ comment.pseudo }}</td>
-                                <td>{{ comment.comment }}</td>
-
+                                <td>{{ comment.pseudo|raw }}</td>
+                                <td>{{ comment.comment| raw|truncate(100) }}</td>
+                                <td>
+                                    <a href="index.php?p=comment_Office" >
+                                        <button type="submit"
+                                                class="btn btn-card btn-bg btn-info font-weight-bold "
+                                                name="commentLire"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="voir">
+                                            <i data-feather="eye"></i>
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
 
                         {% endfor %}
@@ -119,39 +154,51 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr class="text-white bg-danger">
-                            <th>Pseudo</th>
+                            <th class="width20">Pseudo</th>
                             <th>Commentaires</th>
+                            <th class="width10">Voir</th>
                             <th class="width10">Garder</th>
-                            <th class="width10">Supprimer</th>
+                            <th class="width10">Supp</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for commentreport in commentreport %}
-                        <form method="post">
-                            <tr>
-                                <td>{{ commentreport.pseudo }}</td>
-                                <td>{{ commentreport.comment }}</td>
-                                <td>
-                                    <button type="submit"
-                                            class="btn btn-card btn-bg btn-success font-weight-bold "
-                                            name="commentreport"
-                                            value="{{ commentreport.id }}">
 
-                                        <a class=" paddingRL">Garder</a>
-                                        <i data-feather="check"></i>
-                                    </button>
-                                </td>
+                            <tr>
+                                <td>{{ commentreport.pseudo|raw}}</td>
+                                <td>{{ commentreport.comment| raw|truncate(100) }}</td>
                                 <td>
-                                    <button type="submit"
-                                            class="btn btn-card btn-danger font-weight-bold  btn-bg"
-                                            name="commentdel"
-                                            value="{{ commentreport.id }}">
-                                        <a class=" paddingRL"> Supprimer</a>
-                                        <i data-feather="delete"></i>
-                                    </button>
+                                    <a href="index.php?p=comment_Office">
+                                        <button type="submit"
+                                                class="btn btn-card btn-bg btn-info font-weight-bold "
+                                                name="commentLire"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="Voir">
+                                            <i data-feather="eye"></i>
+                                        </button>
+                                    </a>
                                 </td>
+                                <form method="post">
+                                    <td>
+                                        <button type="submit"
+                                                class="btn btn-card btn-bg btn-success font-weight-bold "
+                                                name="classify"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="Garder">
+                                            <i data-feather="check"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="submit"
+                                                class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                                name="delete"
+                                                value="{{ commentreport.id }}" data-toggle="tooltip"
+                                                data-placement="top" title="Supprimer">
+                                            <i data-feather="delete"></i>
+                                        </button>
+                                    </td>
+                                </form>
                             </tr>
-                            </form>
                         {% endfor %}
                         </tbody>
                     </table>

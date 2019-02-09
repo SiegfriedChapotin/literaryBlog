@@ -6,7 +6,7 @@
  * Time: 20:24
  */
 
-namespace Literary\Controller\Exception;
+namespace Literary\Controller\exception;
 
 use LiteraryCore\Controller\AbstractController;
 

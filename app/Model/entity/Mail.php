@@ -8,16 +8,28 @@
 
 namespace Literary\Model\entity;
 
-
-class mail
+use LiteraryCore\Entity\AbstractEntity;
+class Mail extends AbstractEntity
 {
-    private $id;
+
     private $name;
     private $email;
     private $text;
-    private $date;
-    private $titre;
+    private $title;
     protected $classify;
+
+
+    public static function relationWithDb()
+{
+    return [
+        'name' => 'name',
+        'email' => 'email',
+        'text' => 'text',
+        'title' => 'title',
+
+    ];
+}
+
 
     /**
      * @return mixed
@@ -30,43 +42,34 @@ class mail
     /**
      * @param mixed $classify
      */
-    public function setClassify($classify): void
+    public function setClassify($classify)
     {
         $this->classify = $classify;
+        return $this;
     }
 
 
     /**
      * @return mixed
      */
-    public function getTitre()
+    public function getTitle()
     {
-        return $this->titre;
+        return $this->title;
     }
 
     /**
      * @param mixed $titre
      */
-    public function setTitre($titre): void
+    public function setTitle($title)
     {
-        $this->titre = $titre;
+        $this->title = $title;
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
@@ -79,9 +82,10 @@ class mail
     /**
      * @param mixed $name
      */
-    public function setName($name): void
+    public function setName($name)
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -95,9 +99,10 @@ class mail
     /**
      * @param mixed $email
      */
-    public function setEmail($email): void
+    public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -111,26 +116,10 @@ class mail
     /**
      * @param mixed $text
      */
-    public function setText($text): void
+    public function setText($text)
     {
         $this->text = $text;
+        return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param mixed $date
-     */
-    public function setDate($date): void
-    {
-        $this->date = $date;
-    }
-
 
 }

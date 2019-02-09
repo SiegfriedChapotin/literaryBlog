@@ -8,28 +8,22 @@
 
 namespace Literary\Model\entity;
 
+use LiteraryCore\Entity\AbstractEntity;
 
-class Introduction
+class Introduction extends AbstractEntity
 {
 
-    private $id;
+
     private $title;
     private $text;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public static function relationWithDb()
     {
-        return $this->id;
-    }
+        return [
+            'title' => 'title',
+            'text' => 'text',
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
+        ];
     }
 
     /**
@@ -43,9 +37,11 @@ class Introduction
     /**
      * @param mixed $title
      */
-    public function setTitle($title): void
+    public function setTitle($title)
+
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -59,9 +55,11 @@ class Introduction
     /**
      * @param mixed $text
      */
-    public function setText($text): void
+    public function setText($text)
+
     {
         $this->text = $text;
+        return $this;
     }
 
 

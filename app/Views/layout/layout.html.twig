@@ -5,13 +5,22 @@
     <div class="container paddingPage">
 
 
-             {% block content %}{% endblock%}
+        {% for flashType,flashMessages in FlashBag() %}
+        <div class="alert alert-{{ flashType }}" role="alert">
+            {% for flashMessage in flashMessages %}
 
-             {% block comment %}{% endblock%}
+                {{ flashMessage }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
-             {% block writecomment %}{% endblock%}
+        {% block content %}{% endblock %}
 
-             {% block contact %}{% endblock%}
+        {% block comment %}{% endblock %}
+
+        {% block writecomment %}{% endblock %}
+
+        {% block contact %}{% endblock %}
 
     </div>
 

@@ -38,46 +38,29 @@ class CommentsTable extends AbstractTable
     function listComment($int)
     {
 
-        return $this->query('SELECT * FROM comment ORDER BY comment.date DESC LIMIT ' .$int);
-    }
-
-
-    function commentWrite()
-    {
-        if (Request::exist('pseudo') && Request::exist('comment')) {
-
-            $this->create(['pseudo' => Request::get('pseudo'), 'comment' => Request::get('comment'), 'id_chapter' => Query::get('id')]);
-            return header('Location: index.php?p=post_show&id=' . Query::get('id'));
-
-        }
+        return $this->query('SELECT * FROM comment WHERE classify = 0 ORDER BY comment.date DESC LIMIT ' .$int);
     }
 
     function listReport($int)
     {
-        return $this->query('SELECT * FROM comment WHERE is_reported = 1 ORDER BY comment.date DESC LIMIT '.$int);
+        return $this->query('SELECT * FROM comment WHERE classify = 1 ORDER BY comment.date DESC LIMIT ' . $int);
     }
 
-    function report()
+    function commentWrite()
     {
-        if (Request::exist('commentid')) {
+        if (Request::exist('pseudo') && Request::exist('comment')) {
+            $comment=(new Comment())->setComment(Request::get('comment'))->setPseudo(Request::get('pseudo'))->setIdChapter(Query::get('id'));
+            $this->flush($comment);
 
-            $key= intval(Request::get('commentid'));
-            $this->update($key, ['is_reported' => true]);
 
-            return header('Location: index.php?p=post_show&id='. Query::get('id'));
+
         }
     }
 
-    function restaureComment()
-    {
 
 
-        if (Request::exist('commentreport')) {
-            $key= intval(Request::get('commentreport'));
-            $this->update($key, ['is_reported' => 0]);
-            return header('Location: index.php?p=comment_Office');
-        }
-    }
+
+
 
 
 

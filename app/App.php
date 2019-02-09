@@ -11,6 +11,7 @@ namespace Literary;
 
 use LiteraryCore\Database\MysqlDatabase;
 use LiteraryCore\Config;
+use LiteraryCore\Service\flashBag\FlashBagService;
 
 
 /**
@@ -50,7 +51,12 @@ class App
      */
     public static function load()
     {
-        session_start();}
+        session_start();
+
+        FlashBagService::init();
+
+
+    }
 
 
     /**

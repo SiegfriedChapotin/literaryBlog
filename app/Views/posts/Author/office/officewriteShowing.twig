@@ -1,0 +1,44 @@
+{% extends  "layout/Author/layoutdashboard.html.twig" %}
+
+
+{% block textarea %}
+    <br/>
+
+    <div class="col-12 shadow-lg p-4 mb-5  ">
+        <h1>Publications</h1>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <div class=" row justify-content-end font-weight-bold ">
+                <div class="col-2 form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="is_status" id="is_status0" value="0" checked>
+                    <label class="form-check-label" for="is_status0">Brouillon
+                    </label>
+                </div>
+                <div class="col-2 form-check form-check-inline  ">
+                    <input class="form-check-input" type="radio" name="is_status" id="is_status1" value="1">
+                    <label class="form-check-label" for="is_status1">Editer
+                    </label>
+                </div>
+            </div>
+
+            <label for="TitleDashboard" class="paddingtext font-weight-bold">Titre</label>
+            <textarea class="form-control" type="text" name="TitleDashboard">{{ showing.title }}</textarea>
+
+
+            <label for="TextDashboard" class="paddingtext font-weight-bold"> Texte </label>
+            <textarea class="form-control textarea" id="textarea" rows="20"
+                      name="TextDashboard">{{ showing.text|striptags }}</textarea>
+        </div>
+        <div>
+            <input class="btn btn-success" type="submit" value="Publier"/>
+        </div>
+    </form>
+
+    <wbr/>
+{% endblock %}
+
+
+
+

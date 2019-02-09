@@ -8,30 +8,26 @@
 
 namespace Literary\Model\entity;
 
+use LiteraryCore\Entity\AbstractEntity;
 
-class Comment
+class Comment extends AbstractEntity
 {
-    private $id;
+
     private $idChapter;
     private $pseudo;
     private $comment;
-    private $isReported;
-    private $date;
+    private $classify;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
+
+    public static function relationWithDb()
     {
-        $this->id = $id;
+        return [
+            'idChapter' => 'id_Chapter',
+            'pseudo' => 'pseudo',
+            'comment' => 'comment',
+
+        ];
     }
 
     /**
@@ -45,9 +41,10 @@ class Comment
     /**
      * @param mixed $idChapter
      */
-    public function setIdChapter($idChapter): void
+    public function setIdChapter($idChapter)
     {
         $this->idChapter = $idChapter;
+        return $this;
     }
 
     /**
@@ -61,9 +58,10 @@ class Comment
     /**
      * @param mixed $pseudo
      */
-    public function setPseudo($pseudo): void
+    public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
+        return $this;
     }
 
     /**
@@ -77,42 +75,29 @@ class Comment
     /**
      * @param mixed $comment
      */
-    public function setComment($comment): void
+    public function setComment($comment)
     {
         $this->comment = $comment;
+        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getisReported()
+    public function getClassify()
     {
-        return $this->isReported;
+        return $this->classify;
     }
 
     /**
      * @param mixed $isReported
      */
-    public function setIsReported($isReported): void
+    public function setClassify($classify)
     {
-        $this->isReported = $isReported;
+        $this->classify = $classify;
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param mixed $date
-     */
-    public function setDate($date): void
-    {
-        $this->date = $date;
-    }
 
 
 

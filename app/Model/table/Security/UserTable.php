@@ -12,9 +12,6 @@ use Literary\Model\entity\Security\User;
 use LiteraryCore\Table\AbstractTable;
 
 
-use LiteraryCore\Request\Query;
-use LiteraryCore\Request\Request;
-
 class UserTable extends AbstractTable
 {
 
@@ -30,7 +27,7 @@ class UserTable extends AbstractTable
     }
 
     public function login(string $username) {
-        return $this->query('SELECT * FROM author WHERE username = ?', array($username),true);
+        return $this->query('SELECT * FROM '.$this->getTableName().' WHERE username = ?', array($username),true);
 
     }
 }

@@ -1,85 +1,76 @@
 {% extends 'layout/layout.html.twig' %}
 
-{% block content %}
 
+
+{% block content %}
     {% for book in chapitre %}
         <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
             <h1>Billet simple pour l'Alaska</h1>
             <br/>
         </div>
         <div class="paper padding">
-
-            <h2>{{ book.title }}</h2>
+            <h2>{{ book.title|raw }}</h2>
             <p class="text-right">{{ book.date| date_modify ( "+1 day" )| date ( "m/d/Y" ) }}</p>
-            <p class="paddingtext">{{ book.text| striptags|nl2br }}</p>
-
-
+            <p class="paddingtext">{{ book.text|raw }}</p>
         </div>
     {% endfor %}
-
 {% endblock %}
 
 {% block comment %}
     <br/>
     <hr/>
     <br/>
-
     <h2>Dites moi tout sur ce chapitre !</h2>
     <p><a href="#comment" class="greenLink">En 500 caractéres maximum</a></p>
-
     {% for comment in comments %}
-
         <form method="post">
 
             <div class="shadow-lg p-3 mb-5 bg-gradient-info rounded text-white">
                 <div class="row">
-                    <div class="col-10">
-                        <h5 class="font-weight-bold">{{ comment.pseudo }}</h5>
-                        <a>{{ comment.comment }} </a> <br/>
+                    <div class="col-lg-10 col-sm-8 col-8">
+                        <h5 class="font-weight-bold">{{ comment.pseudo|raw }}</h5>
+                        <a>{{ comment.comment|raw }} </a> <br/>
                     </div>
-                    <div class="col-2">
-                        <input type="submit" class="btn btn-outline-danger" value="Signaler">
-                        <input type="hidden" value="{{ comment.id }}" name="commentid">
+                    <div class="col-lg-2 col-sm-4 col-4">
+                        <button type="submit"
+                                class="btn btn-card btn-bg btn-danger font-weight-bold "
+                                name="classify"
+                                value="{{ comment.id }}">
+                            <a class="visibleEle paddingRL">Signaler</a> <i data-feather="bell"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </form>
-
     {% endfor %}
-
 {% endblock %}
 
 {% block writecomment %}
-
     <div class="accordion" id="accordionExample">
-
         <div class="card">
             <div class="card-header" id="comment">
-                <h5 class="mb-0 ">
-                    <a class="btn btn-link greenLink  collapsed after" type="button" data-toggle="collapse"
+                <h3 class="mb-0 ">
+                    <a class="btn btn-link greenLink  collapsed" type="button" data-toggle="collapse"
                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Dites moi ce que vous en pensez.
                     </a>
-                </h5>
+                </h3>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="comment" data-parent="#accordionExample">
                 <div class="card-body ">
-
                     <form method="post" action="" id="comment">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo">
+                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" required>
 
                         <label for="comment">Votre commentaire </label>
-                        <textarea class="form-control" type="text" name="comment" id="comment" rows="10"></textarea>
+                        <textarea class="form-control" type="text" name="comment" id="comment" rows="10" required></textarea>
                         <br/>
-                        <input class="btn btn-info" type="submit" value="Valider"/>
+                        <input class="btn btn-info" type="submit" name="Valider" value="Valider"/>
                         <input class="btn btn-secondary" type="reset" value="Effacer"/>
                     </form>
-
                 </div>
             </div>
         </div>
-
     </div>
 
 {% endblock %}

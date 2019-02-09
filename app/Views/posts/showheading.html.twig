@@ -10,10 +10,10 @@
 
         <div class="paddingtext">
 
-            <h2>{{ heading.title }}</h2>
+            <h2>{{ heading.title|raw }}</h2>
         </div>
         <div class="paddingtext">
-            <p>{{ heading.text|striptags |  nl2br }}</p>
+            <p>{{ heading.text|raw }}</p>
 
         </div>
 

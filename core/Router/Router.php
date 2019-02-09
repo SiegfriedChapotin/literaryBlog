@@ -8,9 +8,9 @@
 
 namespace LiteraryCore\Router;
 
-use LiteraryCore\Exception\HttpException\ForbiddenHttpException;
-use LiteraryCore\Exception\HttpException\NotFoundHttpException;
-use LiteraryCore\Exception\HttpException\InternalServerErrorHttpException;
+use LiteraryCore\Exception\httpException\ForbiddenHttpException;
+use LiteraryCore\Exception\httpException\NotFoundHttpException;
+use LiteraryCore\Exception\httpException\InternalServerErrorHttpException;
 use LiteraryCore\Util\ArrayUtil;
 
 class Router

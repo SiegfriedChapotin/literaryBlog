@@ -34,41 +34,47 @@ class PostsTable extends AbstractTable
     {
         return Posts::class;
     }
+
+
+    /**
+     * @return object
+     */
     function listPostAll( )
     {
-        return $this->query('SELECT * FROM book WHERE is_status=1 ORDER BY book.date DESC');
+        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter');
     }
+
 
     function listPostWrite(string $int)
     {
-        return $this->query('SELECT * FROM book WHERE is_status=0 ORDER BY book.date DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC LIMIT ' . $int);
     }
 
     function listPost(string $int)
     {
-        return $this->query('SELECT * FROM book WHERE is_status=1 ORDER BY book.date DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC LIMIT ' . $int);
     }
     function findPost()
     {
         return $this->find(Query::get('id'));
     }
 
+
     function NewPostWrite()
     {
         if (Request::exist('TitleDashboard') && Request::exist('TextDashboard')) {
+            $post=(new Posts())->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'))->setClassify(Request::get('is_status'))->setChapter(Request::get('ChapDashboard'));
+            $this->flush($post);
 
-            $this->create(['title'=>Request::get('TitleDashboard'),'text'=>Request::get('TextDashboard'),'is_status'=>Request::get('is_status')]);
-
+            return header('Location:index.php?p=publication_Office');
         }
-
     }
-    function modifPostWrite()
+
+    function PostUpdate()
     {
-        if (Request::exist('TitleDashboard') && Request::exist('TextDashboard')&& Request::exist('is_status')) {
+            $post=(new Posts())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'))->setClassify(Request::get('is_status'))->setChapter(Request::get('ChapDashboard'));
+            $this->flush($post);
 
-            $this->update(Query::exist('id'),['title'=>Request::get('TitleDashboard'), 'text'=>Request::get('TextDashboard'),'is_status'=>Request::get('is_status')]);
-
-        }
-
+            return header('Location:index.php?p=posts_admin&id='.Query::get('id'));
     }
 }

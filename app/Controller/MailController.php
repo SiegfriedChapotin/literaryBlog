@@ -5,75 +5,56 @@
  * Date: 14/11/2018
  * Time: 14:16
  */
+
 namespace Literary\Controller;
 
 use Literary\Model\table\MailTable;
-use Literary\Model\table\ShowingTable;
-use LiteraryCore\Controller\AbstractController;
-use Literary\Model\table\TextHomeTable;
-use Literary\Model\table\PostsTable;
-use Literary\Model\table\HeadingTable;
-use Literary\Model\table\Author\AuthorTable;
-use Literary\Model\table\CommentsTable;
 use LiteraryCore\Request\Request;
+use Literary\Controller\office\OfficeController;
+use LiteraryCore\Service\flashBag\FlashBagService;
 
 
-class MailController extends AbstractController{
+class MailController extends OfficeController
+{
 
 
-    public function writeMail() {
-        $this->render ('posts/contact.html.twig', [
-            'contact'=>(new MailTable())->writeMail(),
-            'showings' => (new ShowingTable())->all()
+    public function contact()
+    {
 
+        if (Request::exist('Envoyer')) {
+            (new MailTable())->writeMail();
+            FlashBagService::addFlashMessage('info', 'Votre message est bien arrivé. Merci');
+            $this->redirect('contact');
+            return;
+        }
+
+        $this->render('posts/contact.html.twig', [
+            'contact' => (new MailTable())->writeMail()
         ]);
     }
 
-    public function mailOffice() {
-        if (Request::exist('maildel')) {
-
-            (new MailTable())->deleteMail(Request::get('maildel'));
+    public function mailOffice()
+    {
+        if (Request::exist('delete')) {
+            (new MailTable())->delete();
+            FlashBagService::addFlashMessage('danger', 'Le courriel a été supprimé');
             $this->redirect('mail_Office');
             return;
         }
 
-        if (Request::exist('mailid')){
-            (new MailTable())->classify(Request::get('mailid'));
-
+        if (Request::exist('classify')) {
+            (new MailTable())->classify(1);
+            FlashBagService::addFlashMessage('primary', 'Le courriel a été archivé');
             $this->redirect('mail_Office');
             return;
-        }
 
+        }
 
         $this->render('posts/Author/office/officeMail.html.twig',
             [
-                'chapitres'=>(new PostsTable())->all(),
-                'chapitresall'=>(new PostsTable())->all(),
-                'texthome'=>(new TextHomeTable())->all(),
-                'headings'=>(new HeadingTable())->all(),
-                'showings'=>(new ShowingTable())->all(),
-                'mailoffice'=>(new MailTable())->listMail(6),
-                'mailclass'=>(new MailTable())->listMailClass(6)
-
-
-
-
-
+                'mailoffice' => (new MailTable())->listMail(6),
+                'mailclass' => (new MailTable())->listMailClass(6)
             ]);
     }
-    /*
-    public function show() {
 
-        $this->render ('posts/show.html.twig',
-            ['chapitre'=> (new PostsTable())->find($id=Query::get('id')),
-             'comments'=>(new CommentsTable())->findCommentChapter(),
-             'commentwrite'=>(new CommentsTable())->commentWrite(),
-
-                ]);
-
-    }
-    public function list() {
-        $this->render ('posts/book.html.twig',['chapitreall'=>(new PostsTable())->all()]);
-    }
-    */
 }
