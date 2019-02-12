@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 14/11/2018
- * Time: 14:46
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 22:39
  */
 
 namespace Literary\Model\entity;
@@ -22,7 +22,6 @@ class Introduction extends AbstractEntity
         return [
             'title' => 'title',
             'text' => 'text',
-
         ];
     }
 
@@ -38,7 +37,6 @@ class Introduction extends AbstractEntity
      * @param mixed $title
      */
     public function setTitle($title)
-
     {
         $this->title = $title;
         return $this;
@@ -56,13 +54,10 @@ class Introduction extends AbstractEntity
      * @param mixed $text
      */
     public function setText($text)
-
     {
         $this->text = $text;
         return $this;
     }
-
-
 
 
 }

@@ -1,26 +1,28 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 24/10/2018
- * Time: 17:34
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 19:03
  */
 
 namespace Literary;
 
 
 use LiteraryCore\Database\MysqlDatabase;
-use LiteraryCore\Config;
+use LiteraryCore\Config\Config;
 use LiteraryCore\Service\flashBag\FlashBagService;
+
 
 
 /**
  * Class App
  * Gestion des fonctions propres à notre application
  */
+
+
 class App
 {
-
     /**
      * @var object
      */
@@ -52,12 +54,8 @@ class App
     public static function load()
     {
         session_start();
-
         FlashBagService::init();
-
-
     }
-
 
     /**
      * Factory qui initialise la connexion à la base de données
@@ -71,9 +69,4 @@ class App
         }
         return $this->db_instance;
     }
-
-
-
 }
-
-

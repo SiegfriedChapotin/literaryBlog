@@ -1,27 +1,24 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 19/11/2018
- * Time: 09:53
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 20:53
  */
 
 namespace LiteraryCore\Table;
 
-
 use Literary\App;
-Use LiteraryCore\Exception\httpException\ForbiddenHttpException;
+
 use LiteraryCore\Exception\httpException\NotFoundHttpException;
 use LiteraryCore\Entity\AbstractEntity;
 use LiteraryCore\Request\Request;
-use Literary\Model\entity\Posts;
-use LiteraryCore\Request\Query;
 
-use PDO;
 
-/**
- * Classe mère de tous les appels à la bd
- */
+
+    /**
+     * Classe mère de tous les appels à la bd
+     */
 abstract class AbstractTable
 {
     protected abstract function getTableName();
@@ -65,7 +62,7 @@ abstract class AbstractTable
      * @return object PDOStatement
      */
 
-    public function query(string $statement, array $attributes = [], bool $oneResult = false)
+    public function query(string $statement,  array $attributes = [], bool $oneResult = false)
     {
         if (empty($attributes)) {
             return $this->getDb()->query($statement, $this->getClassName(), $oneResult);

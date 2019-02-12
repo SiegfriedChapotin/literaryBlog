@@ -1,14 +1,20 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 18:03
+ */
 
 namespace LiteraryCore\Controller;
 
-use LiteraryCore\Service\flashBag\FlashBag;
-use LiteraryCore\Service\flashBag\FlashBagService;
 use \Twig_Loader_Filesystem;
 use \Twig_Environment;
+use LiteraryCore\Service\flashBag\FlashBagService;
 
 abstract class AbstractController
 {
+
     protected $twig;
 
     /**
@@ -22,6 +28,7 @@ abstract class AbstractController
         $flashBagTwigFunction=new \Twig_SimpleFunction('FlashBag',function(){
             return FlashBagService::getFlashMessages();
         });
+
         $this->twig->addFunction($flashBagTwigFunction);
         $this->__postConstruct();
     }
@@ -33,9 +40,8 @@ abstract class AbstractController
     public function redirect(string $route)
     {
         header('Location: index.php?p=' . $route);
-        die();
-    }
 
+    }
     /**
      * Appel la vue, lui applique les variables et l'envoie à l'application
      * @param String $nameView Nom de la vue à appeler
@@ -46,6 +52,4 @@ abstract class AbstractController
     {
         echo $this->twig->render($nameView, $variables);
     }
-
-
 }

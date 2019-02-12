@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
+ * Author: siegf_000
  * Date: 14/11/2018
  * Time: 14:46
  */
@@ -29,24 +29,7 @@ class Posts extends AbstractEntity
     }
 
     /**
-     * @return
-     */
-    public function getChapter()
-    {
-        return $this->chapter;
-    }
-
-    /**
-     * @param $chapter
-     */
-    public function setChapter($chapter)
-    {
-        $this->chapter = $chapter;
-        return $this;
-    }
-
-    /**
-     * @return string
+     * @return mixed
      */
     public function getTitle()
     {
@@ -54,7 +37,7 @@ class Posts extends AbstractEntity
     }
 
     /**
-     * @param string $title
+     * @param mixed $title
      */
     public function setTitle($title)
     {
@@ -63,7 +46,7 @@ class Posts extends AbstractEntity
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getText()
     {
@@ -71,7 +54,7 @@ class Posts extends AbstractEntity
     }
 
     /**
-     * @param string $text
+     * @param mixed $text
      */
     public function setText($text)
     {
@@ -79,9 +62,8 @@ class Posts extends AbstractEntity
         return $this;
     }
 
-
     /**
-     * @return integer
+     * @return mixed
      */
     public function getClassify()
     {
@@ -89,11 +71,28 @@ class Posts extends AbstractEntity
     }
 
     /**
-     * @param integer $classify
+     * @param mixed $classify
      */
     public function setClassify($classify)
     {
         $this->classify = $classify;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChapter()
+    {
+        return $this->chapter;
+    }
+
+    /**
+     * @param mixed $chapter
+     */
+    public function setChapter($chapter)
+    {
+        $this->chapter = $chapter;
         return $this;
     }
 

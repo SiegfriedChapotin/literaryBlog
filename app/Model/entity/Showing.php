@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
+ * Author: siegf_000
  * Date: 14/11/2018
  * Time: 14:46
  */
@@ -24,13 +24,11 @@ class Showing extends AbstractEntity
             'title' => 'title',
             'text' => 'text',
             'classify' => 'classify',
-
         ];
     }
 
-
     /**
-     * @return string
+     * @return mixed
      */
     public function getTitle()
     {
@@ -38,16 +36,17 @@ class Showing extends AbstractEntity
     }
 
     /**
-     * @param string $title
+     * @param mixed $title
      */
     public function setTitle($title)
+
     {
         $this->title = $title;
         return $this;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getText()
     {
@@ -55,17 +54,17 @@ class Showing extends AbstractEntity
     }
 
     /**
-     * @param string $text
+     * @param mixed $text
      */
     public function setText($text)
+
     {
         $this->text = $text;
         return $this;
     }
 
-
     /**
-     * @return integer
+     * @return mixed
      */
     public function getClassify()
     {
@@ -73,12 +72,14 @@ class Showing extends AbstractEntity
     }
 
     /**
-     * @param integer $classify
+     * @param mixed $classify
      */
     public function setClassify($classify)
+
     {
         $this->classify = $classify;
         return $this;
     }
+
 
 }

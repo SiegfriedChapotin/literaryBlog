@@ -1,47 +1,55 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 21:28
+ */
 
 namespace Literary\Config;
 
-
-use Literary\Controller\CommentController;
-use Literary\Controller\ShowingController;
+use Literary\Controller\office\OfficeAdminController;
+use Literary\Controller\security\SessionController;
 use LiteraryCore\Router\RoutesInterface;
 use Literary\Controller\exception\HttpException;
-use Literary\Controller\PostController;
-use Literary\Controller\MailController;
-use Literary\Controller\HomeController;
-use Literary\Controller\HeadingController;
-use Literary\Controller\RgpdController;
-use Literary\Controller\office\OfficeController;
-use Literary\Controller\security\SecurityController;
+
+use Literary\Controller\page\HomeController;
+use Literary\Controller\page\PostController;
+use Literary\Controller\page\MailController;
+use Literary\Controller\page\HeadingController;
+use Literary\Controller\page\RgpdController;
+use Literary\Controller\page\ShowingController;
+use Literary\Controller\page\CommentController;
 
 
 class Routes implements RoutesInterface
 {
+
+
     public function getRoutes(): array
     {
+
         return [
-
-            /*
-             *  Front part
-            */
-
             'home' => ['controller' => HomeController::class, 'action' => 'homepage'],
 
-            'post_list' => ['controller' => PostController::class, 'action' => 'list'],
-            'post_show' => ['controller' => PostController::class, 'action' => 'show'],
+            /*
+             * Front part
+             */
 
+            'book' => ['controller' => PostController::class, 'action' => 'list'],
+            'chapter_show' => ['controller' => PostController::class, 'action' => 'show'],
             'rgpd_show' => ['controller' => RgpdController::class, 'action' => 'show'],
             'heading_show' => ['controller' => HeadingController::class, 'action' => 'show'],
             'showing_show' => ['controller' => ShowingController::class, 'action' => 'show'],
-
             'contact' => ['controller' => MailController::class, 'action' => 'contact'],
 
             /*
-             *  Administration part
-             */
+            *  Administration part
+            */
 
-            'admin' => ['controller' => OfficeController::class, 'action' => 'admin', 'secure' => true],
+            'login' => ['controller' => SessionController::class, 'action' => 'sessionAuthor'],
+            'admin' => ['controller' => OfficeAdminController::class, 'action' => 'admin', 'secure' => true],
+            //
 
             'mail_Office' => ['controller' => MailController::class, 'action' => 'mailOffice'],
             'comment_Office' => ['controller' => CommentController::class, 'action' => 'commentOffice'],
@@ -57,21 +65,15 @@ class Routes implements RoutesInterface
             'writeprofil_admin' => ['controller' => ShowingController::class, 'action' => 'writeShowing'],
 
 
-            /*
-            *  Error part
-            */
-
             'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound'],
             'ForbiddenHttpException' => ['controller' => HttpException::class, 'action' => 'Forbidden'],
-            'InternalServerErrorHttpException' => ['controller' => HttpException::class, 'action' => 'internalServeurE'],
-
-            /*
-            *  login part
-            */
-
-            'login' => ['controller' => SecurityController::class, 'action' => 'sessionAuthor'],
-
+            'InternalServerErrorHttpException' => ['controller' => HttpException::class, 'action' => 'internalServeurE']
 
         ];
+
+
     }
+
+
 }
+

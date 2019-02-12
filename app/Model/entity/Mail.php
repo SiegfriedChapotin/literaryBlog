@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
+ * Author: siegf_000
  * Date: 14/11/2018
  * Time: 14:46
  */
@@ -26,50 +26,8 @@ class Mail extends AbstractEntity
         'email' => 'email',
         'text' => 'text',
         'title' => 'title',
-
     ];
 }
-
-
-    /**
-     * @return mixed
-     */
-    public function getClassify()
-    {
-        return $this->classify;
-    }
-
-    /**
-     * @param mixed $classify
-     */
-    public function setClassify($classify)
-    {
-        $this->classify = $classify;
-        return $this;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param mixed $titre
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-
 
     /**
      * @return mixed
@@ -119,6 +77,40 @@ class Mail extends AbstractEntity
     public function setText($text)
     {
         $this->text = $text;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClassify()
+    {
+        return $this->classify;
+    }
+
+    /**
+     * @param mixed $classify
+     */
+    public function setClassify($classify)
+    {
+        $this->classify = $classify;
         return $this;
     }
 

@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 23/12/2018
- * Time: 14:08
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 18:17
  */
 
 namespace LiteraryCore\Database;

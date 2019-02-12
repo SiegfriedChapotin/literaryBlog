@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
+ * Author: siegf_000
  * Date: 14/11/2018
  * Time: 14:46
  */
@@ -90,15 +90,13 @@ class Comment extends AbstractEntity
     }
 
     /**
-     * @param mixed $isReported
+     * @param mixed $classify
      */
     public function setClassify($classify)
     {
         $this->classify = $classify;
         return $this;
     }
-
-
 
 
 }

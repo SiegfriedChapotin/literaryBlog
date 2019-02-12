@@ -2,7 +2,7 @@
 
 namespace LiteraryCore\Request;
 
-use LiteraryCore\Util\ArrayUtil;
+use LiteraryCore\Request\Util\ArrayUtil;
 
 abstract class Query
 {

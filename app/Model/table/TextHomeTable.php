@@ -1,24 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 14/11/2018
- * Time: 14:46
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 22:37
  */
 
 namespace Literary\Model\table;
 
-
 use LiteraryCore\Table\AbstractTable;
 use Literary\Model\entity\Introduction;
 
-use LiteraryCore\Request\Request;
-use LiteraryCore\Request\Query;
 
 class TextHomeTable extends AbstractTable
 {
-
-
     protected function getTableName()
     {
         return 'texthome';
@@ -29,16 +24,13 @@ class TextHomeTable extends AbstractTable
         return Introduction::class;
     }
 
-    function TextHomeUpdate()
+    function TextHomeUpdate($post)
     {
-        $post = (new Introduction())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'));
         $this->flush($post);
-
     }
 
     function TextHome()
     {
-
-       return $this->all();
-}
+        return $this->all();
+    }
 }

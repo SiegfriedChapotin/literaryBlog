@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
+ * Author: siegf_000
  * Date: 23/01/2019
  * Time: 16:25
  */
@@ -23,14 +23,14 @@ abstract class AbstractEntity
 
     /**
      * @param mixed $id
-     * @return AbstractEntity
      */
     public function setId($id)
     {
         $this->id = $id;
         return $this;
-
     }
+
+
 
 
     public abstract static function relationWithDb();

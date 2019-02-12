@@ -1,24 +1,25 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 08/11/2018
- * Time: 04:26
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 18:18
  */
 
 namespace LiteraryCore\Database;
 
-
 use \PDO;
-use LiteraryCore\Config;
 
 
 /**
- * Se connecte à la base de donnée grâce au système PDO
- * @package app
- */
-class MysqlDatabase extends Database
-{
+* Se connecte à la base de donnée grâce au système PDO
+* @package app
+*/
+
+class MysqlDatabase extends Database{
+
+
+
     private $db_name;
     private $db_user;
     private $db_host;
@@ -47,9 +48,7 @@ class MysqlDatabase extends Database
 
     /**
      * Initialisation d'une instance de PDO qui sera stockée dans l'attribut prévu s'il n'existe pas encore et le retourne
-     *
      * @access private
-     * @param none
      * @return object PDO
      */
     private function getPDO()

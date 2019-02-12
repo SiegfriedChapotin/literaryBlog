@@ -1,10 +1,7 @@
-{% extends 'layout/layout.html.twig' %}
-
+{% extends 'layout/GenericLayout/main.html.twig' %}
 
 
 {% block writecomment %}
-
-
 
     <div class="shadow-lg p-3 mb-5 bg-gradient-warning rounded headingheight">
         <a><img class="img-fluid" alt="Responsive image" src="img/billetsimplealaskaRS.png"></a>
@@ -30,7 +27,7 @@
                         {{ book.text|raw }}
                     </div>
                     <div class="padding text-center">
-                        <a href="index.php?p=post_show&id={{ book.id }}" class="btn btn-light btn-lg greenLink"
+                        <a href="index.php?p=chapter_show&id={{ book.id }}" class="btn btn-light btn-lg greenLink"
                            role="button">
                             <span class="hiddenEle">Commentaires</span>
                             <span class="visibleEle">Je vous en prie, dites moi ce que vous en pensez.</span>

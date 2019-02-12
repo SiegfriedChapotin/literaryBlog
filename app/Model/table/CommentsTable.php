@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
+ * Author: siegf_000
  * Date: 27/11/2018
  * Time: 16:23
  */
@@ -29,16 +29,14 @@ class CommentsTable extends AbstractTable
         return Comment::class;
     }
 
-    function findCommentChapter()
+    function findCommentChapter($id)
     {
-        return $this->query('SELECT * FROM comment WHERE id_chapter = ? ORDER BY comment.date DESC ', [Query::get('id')]);
-
+        return $this->query('SELECT * FROM comment WHERE id_chapter = ? ORDER BY comment.date DESC ', $id);
     }
 
     function listComment($int)
     {
-
-        return $this->query('SELECT * FROM comment WHERE classify = 0 ORDER BY comment.date DESC LIMIT ' .$int);
+        return $this->query('SELECT * FROM comment WHERE classify = 0 ORDER BY comment.date DESC LIMIT ' . $int);
     }
 
     function listReport($int)
@@ -46,31 +44,11 @@ class CommentsTable extends AbstractTable
         return $this->query('SELECT * FROM comment WHERE classify = 1 ORDER BY comment.date DESC LIMIT ' . $int);
     }
 
-    function commentWrite()
+    function commentWrite($post)
     {
-        if (Request::exist('pseudo') && Request::exist('comment')) {
-            $comment=(new Comment())->setComment(Request::get('comment'))->setPseudo(Request::get('pseudo'))->setIdChapter(Query::get('id'));
-            $this->flush($comment);
-
-
-
-        }
+        $this->flush($post);
     }
 
-
-
-
-
-
-
-
-
-    function deleteComment(int $id)
-    {
-
-        return $this->delete($id);
-
-    }
 }
 
 

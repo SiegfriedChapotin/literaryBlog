@@ -1,13 +1,13 @@
 {
     "require": {
-        "composer/composer": "^1.7",
-        "twig/twig": "^2.5",
+        "composer/composer": "^1.8",
+        "twig/twig": "^1.37",
         "twig/extensions": "^1.5",
-        "tinymce/tinymce": "^5.0"
+        "php-kit/ext-pdo": "^1.1"
     },
-  "autoload": {
-    "psr-4": {"Literary\\": "app",
-              "LiteraryCore\\": "core"}
-  }
+    "autoload": {
+        "psr-4": {"Literary\\": "app",
+            "LiteraryCore\\": "core"}
+    }
 
 }

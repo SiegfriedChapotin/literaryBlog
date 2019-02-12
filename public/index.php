@@ -41,12 +41,14 @@ catch (HttpException $e) {
 }
 catch (\Exception $e) {
     //header('HTTP/2.1 ' . $e->getStatus());
-    //$router->execController('http_exception_not_found');
+   //$router->execController('http_exception_not_found');
 
     echo "catch exception";
     var_dump($e);
 
-   }
+}
+
+
 
 
 

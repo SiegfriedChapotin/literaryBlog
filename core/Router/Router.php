@@ -1,18 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: siegf_000
- * Date: 14/11/2018
- * Time: 13:52
+ * Author: siegf_000
+ * Date: 11/02/2019
+ * Time: 21:15
  */
 
 namespace LiteraryCore\Router;
 
 use LiteraryCore\Exception\httpException\ForbiddenHttpException;
 use LiteraryCore\Exception\httpException\NotFoundHttpException;
-use LiteraryCore\Exception\httpException\InternalServerErrorHttpException;
-use LiteraryCore\Util\ArrayUtil;
-
+use LiteraryCore\Request\Util\ArrayUtil;
 class Router
 {
     private $routes;
@@ -27,11 +25,11 @@ class Router
         $routeInfos = ArrayUtil::get($this->routes->getRoutes(), $p);
 
         if ($routeInfos === null) {
-            throw new NotFoundHttpException();
+            throw new ForbiddenHttpException();
         }
 
         if (!$routeInfos) {
-            throw new InternalServerErrorHttpException();
+            throw new NotFoundHttpException();
         }
 
         if (ArrayUtil::get($routeInfos, 'secure')) {
