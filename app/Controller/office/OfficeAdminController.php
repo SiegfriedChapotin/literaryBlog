@@ -9,7 +9,7 @@
 namespace Literary\Controller\office;
 
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use LiteraryCore\Controller\AbstractController;
 use LiteraryCore\Request\Request;
 use Literary\Model\table\PostsTable;
@@ -19,7 +19,7 @@ use LiteraryCore\Service\flashBag\FlashBagService;
 
 class OfficeAdminController extends AbstractController
 {
-    use BlogController;
+    use BlogTrait;
 
     public function admin()
     {

@@ -8,7 +8,7 @@
 
 namespace Literary\Controller\page;
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use LiteraryCore\Controller\AbstractController;
 use LiteraryCore\Service\flashBag\FlashBagService;
 use Literary\Model\table\PostsTable;
@@ -20,7 +20,7 @@ use Literary\Model\entity\Introduction;
 
 class HomeController extends AbstractController
 {
-    use BlogController;
+    use BlogTrait;
 
     public function homepage()
     {

@@ -8,7 +8,7 @@
 
 namespace Literary\Controller\page;
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use Literary\Model\table\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\PostsTable;
@@ -19,10 +19,9 @@ use Literary\Model\entity\Posts;
 use Literary\Model\entity\Comment;
 
 
-
 class PostController extends AbstractController
 {
-    use BlogController;
+    use BlogTrait;
 
     public function list()
     {
@@ -40,20 +39,33 @@ class PostController extends AbstractController
             return;
         }
 
-            if (Request::exist('Valider')) {
+        if (Request::exist('Valider')) {
+            if (strlen(Request::get('pseudo')) > 30) {
+                FlashBagService::addFlashMessage('danger', 'Vous avez un espace maximum de 30 caractères pour vous identifier');
+                $this->redirect('chapter_show&id=' . Query::get('id'));
+                return;
+            } elseif (strlen(Request::get('comment')) > 500) {
+                FlashBagService::addFlashMessage('danger', 'Votre commentaire est trop long, maximum 500 caractères');
+                $this->redirect('chapter_show&id=' . Query::get('id'));
+                return;
+            } else {
 
-                $post = (new Comment())->setComment(Request::get('comment'))->setPseudo(Request::get('pseudo'))->setIdChapter(Query::get('id'));
+                $Comment = filter_var(Request::get('comment'), FILTER_SANITIZE_STRING);
+                $Pseudo = filter_var(Request::get('pseudo'), FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+                $post = (new Comment())->setComment($Comment)->setPseudo($Pseudo)->setIdChapter(Query::get('id'));
                 (new CommentsTable())->commentWrite($post);
                 FlashBagService::addFlashMessage('info', 'Votre message est bien arrivé. Merci');
                 $this->redirect('chapter_show&id=' . Query::get('id'));
                 return;
             }
+        }
 
-            $this->render('posts/show.html.twig',
-                [
-                    'chapitre' => (new PostsTable())->findPost(Query::get('id')),
-                    'comments' => (new CommentsTable())->findCommentChapter([Query::get('id')])
-                ]);
+        $this->render('posts/show.html.twig',
+            [
+                'chapitre' => (new PostsTable())->findPost(Query::get('id')),
+                'comments' => (new CommentsTable())->findCommentChapter([Query::get('id')])
+            ]);
 
     }
 

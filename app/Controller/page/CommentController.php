@@ -8,7 +8,7 @@
 
 namespace Literary\Controller\page;
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\CommentsTable;
 use LiteraryCore\Request\Query;
@@ -17,7 +17,7 @@ use LiteraryCore\Service\flashBag\FlashBagService;
 
 class CommentController extends AbstractController
 {
-    use BlogController;
+    use BlogTrait;
 
     public function commentOffice()
     {

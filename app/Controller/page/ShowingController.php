@@ -8,7 +8,7 @@
 
 namespace Literary\Controller\page;
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\ShowingTable;
 use LiteraryCore\Service\flashBag\FlashBagService;
@@ -18,7 +18,7 @@ use Literary\Model\entity\Showing;
 
 class ShowingController extends AbstractController
 {
-    use BlogController;
+    use BlogTrait;
 
     public function show()
     {

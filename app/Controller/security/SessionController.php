@@ -8,7 +8,7 @@
 
 namespace Literary\Controller\security;
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use Literary\Controller\security\AuthorController;
 Use Literary\Model\table\Security\AuthorTable;
 use LiteraryCore\Request\Request;
@@ -16,7 +16,7 @@ use LiteraryCore\Request\Request;
 class SessionController extends AuthorController
 {
 
-    use BlogController;
+    use BlogTrait;
 
     public function sessionAuthor()
     {

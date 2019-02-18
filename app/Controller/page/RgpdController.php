@@ -8,7 +8,7 @@
 
 namespace Literary\Controller\page;
 
-use Literary\Controller\BlogController;
+use Literary\Controller\BlogTrait;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\RgpdTable;
 use Literary\Model\Entity\Introduction;
@@ -20,7 +20,7 @@ use LiteraryCore\Service\flashBag\FlashBagService;
 class RgpdController extends AbstractController
 {
 
-    use BlogController;
+    use BlogTrait;
 
     public function show()
     {

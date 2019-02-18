@@ -60,10 +60,10 @@
                 <div class="card-body ">
                     <form method="post" action="" id="comment">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" class="form-control" name="pseudo" id="pseudo" placeholder="Pseudo" required>
+                        <input type="text" class="form-control" maxlength="30" name="pseudo" id="pseudo" placeholder="Pseudo" required>
 
                         <label for="comment">Votre commentaire </label>
-                        <textarea class="form-control" type="text" name="comment" id="comment" rows="10" required></textarea>
+                        <textarea class="form-control" maxlength="500"  name="comment" id="comment" rows="10" required></textarea>
                         <br/>
                         <input class="btn btn-info" type="submit" name="Valider" value="Valider"/>
                         <input class="btn btn-secondary" type="reset" value="Effacer"/>

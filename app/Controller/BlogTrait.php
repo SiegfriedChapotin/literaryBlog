@@ -16,7 +16,7 @@ use Literary\Model\table\ShowingTable;
 use Literary\Model\table\RgpdTable;
 
 
-trait BlogController
+trait BlogTrait
 {
     public function __postConstruct()
     {
