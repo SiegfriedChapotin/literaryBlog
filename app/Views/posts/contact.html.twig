@@ -5,7 +5,7 @@
 {% block contact %}
 
     <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
-        <h1>Me contacter</h1>
+        <h1>Me contacter {{app.request.cookies.get("authToken")}}</h1>
         <br/>
     </div>
 

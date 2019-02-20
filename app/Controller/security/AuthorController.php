@@ -21,6 +21,7 @@ class AuthorController extends DBAuth
     {
         unset($_SESSION['user']);
         $this->redirect('home');
+
     }
 
 

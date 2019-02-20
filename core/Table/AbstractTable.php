@@ -14,11 +14,10 @@ use LiteraryCore\Exception\httpException\NotFoundHttpException;
 use LiteraryCore\Entity\AbstractEntity;
 use LiteraryCore\Request\Request;
 
-
-
-    /**
-     * Classe mère de tous les appels à la bd
-     */
+use PDO;
+/**
+ * Classe mère de tous les appels à la bd
+ */
 abstract class AbstractTable
 {
     protected abstract function getTableName();
@@ -48,11 +47,10 @@ abstract class AbstractTable
     public function find($id)
 
     {
-        if (!is_numeric($id) || empty($id)) {
-            throw new NotFoundHttpException();
-        } else {
-            return $this->query('SELECT * FROM ' . $this->getTableName() . ' WHERE id= :id', ['id' => $id]);
-        }
+
+
+        return $this->query('SELECT * FROM ' . $this->getTableName() . ' WHERE id= :id', ['id' => $id],true);
+
     }
 
     /**
@@ -62,7 +60,7 @@ abstract class AbstractTable
      * @return object PDOStatement
      */
 
-    public function query(string $statement,  array $attributes = [], bool $oneResult = false)
+    public function query(string $statement, array $attributes = [], bool $oneResult = false)
     {
         if (empty($attributes)) {
             return $this->getDb()->query($statement, $this->getClassName(), $oneResult);
@@ -198,10 +196,36 @@ abstract class AbstractTable
         $this->getDb()->prepare("UPDATE {$this->getTableName()} SET classify = ?  WHERE id = " . $id, [$nb], null, false, true);
     }
 
+    function control($id)
+    {
+        $count = $this->getDb()->prepare("SELECT COUNT(*) AS nbr FROM " . $this->getTableName() . "  WHERE numero=?" . $id);
+
+        $count->execute(array($id));
+        $req = $count->fetch(PDO::FETCH_ASSOC);
+
+        if ($req['nbr'] == 0) {
+            throw new NotFoundHttpException();
+        }
+
+    }
+
+
     public function delete()
     {
         $id = Request::get('delete');
         return $this->getDb()->prepare("DELETE FROM {$this->getTableName()} WHERE id = ?", [$id], null, false, true);
     }
 
+    public function getPost($offset, $nb)
+    {
+        $result = $this->getDb()->prepare("SELECT * FROM {$this->getTableName()} LIMIT :offset, :nb",[':offset' => $offset, ':nb' => $nb]);
+        return (!empty($result)) ? $result : null;
+    }
+
+    public function countPosts()
+    {
+        $result = $this->getDb()->query("SELECT COUNT(id) FROM {$this->getTableName()}", PDO::FETCH_NUM);
+
+        return $result [0];
+    }
 }

@@ -12,6 +12,7 @@ use Literary\Controller\BlogTrait;
 use Literary\Model\table\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\table\PostsTable;
+use LiteraryCore\Exception\httpException\NotFoundHttpException;
 use LiteraryCore\Request\Request;
 use LiteraryCore\Request\Query;
 use LiteraryCore\Service\flashBag\FlashBagService;
@@ -22,6 +23,7 @@ use Literary\Model\entity\Comment;
 class PostController extends AbstractController
 {
     use BlogTrait;
+
 
     public function list()
     {
@@ -60,10 +62,14 @@ class PostController extends AbstractController
                 return;
             }
         }
+        $post=(new PostsTable())->findPost(Query::get('id'));
+        if(!$post){
+            throw new NotFoundHttpException();
+        }
 
         $this->render('posts/show.html.twig',
             [
-                'chapitre' => (new PostsTable())->findPost(Query::get('id')),
+                'chapitre' =>$post,
                 'comments' => (new CommentsTable())->findCommentChapter([Query::get('id')])
             ]);
 
@@ -90,15 +96,18 @@ class PostController extends AbstractController
             return;
         }
 
+
         $this->render('admin/Office/officePublication.html.twig',
             [
                 'publicationoffice' => (new PostsTable())->listPostWrite(10),
-                'publicationclass' => (new PostsTable())->listPostAll()
+                'publicationclass' => (new PostsTable())->listPostAll(),
             ]);
     }
 
     public function showPostsHome()
     {
+
+
         if (Request::exist('delete')) {
             (new PostsTable())->delete();
             FlashBagService::addFlashMessage('danger', 'La publication a été supprimée');
@@ -126,7 +135,8 @@ class PostController extends AbstractController
 
         $this->render('admin/Modification/textPostsModif.html.twig',
             [
-                'posts_admin' => (new PostsTable())->find(Query::get('id')),
+                'chapitre' => (new PostsTable())->find(Query::get('id')),
+
             ]);
     }
 

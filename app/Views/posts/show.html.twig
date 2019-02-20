@@ -3,17 +3,17 @@
 
 
 {% block content %}
-    {% for book in chapitre %}
+
         <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
             <h1>Billet simple pour l'Alaska</h1>
             <br/>
         </div>
         <div class="paper padding">
-            <h2>{{ book.title|raw }}</h2>
-            <p class="text-right">{{ book.date| date_modify ( "+1 day" )| date ( "m/d/Y" ) }}</p>
-            <p class="paddingtext">{{ book.text|raw }}</p>
+            <h2>{{ chapitre.title|raw }}</h2>
+            <p class="text-right">{{ chapitre.date| date_modify ( "+1 day" )| date ( "m/d/Y" ) }}</p>
+            <p class="paddingtext">{{ chapitre.text|raw }}</p>
         </div>
-    {% endfor %}
+
 {% endblock %}
 
 {% block comment %}

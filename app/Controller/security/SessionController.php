@@ -29,7 +29,6 @@ class SessionController extends AuthorController
         $errors = [];
 
 
-
         if ($username && $password) {
             $user = (new AuthorTable())->login($username);
 

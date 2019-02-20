@@ -130,18 +130,18 @@
                         </li>
                     {% endfor %}
                     {% for showings in showingsD %}
-                    <li class="nav-item">
-                        <p>
-                            <a href="index.php?p=showing_admin&id={{ showings.id }}"
-                               data-toggle="tooltip"
-                               data-placement="top"
-                               title="{{ showings.title|striptags | nl2br }}">
-                                <span data-feather="eye-off"></span>
-                                {{ showings.title|striptags | nl2br }}
-                                <br/> (brouillon)
-                            </a>
-                        </p>
-                    </li>
+                        <li class="nav-item">
+                            <p>
+                                <a href="index.php?p=showing_admin&id={{ showings.id }}"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="{{ showings.title|striptags | nl2br }}">
+                                    <span data-feather="eye-off"></span>
+                                    {{ showings.title|striptags | nl2br }}
+                                    <br/> (brouillon)
+                                </a>
+                            </p>
+                        </li>
                     {% endfor %}
                 </ul>
 
@@ -152,7 +152,7 @@
                     {% for rgpd in rgpd %}
                         <li class="nav-item">
                             <p>
-                                <a href="index.php?p=rgpd_admin&id={{ rgpd.id}}"
+                                <a href="index.php?p=rgpd_admin&id={{ rgpd.id }}"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="{{ rgpd.title|striptags | nl2br }}">
@@ -167,8 +167,13 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <br/>
-            {% for flashType,flashMessages in FlashBag() %}
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2 text-right">
+                    <a href="index.php?p=logout" class="badge badge-dark">Se déconnecter</a>
+                </div>
+            </div>
+              {% for flashType,flashMessages in FlashBag() %}
             <div class="alert alert-{{ flashType }}" role="alert">
                 {% for flashMessage in flashMessages %}
 

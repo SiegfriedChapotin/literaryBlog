@@ -46,6 +46,7 @@ class PostsTable extends AbstractTable
     }
 
     function findPost($id)
+
     {
         return $this->find($id);
     }

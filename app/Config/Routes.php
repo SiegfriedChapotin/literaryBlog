@@ -12,7 +12,7 @@ use Literary\Controller\office\OfficeAdminController;
 use Literary\Controller\security\SessionController;
 use LiteraryCore\Router\RoutesInterface;
 use Literary\Controller\exception\HttpException;
-
+use Literary\Controller\security\AuthorController;
 use Literary\Controller\page\HomeController;
 use Literary\Controller\page\PostController;
 use Literary\Controller\page\MailController;
@@ -48,6 +48,7 @@ class Routes implements RoutesInterface
             */
 
             'login' => ['controller' => SessionController::class, 'action' => 'sessionAuthor'],
+            'logout' => ['controller' => AuthorController::class, 'action' => 'logout'],
             'admin' => ['controller' => OfficeAdminController::class, 'action' => 'admin', 'secure' => true],
             //
 
