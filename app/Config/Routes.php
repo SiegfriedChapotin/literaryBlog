@@ -52,18 +52,18 @@ class Routes implements RoutesInterface
             'admin' => ['controller' => OfficeAdminController::class, 'action' => 'admin', 'secure' => true],
             //
 
-            'mail_Office' => ['controller' => MailController::class, 'action' => 'mailOffice'],
-            'comment_Office' => ['controller' => CommentController::class, 'action' => 'commentOffice'],
-            'publication_Office' => ['controller' => PostController::class, 'action' => 'publicationOffice'],
+            'mail_Office' => ['controller' => MailController::class, 'action' => 'mailOffice', 'secure' => true],
+            'comment_Office' => ['controller' => CommentController::class, 'action' => 'commentOffice', 'secure' => true],
+            'publication_Office' => ['controller' => PostController::class, 'action' => 'publicationOffice', 'secure' => true],
 
-            'texthome_admin' => ['controller' => HomeController::class, 'action' => 'showTextHome'],
-            'heading_admin' => ['controller' => HeadingController::class, 'action' => 'showHeadingHome'],
-            'showing_admin' => ['controller' => ShowingController::class, 'action' => 'showShowingHome'],
-            'posts_admin' => ['controller' => PostController::class, 'action' => 'showPostsHome'],
-            'rgpd_admin' => ['controller' => RgpdController::class, 'action' => 'showRgpdHome'],
+            'texthome_admin' => ['controller' => HomeController::class, 'action' => 'showTextHome', 'secure' => true],
+            'heading_admin' => ['controller' => HeadingController::class, 'action' => 'showHeadingHome', 'secure' => true],
+            'showing_admin' => ['controller' => ShowingController::class, 'action' => 'showShowingHome', 'secure' => true],
+            'posts_admin' => ['controller' => PostController::class, 'action' => 'showPostsHome', 'secure' => true],
+            'rgpd_admin' => ['controller' => RgpdController::class, 'action' => 'showRgpdHome', 'secure' => true],
 
-            'writetext_admin' => ['controller' => PostController::class, 'action' => 'writeText'],
-            'writeprofil_admin' => ['controller' => ShowingController::class, 'action' => 'writeShowing'],
+            'writetext_admin' => ['controller' => PostController::class, 'action' => 'writeText', 'secure' => true],
+            'writeprofil_admin' => ['controller' => ShowingController::class, 'action' => 'writeShowing', 'secure' => true],
 
 
             'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound'],
