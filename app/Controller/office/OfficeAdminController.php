@@ -38,12 +38,14 @@ class OfficeAdminController extends AbstractController
             return;
         }
 
+        $int=6;
+
         $this->render('admin/dashboard.html.twig',
             [
-                'chapitres' => (new PostsTable())->listPostWrite('6'),
-                'comment' => (new CommentsTable())->listComment(6),
-                'mail' => (new MailTable())->listMail(6),
-                'commentreport' => (new CommentsTable())->listreport(6)
+                'chapitres' => (new PostsTable())->listPostWriteAdmin($int),
+                'comment' => (new CommentsTable())->listCommentAdmin($int),
+                'mail' => (new MailTable())->listMailAdmin($int),
+                'commentreport' => (new CommentsTable())->listreportAdmin($int)
             ]);
     }
 }

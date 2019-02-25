@@ -24,7 +24,8 @@ class HomeController extends AbstractController
 
     public function homepage()
     {
-        $this->render('posts/home.html.twig', ['chapitres' => (new PostsTable())->listPost('5')]);
+        $int=5;
+        $this->render('posts/home.html.twig', ['chapitres' => (new PostsTable())->listPostHome($int)]);
     }
 
     public function showTextHome()

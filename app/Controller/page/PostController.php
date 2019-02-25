@@ -100,7 +100,7 @@ class PostController extends AbstractController
         $this->render('admin/Office/officePublication.html.twig',
             [
                 'publicationoffice' => (new PostsTable())->listPostWrite(),
-                'publicationclass' => (new PostsTable())->listPost(),
+                'publicationclass' => (new PostsTable())->listPostAll(),
             ]);
     }
 
