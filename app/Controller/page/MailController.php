@@ -79,8 +79,8 @@ function mailOffice()
 
     $this->render('admin/Office/officeMail.html.twig',
         [
-            'mailoffice' => (new MailTable())->listMail(6),
-            'mailclass' => (new MailTable())->listMailClass(6)
+            'mailoffice' => (new MailTable())->listMail(),
+            'mailclass' => (new MailTable())->listMailClass()
         ]);
 }
 

@@ -15,6 +15,7 @@ use Literary\Model\table\HeadingTable;
 use LiteraryCore\Request\Query;
 use LiteraryCore\Request\Request;
 use LiteraryCore\Service\flashBag\FlashBagService;
+use LiteraryCore\Exception\httpException\NotFoundHttpException;
 
 class HeadingController extends AbstractController
 {
@@ -23,7 +24,15 @@ class HeadingController extends AbstractController
 
     public function show()
     {
-        $this->render('posts/showheading.html.twig', ['heading' => (new HeadingTable())->findShowing(Query::get('id'))]);
+        $heading=(new HeadingTable())->findShowing(Query::get('id'));
+        if(!$heading){
+            throw new NotFoundHttpException();
+        }
+
+        $this->render('posts/showheading.html.twig',
+            [
+                'heading' =>$heading
+            ]);
     }
 
 
@@ -38,11 +47,16 @@ class HeadingController extends AbstractController
             return;
         }
 
+        $heading=(new HeadingTable())->findShowing(Query::get('id'));
+        if(!$heading){
+            throw new NotFoundHttpException();
+        }
+
         $this->render('admin/Modification/textHeadingModif.html.twig',
             [
-                'heading_admin' => (new HeadingTable())->find(Query::get('id')),
+                'heading' =>$heading
             ]);
-    }
+           }
 }
 
 

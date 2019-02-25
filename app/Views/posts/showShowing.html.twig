@@ -3,7 +3,6 @@
 {% block content %}
 
 
-    {% for showing in showing %}
 
         <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
 
@@ -11,12 +10,12 @@
             <br/>
         </div>
         <div class="paddingtext">
-            <img class="icoImg" src="../public/img/ico.png" />
+            <img class="icoImg" src="img/ico.png" />
             <h2>{{ showing.title|raw }}</h2>
         </div>
         <div class="paddingtext">
             <p>{{ showing.text|raw }}</p>
         </div>
 
-    {% endfor %}
+
 {% endblock %}

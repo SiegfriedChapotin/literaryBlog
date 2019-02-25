@@ -26,14 +26,14 @@ class MailTable extends AbstractTable
     }
 
 
-    function listMail($int)
+    function listMail()
     {
-        return $this->query('SELECT * FROM '.$this->getTableName().' WHERE classify = 0 ORDER BY mail.date DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM '.$this->getTableName().' WHERE classify = 0 ORDER BY mail.date DESC  ');
     }
 
-    function listMailClass($int)
+    function listMailClass()
     {
-        return $this->query('SELECT * FROM  '.$this->getTableName().' WHERE classify = 1 ORDER BY mail.date DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM  '.$this->getTableName().' WHERE classify = 1 ORDER BY mail.date DESC ');
     }
 
     function writeMail($post)

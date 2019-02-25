@@ -10,10 +10,10 @@ namespace Literary\Controller\security;
 
 
 
-use LiteraryCore\Auth\DBAuth;
+use LiteraryCore\Auth\DbAuth;
 
 
-class AuthorController extends DBAuth
+class AuthorController extends DbAuth
 
 {
 

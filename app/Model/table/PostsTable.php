@@ -35,14 +35,14 @@ class PostsTable extends AbstractTable
         return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter');
     }
 
-    function listPostWrite(string $int)
+    function listPostWrite()
     {
-        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC');
     }
 
-    function listPost(string $int)
+    function listPost()
     {
-        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC');
     }
 
     function findPost($id)

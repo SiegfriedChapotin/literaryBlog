@@ -99,8 +99,8 @@ class PostController extends AbstractController
 
         $this->render('admin/Office/officePublication.html.twig',
             [
-                'publicationoffice' => (new PostsTable())->listPostWrite(10),
-                'publicationclass' => (new PostsTable())->listPostAll(),
+                'publicationoffice' => (new PostsTable())->listPostWrite(),
+                'publicationclass' => (new PostsTable())->listPost(),
             ]);
     }
 
@@ -133,11 +133,17 @@ class PostController extends AbstractController
 
         }
 
+        $postModif=(new PostsTable())->findPost(Query::get('id'));
+        if(!$postModif){
+            throw new NotFoundHttpException();
+        }
+
         $this->render('admin/Modification/textPostsModif.html.twig',
             [
-                'chapitre' => (new PostsTable())->find(Query::get('id')),
+                'chapitre' =>$postModif,
 
             ]);
+
     }
 
     public function writeText()

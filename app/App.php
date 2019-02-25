@@ -54,6 +54,11 @@ class App
     public static function load()
     {
         session_start();
+
+        //On enregistre notre token
+        $token = bin2hex(random_bytes( 32));
+        $_SESSION['token'] = $token;
+
         FlashBagService::init();
     }
 

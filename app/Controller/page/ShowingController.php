@@ -15,6 +15,7 @@ use LiteraryCore\Service\flashBag\FlashBagService;
 use LiteraryCore\Request\Query;
 use LiteraryCore\Request\Request;
 use Literary\Model\entity\Showing;
+use LiteraryCore\Exception\httpException\NotFoundHttpException;
 
 class ShowingController extends AbstractController
 {
@@ -22,7 +23,15 @@ class ShowingController extends AbstractController
 
     public function show()
     {
-        $this->render('posts/showShowing.html.twig', ['showing' => (new ShowingTable())->findShowing(Query::get('id'))]);
+        $showing=(new ShowingTable())->findShowing(Query::get('id'));
+        if(!$showing){
+            throw new NotFoundHttpException();
+        }
+
+        $this->render('posts/showShowing.html.twig',
+            [
+                'showing' =>$showing
+            ]);
     }
 
 
@@ -38,11 +47,8 @@ class ShowingController extends AbstractController
                 return;
             }
 
-            $this->render('NewWrite/Office/officeWriteNewShowing.html.twig',
-                [
-                    'writeText' => (new ShowingTable())->NewShowingWrite($post),
-                ]);
         }
+        $this->render('admin/NewWrite/officeWriteNewShowing.html.twig',[]);
     }
 
     public function showShowingHome()
@@ -71,8 +77,22 @@ class ShowingController extends AbstractController
             $this->redirect('showing_admin&id= ' . (Request::get('postModify')));
             return;
         }
-        $this->render('admin/Modification/textShowingModif.html.twig', ['showing_admin' => (new ShowingTable())->find(Query::get('id'))]);
+
+        $showing=(new ShowingTable())->findShowing(Query::get('id'));
+        if(!$showing){
+            throw new NotFoundHttpException();
+        }
+
+        $this->render('admin/Modification/textShowingModif.html.twig',
+            [
+                'showing' =>$showing
+            ]);
+
+
     }
+
+
+
 }
 
 
