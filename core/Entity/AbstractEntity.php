@@ -31,7 +31,5 @@ abstract class AbstractEntity
     }
 
 
-
-
     public abstract static function relationWithDb();
 }

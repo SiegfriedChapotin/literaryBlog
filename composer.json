@@ -3,7 +3,8 @@
         "composer/composer": "^1.8",
         "twig/twig": "^1.37",
         "twig/extensions": "^1.5",
-        "php-kit/ext-pdo": "^1.1"
+        "php-kit/ext-pdo": "^1.1",
+        "google/recaptcha": "^1.2"
 
     },
     "autoload": {

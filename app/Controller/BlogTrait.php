@@ -9,11 +9,11 @@
 namespace Literary\Controller;
 
 
-use Literary\Model\table\PostsTable;
-use Literary\Model\table\TextHomeTable;
-use Literary\Model\table\HeadingTable;
-use Literary\Model\table\ShowingTable;
-use Literary\Model\table\RgpdTable;
+use Literary\Model\Table\PostsTable;
+use Literary\Model\Table\TextHomeTable;
+use Literary\Model\Table\HeadingTable;
+use Literary\Model\Table\ShowingTable;
+use Literary\Model\Table\RgpdTable;
 
 
 trait BlogTrait

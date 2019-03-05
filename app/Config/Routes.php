@@ -8,18 +8,18 @@
 
 namespace Literary\Config;
 
-use Literary\Controller\office\OfficeAdminController;
-use Literary\Controller\security\SessionController;
+use Literary\Controller\Office\OfficeAdminController;
+use Literary\Controller\Security\SessionController;
 use LiteraryCore\Router\RoutesInterface;
-use Literary\Controller\exception\HttpException;
-use Literary\Controller\security\AuthorController;
-use Literary\Controller\page\HomeController;
-use Literary\Controller\page\PostController;
-use Literary\Controller\page\MailController;
-use Literary\Controller\page\HeadingController;
-use Literary\Controller\page\RgpdController;
-use Literary\Controller\page\ShowingController;
-use Literary\Controller\page\CommentController;
+use Literary\Controller\Exception\HttpException;
+use Literary\Controller\Security\AuthorController;
+use Literary\Controller\Page\HomeController;
+use Literary\Controller\Page\PostController;
+use Literary\Controller\Page\MailController;
+use Literary\Controller\Page\HeadingController;
+use Literary\Controller\Page\RgpdController;
+use Literary\Controller\Page\ShowingController;
+use Literary\Controller\Page\CommentController;
 
 
 class Routes implements RoutesInterface
@@ -65,6 +65,9 @@ class Routes implements RoutesInterface
             'writetext_admin' => ['controller' => PostController::class, 'action' => 'writeText', 'secure' => true],
             'writeprofil_admin' => ['controller' => ShowingController::class, 'action' => 'writeShowing', 'secure' => true],
 
+            /*
+             * Exception part
+             */
 
             'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound'],
             'ForbiddenHttpException' => ['controller' => HttpException::class, 'action' => 'Forbidden'],

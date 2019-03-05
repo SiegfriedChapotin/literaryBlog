@@ -5,7 +5,7 @@
  * Date: 21/11/2018
  * Time: 08:56
  */
-namespace LiteraryCore\Exception\httpException;
+namespace LiteraryCore\Exception\HttpException;
 
 use Throwable;
 
@@ -16,3 +16,4 @@ class ForbiddenHttpException extends HttpException
         parent::__construct(403, $message, $code, $previous);
     }
 }
+

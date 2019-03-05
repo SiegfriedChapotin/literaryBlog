@@ -5,6 +5,7 @@
     <div class="col-12 shadow-lg p-4 mb-5  ">
         <h1>Commentaires</h1>
     </div>
+    <input type="hidden" id="recaptcha" name="recaptcha">
     <div class="col-12 shadow-lg p-2 mb-5 p-lg-5">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -30,7 +31,7 @@
                                         <a class="paddingRL"> {{ commentoffice.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
                                     </div>
                                     <div class=" col col-sm-4 col-md-4 col-lg-2 paddingtext">
-                                        <a href="index.php?p=post_show&id={{ commentoffice.id_chapter }}"
+                                        <a href="index.php?p=chapter_show&id={{ commentoffice.id_chapter }}"
                                            target="_blank">
                                             <button class="btn greenLink ">Chapitre</button>
                                         </a>
@@ -53,7 +54,9 @@
                                             <p>{{ commentoffice.comment|striptags|nl2br }}</p>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 ">
+
                                             <form method="post" action="index.php?p=comment_Office">
+
                                                 <button type="submit"
                                                         class="btn btn-card btn-danger font-weight-bold  btn-bg"
                                                         name="delete"
@@ -83,12 +86,13 @@
                                         <a class="paddingRL"> {{ commentreport.date|date_modify ( "+1 day" )| date ( "m/d/Y"  ) }}</a>
                                     </div>
                                     <div class=" col col-sm-4 col-md-4 col-lg-2 paddingtext">
-                                        <a href="index.php?p=post_show&id={{ commentreport.id_chapter }}"
+                                        <a href="index.php?p=chapter_show&id={{ commentreport.id_chapter }}"
                                            target="_blank">
                                             <button type="button" class="btn btn-light greenLink ">Chapitre</button>
                                         </a>
                                     </div>
                                     <div class="col col-sm-4  col-md-4 col-lg-2 paddingtext">
+                                        <input type="hidden" id="recaptcha" name="recaptcha">
                                         <button class="btn btn-card btn-danger font-weight-bold collapsed"
                                                 data-toggle="collapse"
                                                 data-target="#collapse{{ commentreport.id }}" aria-expanded="true"
@@ -103,12 +107,15 @@
                                  data-parent="#accordionR">
                                 <div class="container-fluide">
                                     <form method="post" action="index.php?p=comment_Office">
+
                                         <div class="row paddingtext">
                                             <div class="col-9">
                                                 <p>{{ commentreport.comment|striptags|nl2br }}</p>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 ">
+
                                                 <div class="col-12 paddingRL">
+
                                                     <button type="submit"
                                                             class="btn btn-card btn-bg btn-success font-weight-bold "
                                                             name="classify"

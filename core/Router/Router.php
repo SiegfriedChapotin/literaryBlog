@@ -8,8 +8,8 @@
 
 namespace LiteraryCore\Router;
 
-use LiteraryCore\Exception\httpException\ForbiddenHttpException;
-use LiteraryCore\Exception\httpException\NotFoundHttpException;
+use LiteraryCore\Exception\HttpException\ForbiddenHttpException;
+use LiteraryCore\Exception\HttpException\NotFoundHttpException;
 use LiteraryCore\Request\Util\ArrayUtil;
 class Router
 {

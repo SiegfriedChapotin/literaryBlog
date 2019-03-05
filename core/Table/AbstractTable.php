@@ -10,7 +10,7 @@ namespace LiteraryCore\Table;
 
 use Literary\App;
 
-use LiteraryCore\Exception\httpException\NotFoundHttpException;
+use LiteraryCore\Exception\HttpException\NotFoundHttpException;
 use LiteraryCore\Entity\AbstractEntity;
 use LiteraryCore\Request\Request;
 

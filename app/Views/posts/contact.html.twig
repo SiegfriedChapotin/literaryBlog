@@ -32,8 +32,10 @@
             </p>
         </div>
         <div>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
             <input class="btn btn-success" type="submit" name="Envoyer" value="Envoyer"/>
             <input class="btn btn-secondary" type="reset" value="Effacer"/>
+
         </div>
     </form>
 

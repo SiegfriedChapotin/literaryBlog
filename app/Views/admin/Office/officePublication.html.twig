@@ -27,6 +27,7 @@
                                         <a class="paddingRL">{{ publicationoffice.title|raw }}</a>
                                     </div>
                                     <div class="col col-sm-5  col-md-4 col-lg-2 paddingtext">
+                                        <input type="hidden" id="recaptcha" name="recaptcha">
                                         <button class="btn btn-card btn-info font-weight-bold collapsed"
                                                 data-toggle="collapse"
                                                 data-target="#collapse{{ publicationoffice.id }}" aria-expanded="true"
@@ -41,6 +42,7 @@
                                  data-parent="#accordion">
                                 <div class="container-fluide">
                                     <form method="post">
+                                        <input type="hidden" id="recaptcha" name="recaptcha">
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 paddingtext">
                                                 <div class="card-body">

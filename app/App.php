@@ -11,7 +11,7 @@ namespace Literary;
 
 use LiteraryCore\Database\MysqlDatabase;
 use LiteraryCore\Config\Config;
-use LiteraryCore\Service\flashBag\FlashBagService;
+use LiteraryCore\Service\FlashBag\FlashBagService;
 
 
 
@@ -54,11 +54,6 @@ class App
     public static function load()
     {
         session_start();
-
-        //On enregistre notre token
-        $token = bin2hex(random_bytes( 32));
-        $_SESSION['token'] = $token;
-
         FlashBagService::init();
     }
 
