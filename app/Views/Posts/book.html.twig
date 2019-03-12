@@ -1,0 +1,41 @@
+{% extends 'Layout/GenericLayout/main.html.twig' %}
+
+
+{% block writecomment %}
+
+    <div class="shadow-lg p-3 mb-5 bg-gradient-warning rounded headingheight">
+        <a><img class="img-fluid" alt="Responsive image" src="img/billetsimplealaskaRS.png"></a>
+    </div>
+
+    <div id="accordion">
+        {% for book in chapitreall %}
+
+            <div class="card book">
+                <div class="card-header" id="{{ book.id }}">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link greenLink collapsed" data-toggle="collapse"
+                                data-target="#collapse{{ book.id }}" aria-expanded="true"
+                                aria-controls="collapse{{ book.id }}">
+                            <h5 class="hiddenEle">Chapitre : {{ book.chapter }} </h5>
+                            <h5 class="visibleEle">{{ book.title|raw }}</h5>
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapse{{ book.id }}" class="collapse paper" aria-labelledby="{{ book.id }}"
+                     data-parent="#accordion">
+                    <div class="card-body">
+                        {{ book.text|raw }}
+                    </div>
+                    <div class="padding text-center">
+                        <a href="index.php?p=chapter_show&id={{ book.id }}" class="btn btn-light btn-lg greenLink"
+                           role="button">
+                            <span class="hiddenEle">Commentaires</span>
+                            <span class="visibleEle">Je vous en prie, dites moi ce que vous en pensez.</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

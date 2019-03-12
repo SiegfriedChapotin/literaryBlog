@@ -9,9 +9,9 @@
 namespace LiteraryCore\Config;
 
 
-    /**
-     * Configuration de l'application. Crée lors de l'initiation aux Singleton
-     */
+/**
+ * Configuration de l'application. Crée lors de l'initiation aux Singleton
+ */
 class Config
 {
     private $settings = [];
@@ -23,7 +23,8 @@ class Config
      * @param string $files Chemin vers le fichier de config
      * @return none
      */
-    protected function __construct(string $files) {
+    protected function __construct(string $files)
+    {
         $this->settings = require($files);
     }
 
@@ -32,7 +33,8 @@ class Config
      * @param string $files Chemin vers le fichier de config
      * @return object config Renvoie l'instance unique de config
      */
-    public static function getInstance(string $files) {
+    public static function getInstance(string $files)
+    {
         if (self::$_instance === null) {
             self::$_instance = new Config($files);
         }
@@ -45,8 +47,9 @@ class Config
      * @param string $key Nom du paramètre à récupérer
      * @return mixed Valeur du paramètre si la clé existe, sinon retourne null
      */
-    public function get(string $key) {
-        return (isset($this->settings[$key])) ? $this->settings[$key] : null ;
+    public function get(string $key)
+    {
+        return (isset($this->settings[$key])) ? $this->settings[$key] : null;
     }
 
 }

@@ -9,7 +9,6 @@
 namespace Literary\Controller\Security;
 
 use Literary\Controller\BlogTrait;
-use Literary\Controller\Security\AuthorController;
 Use Literary\Model\Table\Security\AuthorTable;
 use LiteraryCore\Request\Request;
 
@@ -46,7 +45,7 @@ class SessionController extends AuthorController
             }
         }
 
-        $this->render('admin/Security/officeConnection.html.twig', []);
+        $this->render('Admin/Security/officeConnection.html.twig', []);
     }
 
 

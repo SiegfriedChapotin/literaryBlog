@@ -9,6 +9,7 @@
 namespace Literary\Model\Entity;
 
 use LiteraryCore\Entity\AbstractEntity;
+
 class Mail extends AbstractEntity
 {
 
@@ -20,14 +21,14 @@ class Mail extends AbstractEntity
 
 
     public static function relationWithDb()
-{
-    return [
-        'name' => 'name',
-        'email' => 'email',
-        'text' => 'text',
-        'title' => 'title',
-    ];
-}
+    {
+        return [
+            'name' => 'name',
+            'email' => 'email',
+            'text' => 'text',
+            'title' => 'title',
+        ];
+    }
 
     /**
      * @return mixed

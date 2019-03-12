@@ -1,7 +1,7 @@
 
 ###### Formation OPENCLASSROOMS
 
-# Chef de projet multimédia - Développement -projet3 (en cours)
+# Chef de projet multimédia - Développement -projet3
 
 **Enoncé :**
 Vous venez de décrocher un contrat avec Jean Forteroche, acteur et écrivain. Il travaille actuellement sur son prochain roman, "Billet simple pour l'Alaska". Il souhaite innover et le publier par épisode en ligne sur son propre site.
@@ -63,6 +63,35 @@ Réalisation d'un blog.
     Interface d'administration basé sur une interface WYSIWYG basé sur TinyMCE.
     Favoriser la POO
     Pattern MVC
+### Créer le projet "LiteraryBlog":
+
+
+
+Cloner le projet sur Github a partir de son Url ou télécharger le fichier Zip.
+Installer les fichiers
+
+######Fichier Config.php
+
+Dans le dossier config faites un 'copier/coller' du fichier _`Config.php.dist`_ et supprimer l’extension .dist
+
+Si vous ne travaillez pas en localhost, ouvrer le fichier et faite vos modifications.
+
+######Base de données
+
+Dans votre système de gestion de bases de données, Créez une bd "**alaskabook**"
+
+Importer à partir du dossier sql, le fichier _`alaskabookStructure.sql`_ et installer les tables.
+Si besoin, importer les exemples avec le fichier _`alaskabookFixtures.sql`_
+
+######Configurer l’autoload
+
+Installer composer et faites un `composer require composer/composer` dans votre dossier literaryBlog
+
+Packagist à installer avec composer :
+
+    composer require twig/twig
+    composer require twig/extensions
+    composer require google/recaptcha
 
 ###### Accès à l'administration:
 

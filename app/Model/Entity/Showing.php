@@ -17,7 +17,6 @@ class Showing extends AbstractEntity
     private $classify;
 
 
-
     public static function relationWithDb()
     {
         return [

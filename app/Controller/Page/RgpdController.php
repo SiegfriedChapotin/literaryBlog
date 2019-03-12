@@ -15,7 +15,8 @@ use Literary\Model\Entity\Introduction;
 use LiteraryCore\Request\Request;
 use LiteraryCore\Request\Query;
 use LiteraryCore\Service\FlashBag\FlashBagService;
-use LiteraryCore\Service\ReCaptChaValidator;
+use LiteraryCore\Exception\HttpException\NotFoundHttpException;
+use LiteraryCore\Service\CsrfValidator;
 
 class RgpdController extends AbstractController
 {
@@ -25,13 +26,20 @@ class RgpdController extends AbstractController
     public function show()
     {
 
-        $this->render('posts/showRgpd.html.twig', ['rgpd' => (new RgpdTable())->all()]);
+        $this->render('Posts/showRgpd.html.twig', ['rgpd' => (new RgpdTable())->all()]);
     }
 
 
     public function showRgpdHome()
     {
-        if ((Request::exist('postModify'))&& (ReCaptChaValidator::validateReCaptChat())) {
+        if (Request::exist('postModify')) {
+
+            if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
+                FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
+                $this->redirect('rgpd_admin&id=' . Query::get('id'));
+                return;
+            }
+
             $post = (new Introduction())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'));
 
             (new RgpdTable())->RgpdUpdate($post);
@@ -39,9 +47,18 @@ class RgpdController extends AbstractController
             $this->redirect('rgpd_admin&id=' . Query::get('id'));
             return;
         }
-        $this->render('admin/Modification/textRgpdModif.html.twig',
+
+        $rgpdHome = (new RgpdTable())->findRgpdHome(Query::get('id'));
+        if (!$rgpdHome) {
+            throw new NotFoundHttpException();
+        }
+
+        $token = CsrfValidator::generateToken();
+
+        $this->render('Admin/Modification/textRgpdModif.html.twig',
             [
-                'rgpd_admin' => (new RgpdTable())->RgpdHome(),
+                'rgpd_admin' => $rgpdHome,
+                'csrf_token' => $token
             ]);
     }
 

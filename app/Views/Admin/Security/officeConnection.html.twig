@@ -1,0 +1,35 @@
+{% extends 'Layout/GenericLayout/main.html.twig' %}
+
+{% block content %}
+
+    <div id="connect" class="text-center">
+
+        <form action="" method="post" class="form-signin">
+            <img class="mb-4" src="img\ico.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Bonjour, </h1>
+            <br/>
+            <div class="form-label-group">
+                <label for="username" class="sr-only">Pseudo</label>
+                <input type="text" id="inputName" class="form-control" name="username" placeholder="Votre pseudo"
+                       required autofocus>
+                <br/>
+
+                <label for="password" class="sr-only">Mot de passe</label>
+                <input type="password" id="inputPassword" class="form-control" name="password"
+                       placeholder="Mot de passe" required>
+            </div>
+            {% if errors is not empty %}
+                <div style="color: red;">
+                    {{ errors.0 }}
+                </div>
+            {% endif %}
+            <wbr/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+
+
+

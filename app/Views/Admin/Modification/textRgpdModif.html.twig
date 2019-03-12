@@ -1,0 +1,49 @@
+{% extends  "Layout/layoutdashboard.html.twig" %}
+
+
+{% block textarea %}
+
+    <br/>
+    <div class="col-12 shadow-lg p-4 mb-5  ">
+        <h1>Page d'accueil</h1>
+    </div>
+
+
+    <form method="post">
+        <div class=" row justify-content-center font-weight-bold ">
+            <div class="col-10">
+                <label for="TitleDashboard">Titre</label>
+                <input class="form-control" type="text" name="TitleDashboard" value="{{ rgpd_admin.title|striptags }}"
+                       required/>
+            </div>
+        </div>
+        <div class=" row justify-content-center font-weight-bold ">
+            <div class="col-11">
+                <label for="TextDashboard"> Texte </label>
+                <textarea class="form-control textarea" id="adminTextarea" rows="20"
+                          name="TextDashboard">{{ rgpd_admin.text|raw }}</textarea>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-10">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+
+                <div class="paddingtext row  ">
+                    <div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-3 paddingRL">
+                        <a href="index.php?p=posts_admin&id={{ rgpd_admin.id }}">
+                            <button type="submit"
+                                    class="btn btn-card btn-bg btn-primary font-weight-bold "
+                                    name="postModify"
+                                    value="{{ rgpd_admin.id }}">
+                                <a class=" paddingRL">Modifier</a>
+                                <i data-feather="edit-2"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

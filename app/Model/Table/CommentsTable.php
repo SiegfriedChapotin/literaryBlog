@@ -46,13 +46,14 @@ class CommentsTable extends AbstractTable
 
     function listCommentAdmin($int)
     {
-        return $this->query('SELECT * FROM comment WHERE classify = 0 ORDER BY comment.date DESC LIMIT '.$int);
+        return $this->query('SELECT * FROM comment WHERE classify = 0 ORDER BY comment.date DESC LIMIT ' . $int);
     }
 
     function listReportAdmin($int)
     {
-        return $this->query('SELECT * FROM comment WHERE classify = 1 ORDER BY comment.date DESC  LIMIT '.$int);
+        return $this->query('SELECT * FROM comment WHERE classify = 1 ORDER BY comment.date DESC  LIMIT ' . $int);
     }
+
     function commentWrite($post)
     {
         $this->flush($post);

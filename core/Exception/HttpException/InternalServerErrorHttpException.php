@@ -5,6 +5,7 @@
  * Date: 21/11/2018
  * Time: 08:56
  */
+
 namespace LiteraryCore\Exception\httpException;
 
 use Throwable;

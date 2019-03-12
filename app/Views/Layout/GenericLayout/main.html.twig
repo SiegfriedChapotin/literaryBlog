@@ -1,0 +1,31 @@
+{% include  "Layout/GenericLayout/header.html.twig" %}
+
+<main role="main">
+
+    <div class="container paddingPage">
+
+
+        {% for flashType,flashMessages in FlashBag() %}
+        <div class="alert alert-{{ flashType }}" role="alert">
+            {% for flashMessage in flashMessages %}
+
+                {{ flashMessage }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block content %}{% endblock %}
+
+        {% block comment %}{% endblock %}
+
+        {% block writecomment %}{% endblock %}
+
+        {% block contact %}{% endblock %}
+
+    </div>
+
+</main>
+
+{% include  "Layout/GenericLayout/footer.html.twig" %}
+
+

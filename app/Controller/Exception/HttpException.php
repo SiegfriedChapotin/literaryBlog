@@ -15,16 +15,16 @@ class HttpException extends AbstractController
 {
     public function notFound()
     {
-        $this->render ('errors/404.html.twig',[]);
+        $this->render('Errors/404.html.twig', []);
     }
 
-    public function Forbidden()
+    public function forbidden()
     {
-        $this->render ('errors/403.html.twig',[]);
+        $this->render('Errors/403.html.twig', []);
     }
 
     public function internalServeurE()
     {
-        $this->render ('errors/500.html.twig',[]);
+        $this->render('Errors/500.html.twig', []);
     }
 }

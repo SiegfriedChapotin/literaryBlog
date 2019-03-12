@@ -32,8 +32,8 @@ class RgpdTable extends AbstractTable
         $this->flush($post);
     }
 
-    function RgpdHome()
+    public function findRgpdHome($id)
     {
-        return $this->all();
+        return $this->find($id);
     }
 }

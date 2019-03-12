@@ -1,0 +1,82 @@
+{% extends  "Layout/layoutdashboard.html.twig" %}
+
+{% block textarea %}
+    <br/>
+    <div class="col-12 shadow-lg p-4 mb-5  ">
+        <h1>Publications</h1>
+    </div>
+
+
+    <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+        <div class=" row justify-content-between font-weight-bold ">
+            <div class="col-4">
+                <label for="ChapDashboard" class="paddingtext font-weight-bold">Chapitre</label>
+                <input type="number" value="{{ chapitre.chapter }}" name="ChapDashboard">
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6 form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_status" id="is_status0" value="0"
+                                    {{ (chapitre.classify == 0)? 'checked':'' }} >
+                            <label class="form-check-label" for="is_status0">Brouillon
+                            </label>
+                        </div>
+                        <div class="col-6 form-check form-check-inline  ">
+                            <input class="form-check-input" type="radio" name="is_status" id="is_status1"
+                                   value="1" {{ (chapitre.classify == 1)?'checked':'' }} >
+                            <label class="form-check-label" for="is_status1">Editer
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" row justify-content-center font-weight-bold ">
+            <div class="col-10">
+                <label for="TitleDashboard" class="paddingtext font-weight-bold">Titre</label>
+                <input class="form-control" type="text" name="TitleDashboard" value="{{ chapitre.title|striptags }}"
+                       required>
+            </div>
+        </div>
+
+        <div class=" row justify-content-center font-weight-bold ">
+            <div class="col-11">
+                <label for="TextDashboard" class="paddingtext font-weight-bold">Texte</label>
+                <textarea class="form-control textarea" id="adminTextarea" rows="20"
+                          name="TextDashboard">{{ chapitre.text|striptags | nl2br }}</textarea>
+            </div>
+        </div>
+        <div class="row justify-content-center ">
+            <div class="col-10">
+                <div class="paddingtext row ">
+                    <div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-3 paddingRL">
+                        <a href="index.php?p=posts_admin&id={{ chapitre.id |nl2br }}">
+                            <button type="submit"
+                                    class="btn btn-card btn-bg btn-primary font-weight-bold "
+                                    name="postModify"
+                                    value="{{ chapitre.id }}">
+                                <a class=" paddingRL">Modifier</a>
+                                <i data-feather="edit-2"></i>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-5 col-md-4 col-lg-4 col-xl-3 paddingRL">
+                        <button type="submit"
+                                class="btn btn-card btn-danger font-weight-bold  btn-bg"
+                                name="delete"
+                                value="{{ chapitre.id }}">
+                            <a class=" paddingRL"> Supprimer</a>
+                            <i data-feather="delete"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <wbr/>
+
+{% endblock %}

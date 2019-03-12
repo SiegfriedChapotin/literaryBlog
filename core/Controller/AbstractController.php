@@ -25,7 +25,7 @@ abstract class AbstractController
         $loader = new Twig_Loader_Filesystem('../app/Views');
         $this->twig = new Twig_Environment($loader, array('cache' => ROOT . '/tmp', 'debug' => true));
         $this->twig->addExtension(new \Twig_Extensions_Extension_Text());
-        $flashBagTwigFunction=new \Twig_SimpleFunction('FlashBag',function(){
+        $flashBagTwigFunction = new \Twig_SimpleFunction('FlashBag', function () {
             return FlashBagService::getFlashMessages();
         });
 
@@ -33,7 +33,8 @@ abstract class AbstractController
         $this->__postConstruct();
     }
 
-    protected function __postConstruct(){
+    protected function __postConstruct()
+    {
 
     }
 
@@ -42,6 +43,7 @@ abstract class AbstractController
         header('Location: index.php?p=' . $route);
 
     }
+
     /**
      * Appel la vue, lui applique les variables et l'envoie à l'application
      * @param String $nameView Nom de la vue à appeler

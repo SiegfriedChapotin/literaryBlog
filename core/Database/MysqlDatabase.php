@@ -12,12 +12,11 @@ use \PDO;
 
 
 /**
-* Se connecte à la base de donnée grâce au système PDO
-* @package app
-*/
-
-class MysqlDatabase extends Database{
-
+ * Se connecte à la base de donnée grâce au système PDO
+ * @package app
+ */
+class MysqlDatabase extends Database
+{
 
 
     private $db_name;

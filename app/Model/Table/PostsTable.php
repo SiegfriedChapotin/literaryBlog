@@ -17,12 +17,12 @@ class PostsTable extends AbstractTable
 
 {
 
-    protected  function getTableName()
+    protected function getTableName()
     {
         return 'book';
     }
 
-    protected  function getClassName()
+    protected function getClassName()
     {
         return Posts::class;
     }
@@ -30,14 +30,14 @@ class PostsTable extends AbstractTable
     /**
      * @return object
      */
-    function listPostAll( )
+    function listPostAll()
     {
         return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter');
     }
 
     function listPostWriteAdmin($int)
     {
-        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC LIMIT '.$int);
+        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC LIMIT ' . $int);
     }
 
     function listPostWrite()
@@ -47,7 +47,7 @@ class PostsTable extends AbstractTable
 
     function listPostHome($int)
     {
-        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC LIMIT '. $int);
+        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC LIMIT ' . $int);
     }
 
     function findPost($id)
@@ -58,11 +58,11 @@ class PostsTable extends AbstractTable
 
     function NewPostWrite($post)
     {
-         $this->flush($post);
+        $this->flush($post);
     }
 
     function PostUpdate($post)
     {
-            $this->flush($post);
+        $this->flush($post);
     }
 }

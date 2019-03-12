@@ -141,7 +141,7 @@ hr {
     display: flex;
 }
 
-#livrePaysage{
+#livrePaysage {
     display: none;
 }
 
@@ -152,11 +152,11 @@ hr {
 
 @media (max-width: 576px) {
 
-    .hiddenEle{
+    .hiddenEle {
         display: block;
     }
 
-    .visibleEle{
+    .visibleEle {
         display: none;
     }
 
@@ -164,7 +164,7 @@ hr {
         font-size: 1.5em;
     }
 
-    .card-body{
+    .card-body {
         padding: 0px;
         margin: 0px;
     }
@@ -176,16 +176,17 @@ hr {
     h1, h2, h3 {
         font-size: 1.5em;
     }
+
     .network img {
         max-width: 10%;
         min-width: 20%;
     }
 
-    .paddingtext  {
+    .paddingtext {
         padding: 10px;
     }
 
-    .visibleEleSM{
+    .visibleEleSM {
         display: none;
     }
 
@@ -194,7 +195,7 @@ hr {
 /* Large devices (desktops, 992px and up) MD*/
 @media (max-width: 992px) {
 
-    .visibleEleMD{
+    .visibleEleMD {
         display: none;
     }
 
@@ -206,10 +207,11 @@ hr {
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (max-width: 1200px) {
 
-    #livrePortrait{
+    #livrePortrait {
         display: none;
     }
-    #livrePaysage{
+
+    #livrePaysage {
         display: block;
     }
 

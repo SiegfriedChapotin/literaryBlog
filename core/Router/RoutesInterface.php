@@ -11,5 +11,5 @@ namespace LiteraryCore\Router;
 
 interface RoutesInterface
 {
-    public function getRoutes() : array;
+    public function getRoutes(): array;
 }

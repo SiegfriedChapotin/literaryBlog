@@ -13,6 +13,7 @@ use Literary\Model\Table\CommentsTable;
 use LiteraryCore\Controller\AbstractController;
 use Literary\Model\Table\PostsTable;
 use LiteraryCore\Exception\HttpException\NotFoundHttpException;
+use LiteraryCore\Exception\HttpException\InternalServerErrorHttpException;
 use LiteraryCore\Request\Request;
 use LiteraryCore\Request\Query;
 use LiteraryCore\Service\FlashBag\FlashBagService;
@@ -28,7 +29,7 @@ class PostController extends AbstractController
 
     public function list()
     {
-        $this->render('posts/book.html.twig', ['chapitreall' => (new PostsTable())->listPostAll()]);
+        $this->render('Posts/book.html.twig', ['chapitreall' => (new PostsTable())->listPostAll()]);
     }
 
     public function show()
@@ -42,6 +43,11 @@ class PostController extends AbstractController
         }
 
         if (Request::exist('Valider')) {
+
+
+            if ((ReCaptChaValidator::validateReCaptChat()) != true) {
+                throw new InternalServerErrorHttpException();
+            }
 
             if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
                 FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
@@ -73,7 +79,7 @@ class PostController extends AbstractController
             throw new NotFoundHttpException();
         }
         $token = CsrfValidator::generateToken();
-        $this->render('posts/show.html.twig',
+        $this->render('Posts/show.html.twig',
             [
                 'csrf_token' => $token,
                 'chapitre' => $post,
@@ -103,7 +109,7 @@ class PostController extends AbstractController
             return;
         }
 
-        $this->render('admin/Office/officePublication.html.twig',
+        $this->render('Admin/Office/officePublication.html.twig',
             [
                 'publicationoffice' => (new PostsTable())->listPostWrite(),
                 'publicationclass' => (new PostsTable())->listPostAll(),
@@ -113,14 +119,20 @@ class PostController extends AbstractController
     public function showPostsHome()
     {
 
-        if ((Request::exist('delete')) && (ReCaptChaValidator::validateReCaptChat())) {
+        if (Request::exist('delete')) {
             (new PostsTable())->delete();
             FlashBagService::addFlashMessage('danger', 'La publication a été supprimée');
             $this->redirect('publication_Office');
             return;
         }
 
-        if ((Request::exist('postModify')) && (ReCaptChaValidator::validateReCaptChat())) {
+        if (Request::exist('postModify')) {
+
+            if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
+                FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
+                $this->redirect('posts_admin&id= ' . (Request::get('postModify')));
+                return;
+            }
 
             $position = (new Posts())->setClassify(Request::get('is_status'));
             $post = (new Posts())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'))->setClassify(Request::get('is_status'))->setChapter(Request::get('ChapDashboard'));
@@ -141,10 +153,12 @@ class PostController extends AbstractController
         if (!$postModif) {
             throw new NotFoundHttpException();
         }
+        $token = CsrfValidator::generateToken();
 
-        $this->render('admin/Modification/textPostsModif.html.twig',
+        $this->render('Admin/Modification/textPostsModif.html.twig',
             [
                 'chapitre' => $postModif,
+                'csrf_token' => $token
 
             ]);
 
@@ -155,13 +169,24 @@ class PostController extends AbstractController
         if (Request::exist('TitleDashboard') && Request::exist('TextDashboard')) {
             $post = (new Posts())->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'))->setClassify(Request::get('is_status'))->setChapter(Request::get('ChapDashboard'));
 
-            if ((Request::exist('postSave')) && (ReCaptChaValidator::validateReCaptChat())) {
+            if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
+                FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
+                $this->redirect('officeWriteNewText.html.twig');
+                return;
+            }
+            if (Request::exist('postSave')) {
                 (new PostsTable())->NewPostWrite($post);
                 FlashBagService::addFlashMessage('warning', 'Votre texte a bien été enregistré');
                 $this->redirect('publication_Office');
                 return;
             }
+            if (!$post) {
+                throw new NotFoundHttpException();
+            }
         }
-        $this->render('admin/NewWrite/officeWriteNewText.html.twig', []);
+
+        $token = CsrfValidator::generateToken();
+
+        $this->render('Admin/NewWrite/officeWriteNewText.html.twig', ['csrf_token' => $token]);
     }
 }

@@ -16,7 +16,7 @@ use LiteraryCore\Request\Query;
 use LiteraryCore\Request\Request;
 use LiteraryCore\Service\FlashBag\FlashBagService;
 use LiteraryCore\Exception\HttpException\NotFoundHttpException;
-use LiteraryCore\Service\ReCaptChaValidator;
+use LiteraryCore\Service\CsrfValidator;
 
 class HeadingController extends AbstractController
 {
@@ -25,21 +25,28 @@ class HeadingController extends AbstractController
 
     public function show()
     {
-        $heading=(new HeadingTable())->findShowing(Query::get('id'));
-        if(!$heading){
+        $heading = (new HeadingTable())->findShowing(Query::get('id'));
+        if (!$heading) {
             throw new NotFoundHttpException();
         }
 
-        $this->render('posts/showheading.html.twig',
+        $this->render('Posts/showheading.html.twig',
             [
-                'heading' =>$heading
+                'heading' => $heading
             ]);
     }
 
 
     public function showHeadingHome()
     {
-        if ((Request::exist('postModify')) && (ReCaptChaValidator::validateReCaptChat())){
+        if ((Request::exist('postModify'))) {
+
+            if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
+                FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
+                $this->redirect('heading_admin&id=' . Query::get('id'));
+                return;
+            }
+
             $post = (new Introduction())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'));
 
             (new HeadingTable())->HeadingUpdate($post);
@@ -48,16 +55,19 @@ class HeadingController extends AbstractController
             return;
         }
 
-        $heading=(new HeadingTable())->findShowing(Query::get('id'));
-        if(!$heading){
+        $heading = (new HeadingTable())->findShowing(Query::get('id'));
+        if (!$heading) {
             throw new NotFoundHttpException();
         }
 
-        $this->render('admin/Modification/textHeadingModif.html.twig',
+        $token = CsrfValidator::generateToken();
+
+        $this->render('Admin/Modification/textHeadingModif.html.twig',
             [
-                'heading' =>$heading
+                'heading' => $heading,
+                'csrf_token' => $token
             ]);
-           }
+    }
 }
 
 

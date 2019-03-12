@@ -15,6 +15,7 @@ use LiteraryCore\Entity\AbstractEntity;
 use LiteraryCore\Request\Request;
 
 use PDO;
+
 /**
  * Classe mère de tous les appels à la bd
  */
@@ -49,7 +50,7 @@ abstract class AbstractTable
     {
 
 
-        return $this->query('SELECT * FROM ' . $this->getTableName() . ' WHERE id= :id', ['id' => $id],true);
+        return $this->query('SELECT * FROM ' . $this->getTableName() . ' WHERE id= :id', ['id' => $id], true);
 
     }
 
@@ -218,7 +219,7 @@ abstract class AbstractTable
 
     public function getPost($offset, $nb)
     {
-        $result = $this->getDb()->prepare("SELECT * FROM {$this->getTableName()} LIMIT :offset, :nb",[':offset' => $offset, ':nb' => $nb]);
+        $result = $this->getDb()->prepare("SELECT * FROM {$this->getTableName()} LIMIT :offset, :nb", [':offset' => $offset, ':nb' => $nb]);
         return (!empty($result)) ? $result : null;
     }
 

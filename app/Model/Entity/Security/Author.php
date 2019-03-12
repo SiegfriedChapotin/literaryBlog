@@ -13,15 +13,14 @@ use LiteraryCore\Entity\AbstractEntity;
 class Author extends AbstractEntity
 {
 
-     private $username;
-     private $password;
+    private $username;
+    private $password;
 
     public static function relationWithDb()
     {
         return [
             'username' => 'username',
             'password' => 'password',
-
         ];
     }
 
@@ -58,8 +57,6 @@ class Author extends AbstractEntity
         $this->password = $password;
 
     }
-
-
 
 
 }

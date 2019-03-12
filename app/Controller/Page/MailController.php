@@ -15,7 +15,8 @@ use LiteraryCore\Controller\AbstractController;
 use LiteraryCore\Service\CsrfValidator;
 use LiteraryCore\Service\FlashBag\FlashBagService;
 use Literary\Model\Entity\Mail;
-
+use LiteraryCore\Exception\HttpException\InternalServerErrorHttpException;
+use LiteraryCore\Service\ReCaptChaValidator;
 
 class MailController extends AbstractController
 {
@@ -27,6 +28,9 @@ class MailController extends AbstractController
 
         if (Request::exist('NameMail') && Request::exist('TitreMail') && Request::exist('EmailMail') && Request::exist('TextMail') && Request::exist('Envoyer')) {
 
+            if ((ReCaptChaValidator::validateReCaptChat()) != true) {
+                throw new InternalServerErrorHttpException();
+            }
 
             if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
                 FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
@@ -63,7 +67,7 @@ class MailController extends AbstractController
         }
         $token = CsrfValidator::generateToken();
 
-        $this->render('posts/contact.html.twig', ['csrf_token' => $token]);
+        $this->render('Posts/contact.html.twig', ['csrf_token' => $token]);
     }
 
 
@@ -83,7 +87,7 @@ class MailController extends AbstractController
             return;
         }
 
-        $this->render('admin/Office/officeMail.html.twig',
+        $this->render('Admin/Office/officeMail.html.twig',
             [
                 'mailoffice' => (new MailTable())->listMail(),
                 'mailclass' => (new MailTable())->listMailClass()

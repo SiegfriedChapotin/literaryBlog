@@ -1,0 +1,20 @@
+{% extends 'Layout/GenericLayout/main.html.twig' %}
+
+{% block content %}
+
+
+    <div class="shadow-lg p-5 mb-5 bg-gradient-warning rounded headingheight">
+
+        <h1>Billet simple pour l'Alaska</h1>
+        <br/>
+    </div>
+    <div class="paddingtext">
+        <img class="icoImg" src="img/ico.png"/>
+        <h2>{{ showing.title|raw }}</h2>
+    </div>
+    <div class="paddingtext">
+        <p>{{ showing.text|raw }}</p>
+    </div>
+
+
+{% endblock %}

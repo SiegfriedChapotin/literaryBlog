@@ -16,7 +16,7 @@ use Literary\Model\Table\TextHomeTable;
 use LiteraryCore\Request\Request;
 use LiteraryCore\Request\Query;
 use Literary\Model\Entity\Introduction;
-use LiteraryCore\Service\ReCaptChaValidator;
+use LiteraryCore\Service\CsrfValidator;
 
 
 class HomeController extends AbstractController
@@ -25,13 +25,20 @@ class HomeController extends AbstractController
 
     public function homepage()
     {
-        $int=5;
-        $this->render('posts/home.html.twig', ['chapitres' => (new PostsTable())->listPostHome($int)]);
+        $int = 5;
+        $this->render('Posts/home.html.twig', ['chapitres' => (new PostsTable())->listPostHome($int)]);
     }
 
     public function showTextHome()
     {
-        if ((Request::exist('postModify'))&& (ReCaptChaValidator::validateReCaptChat())) {
+        if (Request::exist('postModify')) {
+
+            if (!(CsrfValidator::validateToken(Request::get('csrf_token')))) {
+                FlashBagService::addFlashMessage('danger', 'Session  expirée, reformuler votre demande ');
+                $this->redirect('texthome_admin&id=' . Query::get('id'));
+                return;
+            }
+
             $post = (new Introduction())->setId(intval(Query::get('id')))->setText(Request::get('TextDashboard'))->setTitle(Request::get('TitleDashboard'));
 
             (new TextHomeTable())->TextHomeUpdate($post);
@@ -39,6 +46,10 @@ class HomeController extends AbstractController
             $this->redirect('texthome_admin&id=' . Query::get('id'));
             return;
         }
-        $this->render('admin/Modification/textHomeModif.html.twig', ['texthome_admin' => (new TextHomeTable())->TextHome()]);
+
+
+        $token = CsrfValidator::generateToken();
+
+        $this->render('Admin/Modification/textHomeModif.html.twig', ['texthome_admin' => (new TextHomeTable())->TextHome(), 'csrf_token' => $token]);
     }
 }

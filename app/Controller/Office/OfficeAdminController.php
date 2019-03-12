@@ -23,7 +23,7 @@ class OfficeAdminController extends AbstractController
 
     public function admin()
     {
-        if (Request::exist('commentdel')) {
+        if (Request::exist('delete')) {
 
             (new CommentsTable())->delete();
             FlashBagService::addFlashMessage('danger', 'Le commentaire a été supprimé');
@@ -31,7 +31,7 @@ class OfficeAdminController extends AbstractController
             return;
         }
 
-        if (Request::exist('commentreport')) {
+        if (Request::exist('classify')) {
             (new CommentsTable())->classify(0);
             FlashBagService::addFlashMessage('success', 'Le status du commentaire a été modifié');
             $this->redirect('admin');
@@ -40,7 +40,7 @@ class OfficeAdminController extends AbstractController
 
         $int=6;
 
-        $this->render('admin/dashboard.html.twig',
+        $this->render('Admin/dashboard.html.twig',
             [
                 'chapitres' => (new PostsTable())->listPostWriteAdmin($int),
                 'comment' => (new CommentsTable())->listCommentAdmin($int),

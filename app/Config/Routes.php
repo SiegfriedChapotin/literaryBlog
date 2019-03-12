@@ -25,7 +25,6 @@ use Literary\Controller\Page\CommentController;
 class Routes implements RoutesInterface
 {
 
-
     public function getRoutes(): array
     {
 
@@ -70,7 +69,7 @@ class Routes implements RoutesInterface
              */
 
             'http_exception_not_found' => ['controller' => HttpException::class, 'action' => 'notFound'],
-            'ForbiddenHttpException' => ['controller' => HttpException::class, 'action' => 'Forbidden'],
+            'ForbiddenHttpException' => ['controller' => HttpException::class, 'action' => 'forbidden'],
             'InternalServerErrorHttpException' => ['controller' => HttpException::class, 'action' => 'internalServeurE']
 
         ];

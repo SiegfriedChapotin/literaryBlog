@@ -32,7 +32,7 @@ class CommentController extends AbstractController
             $this->redirect('comment_Office');
             return;
         }
-        $this->render('admin/Office/officeComment.html.twig',
+        $this->render('Admin/Office/officeComment.html.twig',
             [
                 'commentoffice' => (new CommentsTable())->listComment(),
                 'commentreport' => (new CommentsTable())->listReport()

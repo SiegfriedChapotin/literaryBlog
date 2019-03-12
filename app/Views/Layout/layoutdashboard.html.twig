@@ -1,0 +1,193 @@
+{% include  "Layout/GenericLayout/header.html.twig" %}
+
+<div id="dashboard" class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+
+            <div class="sidebar-sticky">
+                <wbr/>
+                <h4>Publications</h4>
+                <br/>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <p></p>
+                        <a href="index.php?p=admin"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="Bureau">
+                            <span data-feather="home"></span>
+                            Bureau
+                        </a>
+                        </p>
+                    </li>
+                    <li class="nav-item">
+                        <p>
+                            <a href="index.php?p=writetext_admin"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Nouveau texte">
+                                <span data-feather="feather"></span>
+                                Nouveau texte
+                            </a>
+                        </p>
+                    </li>
+                    <li class="nav-item">
+                        <p>
+                            <a href="index.php?p=mail_Office"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Courriers">
+                                <span data-feather="mail"></span>
+                                Courriers
+                            </a>
+                        </p>
+                    </li>
+                    <li class="nav-item">
+                        <p>
+                            <a href="index.php?p=publication_Office"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Vos publications">
+                                <span data-feather="book-open"></span>
+                                Vos publications
+                            </a>
+                        </p>
+                    </li>
+                    <li class="nav-item">
+                        <p>
+                            <a href="index.php?p=comment_Office"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Commentaires">
+                                <span data-feather="users"></span>
+                                Commentaires
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+
+                <wbr/>
+                <h4>Page d'accueil</h4>
+                <br/>
+                <ul class="nav flex-column mb-2">
+                    {% for texthome in texthome %}
+                        <li class="nav-item">
+                            <p>
+                                <a href="index.php?p=texthome_admin&id={{ texthome.id }}"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="{{ texthome.title|striptags | nl2br }}">
+                                    <span data-feather="file-text"></span>
+                                    {{ texthome.title|striptags | nl2br }}
+                                </a>
+                            </p>
+                        </li>
+                    {% endfor %}
+
+                    {% for headings in headings %}
+                        <li class="nav-item">
+                            <p>
+                                <a href="index.php?p=heading_admin&id={{ headings.id }}"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="{{ headings.title|striptags | nl2br }}">
+                                    <span data-feather="bookmark"></span>
+                                    {{ headings.title|striptags | nl2br }}
+                                </a>
+                            </p>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+                <wbr/>
+                <h4>Votre profil</h4>
+                <br/>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <p>
+                            <a href="index.php?p=writeprofil_admin"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title=" Nouveau profil">
+                                <span data-feather="feather"></span>
+                                Nouveau profil
+                            </a>
+                        </p>
+                        <br/>
+                    </li>
+                    {% for showings in showingsP %}
+                        <li class="nav-item">
+                            <p>
+                                <a href="index.php?p=showing_admin&id={{ showings.id }}"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="{{ showings.title|striptags | nl2br }}">
+                                    <span data-feather="eye"></span>
+                                    {{ showings.title|striptags | nl2br }}
+                                </a>
+                            </p>
+                        </li>
+                    {% endfor %}
+                    {% for showings in showingsD %}
+                        <li class="nav-item">
+                            <p>
+                                <a href="index.php?p=showing_admin&id={{ showings.id }}"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="{{ showings.title|striptags | nl2br }}">
+                                    <span data-feather="eye-off"></span>
+                                    {{ showings.title|striptags | nl2br }}
+                                    <br/> (brouillon)
+                                </a>
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <wbr/>
+                <h4>Mentions légales</h4>
+                <br/>
+                <ul class="nav flex-column mb-2">
+                    {% for rgpd in rgpd %}
+                        <li class="nav-item">
+                            <p>
+                                <a href="index.php?p=rgpd_admin&id={{ rgpd.id }}"
+                                   data-toggle="tooltip"
+                                   data-placement="top"
+                                   title="{{ rgpd.title|striptags | nl2br }}">
+                                    <span data-feather="info"></span>
+                                    {{ rgpd.title|striptags | nl2br }}
+                                </a>
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2 text-right">
+                    <a href="index.php?p=logout" class="badge badge-dark">Se déconnecter</a>
+                </div>
+            </div>
+            {% for flashType,flashMessages in FlashBag() %}
+            <div class="alert alert-{{ flashType }}" role="alert">
+                {% for flashMessage in flashMessages %}
+
+                    {{ flashMessage }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <div>
+                {% block textarea %}{% endblock %}
+            </div>
+
+        </main>
+    </div>
+</div>
+
+{% include  "Layout/GenericLayout/footer.html.twig" %}

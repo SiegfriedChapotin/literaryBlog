@@ -11,6 +11,7 @@ namespace LiteraryCore\Router;
 use LiteraryCore\Exception\HttpException\ForbiddenHttpException;
 use LiteraryCore\Exception\HttpException\NotFoundHttpException;
 use LiteraryCore\Request\Util\ArrayUtil;
+
 class Router
 {
     private $routes;
