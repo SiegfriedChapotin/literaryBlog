@@ -35,9 +35,9 @@ class PostsTable extends AbstractTable
         return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter');
     }
 
-    function listPostWriteAdmin($int)
+    function listPostWriteAdmin($nbPosts)
     {
-        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC LIMIT ' . $nbPosts);
     }
 
     function listPostWrite()
@@ -45,9 +45,9 @@ class PostsTable extends AbstractTable
         return $this->query('SELECT * FROM book WHERE classify=0 ORDER BY book.date DESC');
     }
 
-    function listPostHome($int)
+    function listPostHome($nbPosts)
     {
-        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC LIMIT ' . $int);
+        return $this->query('SELECT * FROM book WHERE classify=1 ORDER BY book.chapter DESC LIMIT ' . $nbPosts);
     }
 
     function findPost($id)
