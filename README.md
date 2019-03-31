@@ -45,14 +45,14 @@ Insérer ou modifier les données d’une base
 Construire une base de données
 Réalisation d'un blog.
 
-###### Besoin du client:
+###### Besoin du client :
 
     Interface CRUD (Create, Read, Update, Delete)
     Interface de rédaction -> TinyMCE
     Commentaires possible sur chaque billet, avec possibilité d'en signaler un pour être modéré
     Administration protégée par un mot de passe
 
-###### Contraintes techniques:
+###### Contraintes techniques :
 
     Base de bonnées MySQL
     Frontend lecture de billet
@@ -63,12 +63,15 @@ Réalisation d'un blog.
     Interface d'administration basé sur une interface WYSIWYG basé sur TinyMCE.
     Favoriser la POO
     Pattern MVC
-### Créer le projet "LiteraryBlog":
+    
+### Créer le projet "LiteraryBlog" :
 
 
 
 Cloner le projet sur Github a partir de son Url ou télécharger le fichier Zip.
 Installer les fichiers
+
+    https://github.com/SiegfriedChapotin/literaryBlog
 
 ######Fichier Config.php
 
@@ -92,8 +95,16 @@ Packagist à installer avec composer :
     composer require twig/twig
     composer require twig/extensions
     composer require google/recaptcha
+    
+### Accés au site "LiteraryBlog" en ligne :    
+    
+###### Accès site internet :
+    
+    http://projet03ocr.forterochejean.siegfriedchapotin.com/
 
-###### Accès à l'administration:
+###### Accès à l'administration :
+
+Cliquer sur la plume en bas à gauche
 
     Authentifiant: Forteroche
     Mot de passe: forteroche
